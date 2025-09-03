@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: dcf5350399136874eb349547e2c80b14
+  productGUID: 112599a9718c8194894b68ee44d5b8e3
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Space_1
+  productName: Wonjeong
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -162,7 +162,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.DefaultCompany.Wonjeong
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -682,16 +683,16 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Space_1
-  metroPackageVersion: 
+  metroPackageName: Wonjeong
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Space_1
+  metroApplicationDescription: Wonjeong
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Wonjeong
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -759,10 +760,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 9c509848-df33-40d4-8b69-2d3cec9acd99
+  cloudProjectId: 3380703e-b080-4678-9a27-7e5eb1d09cfa
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Space_1
+  projectName: Wonjeong
   organizationId: wonjeong_unity
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
