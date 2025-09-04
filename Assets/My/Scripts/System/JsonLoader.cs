@@ -94,7 +94,7 @@ public class TextSetting
     public string text;        
     public string fontName;
     public float fontSize;
-    public Color fontColor;
+    public Color fontColor = Color.white;
     public TextAlignmentOptions alignment = TextAlignmentOptions.Center;
 }
 
@@ -184,14 +184,6 @@ public class PopupSetting
 }
 
 [Serializable]
-public class TitleSetting
-{
-    public VideoSetting mainBackground;
-    public TextSetting titleText;
-    public TextSetting infoText;
-}
-
-[Serializable]
 public class Settings
 {
     public float inactivityTime; // 입력이 없을 시 타이틀로 되돌아가는 시간
@@ -199,6 +191,5 @@ public class Settings
     public CloseSetting closeSetting;
     public FontMaps fontMap;
     public SoundSetting[] sounds;
-    public TitleSetting titleSetting;
 }
 #endregion

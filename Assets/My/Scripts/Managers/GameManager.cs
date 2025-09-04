@@ -19,13 +19,17 @@ public class GameManager : MonoBehaviour
         else if (Instance != this)
         {
             Destroy(gameObject);
-            return;
+        }
+
+        if (Display.displays.Length > 1)
+        {
+            Display.displays[1].Activate(); // Display 2 Activate
         }
     }
 
     private void Start()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     private void Update()

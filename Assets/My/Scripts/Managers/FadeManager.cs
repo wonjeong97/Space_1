@@ -8,7 +8,8 @@ public class FadeManager : MonoBehaviour
 {
     public static FadeManager Instance { get; private set; }
 
-    [SerializeField] private Image fadeImage;
+    [SerializeField] private Image mainFadeImage;
+    [SerializeField] private Image subFadeImage;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class FadeManager : MonoBehaviour
             return;
         }
 
-        if (!fadeImage)
+        if (!mainFadeImage || !subFadeImage)
         {
             Debug.LogError("[FadeManager] Fade Image is not assigned.");
             return;
@@ -39,25 +40,6 @@ public class FadeManager : MonoBehaviour
         }
     }
 
-    public void FadeIn(float duration, Action onComplete = null)
-    {
-        fadeImage.raycastTarget = true; // 사용자의 버튼 클릭 등을 막음
-        fadeImage.transform.SetAsLastSibling(); // 맨 앞에 위치시킴
-        StartCoroutine(Fade(1f, 0f, duration, false, () =>
-        {
-            fadeImage.raycastTarget = false;
-            fadeImage.transform.SetAsFirstSibling(); // 맨 뒤로 이동
-            onComplete?.Invoke();
-        }));
-    }
-
-    public void FadeOut(float duration, Action onComplete = null)
-    {
-        fadeImage.raycastTarget = true;
-        fadeImage.transform.SetAsLastSibling();
-        StartCoroutine(Fade(0f, 1f, duration, false, onComplete));
-    }
-
     // 비동기 래퍼
     public Task FadeInAsync(float duration, bool unscaledTime = false)
         => RunFadeAsync(1f, 0f, duration, unscaledTime);
@@ -68,14 +50,21 @@ public class FadeManager : MonoBehaviour
     private async Task RunFadeAsync(float from, float to, float duration, bool unscaled)
     {
         var tcs = new TaskCompletionSource<bool>();
-        fadeImage.raycastTarget = true;
-        fadeImage.transform.SetAsLastSibling();
+        mainFadeImage.raycastTarget = true;
+        mainFadeImage.transform.SetAsLastSibling();
+        
+        subFadeImage.raycastTarget = true;
+        subFadeImage.transform.SetAsLastSibling();
+        
         StartCoroutine(Fade(from, to, duration, unscaled, () => tcs.TrySetResult(true))); // Fade 완료 후 tcs에 True 설정
         await tcs.Task; // True를 호출 받기 전까지 대기
         if (to <= 0.001f)
         {
-            fadeImage.raycastTarget = false;
-            fadeImage.transform.SetAsFirstSibling();
+            mainFadeImage.raycastTarget = false;
+            mainFadeImage.transform.SetAsFirstSibling();
+            
+            subFadeImage.raycastTarget = false;
+            subFadeImage.transform.SetAsLastSibling();
         }
     }
 
@@ -96,8 +85,11 @@ public class FadeManager : MonoBehaviour
 
     private void SetAlpha(float alpha)
     {
-        if (!fadeImage) return;
-        var c = fadeImage.color;
-        fadeImage.color = new Color(c.r, c.g, c.b, alpha);
+        if (!mainFadeImage || !subFadeImage) return;
+        var c1 = mainFadeImage.color;
+        mainFadeImage.color = new Color(c1.r, c1.g, c1.b, alpha);
+        
+        var c2 = subFadeImage.color;
+        subFadeImage.color = new Color(c2.r, c2.g, c2.b, alpha);
     }
 }

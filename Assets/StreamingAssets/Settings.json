@@ -5,23 +5,14 @@
 	"position": { "x": 1, "y": 0 },
 	"numToClose": 10,
 	"resetClickTime": 60,
-	"imageAlpha": 0.01
+	"imageAlpha": 0.0
   },
   "fontMap": {
-	"font1": "Fonts/TMPro/EBS Saron SB SDF.asset",
+	"font1": "Fonts/TMPro/DungGeunMo SDF.asset",
 	"font2": "Fonts/TMPro/NanumGothic-Regular SDF.asset"
   },
   "sounds": [
 	{ "key": "click1", "clipPath": "click1.wav", "volume": 1.0 },
 	{ "key": "click2", "clipPath": "click2.wav", "volume": 0.5 }
-  ],
-  "titleSetting": {
-	"mainBackground": {
-	  "name": "Main Background",
-	  "position": { "x": 0, "y": 0 },
-	  "size": { "x": 1920, "y": 1080 },
-	  "fileName": "Video/SpaceBackground.mp4",
-	  "volume": 0
-	}
-  }
+  ]
 }

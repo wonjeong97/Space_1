@@ -202,10 +202,10 @@ public class UICreator : MonoBehaviour
     }
 
     /// <summary>단일 Text 프리팹 생성 후 TMP 속성과 RectTransform 적용</summary>
-    public async Task CreateSingleTextAsync(TextSetting setting, GameObject parent, CancellationToken token)
+    public async Task<GameObject> CreateSingleTextAsync(TextSetting setting, GameObject parent, CancellationToken token)
     {
         GameObject go = await InstantiateAsync("Prefabs/TextPrefab.prefab", parent.transform, token); // 프리팹 인스턴스화
-        if (go == null) return; // 생성 실패 방어
+        if (go == null) return null; // 생성 실패 방어
         go.name = setting.name; // 이름 지정
 
         if (go.TryGetComponent(out TextMeshProUGUI uiText)) // TMP 컴포넌트가 있으면
@@ -230,6 +230,8 @@ public class UICreator : MonoBehaviour
                 anchoredPos: new Vector2(setting.position.x, -setting.position.y),
                 rotation: setting.rotation);
         }
+
+        return go;
     }
 
     /// <summary>여러 Image 항목을 비동기로 생성하고 모두 완료될 때까지 대기</summary>

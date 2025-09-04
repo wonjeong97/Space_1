@@ -1,0 +1,58 @@
+{
+  "tutorialDisplayTime": 5.0,
+  "mainBackground": {
+	"name": "Main Background",
+	"position": { "x": 960, "y": 540 },
+	"size": { "x": 1920, "y": 1080 },
+	"fileName": "Video/SpaceBackground.mp4",
+	"volume": 0
+  },
+  "miniBackground": {
+	"name": "Tutorial Background",
+	"position": { "x": 960, "y": 540 },
+	"size": { "x": 1500, "y": 800 },
+	"sourceImage": "Image/Background/1_white.png",
+	"color": { "r": 1, "g": 1, "b": 1, "a": 0.5 }
+  },
+  "tutorialText1": {
+	"name": "Tutorial Text 1",
+	"position": { "x": 750, "y": 100 },
+	"text": "정보를 출력할 타겟을 발견하면 트랙볼을 움직여 클릭해보세요!",
+	"fontName": "font1",
+	"fontSize": 48,
+	"fontColor": { "r": 0, "g": 0, "b": 0, "a": 1 }
+  },
+  "tutorialImage1": {
+  },
+  "tutorialText2": {
+	"name": "Tutorial Text 2",
+	"position": { "x": 750, "y": 100 },
+	"text": "트랙볼을 움직이며 마음에 드는 구도를 찾아 사진을 찍어보세요!",
+	"fontName": "font1",
+	"fontSize": 48,
+	"fontColor": { "r": 0, "g": 0, "b": 0, "a": 1 }
+  },
+  "tutorialImage2": {
+  },
+  "infoText": {
+	"name": "Info Text",
+	"position": { "x": 750, "y": 860 },
+	"text": "마우스를 클릭하여 콘텐츠를 시작하세요",
+	"fontName": "font1",
+	"fontSize": 60	
+  },
+  "subBackground": {
+	"name": "Sub Background",
+	"position": { "x": 960, "y": 270 },
+	"size": { "x": 1920, "y": 540 },
+	"fileName": "Video/SpaceBackground.mp4",
+	"volume": 0
+  },
+  "subText": {
+	"name": "Sub Text",
+	"position": { "x": 960, "y": 270 },
+	"text": "우주 탐사를 기획하고 있습니다.",
+	"fontName": "font1",
+	"fontSize": 80
+  }
+}

@@ -2,19 +2,23 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
     private Settings jsonSetting;
-    private TitleSetting titleSetting;
-    private CancellationTokenSource cts;
+    public CancellationTokenSource cts;
+    
     private float inactivityTimer;
     private float inactivityThreshold = 60f;
-
-    public GameObject MainBackground { get; private set; }
     
+    private GameObject titlePage;
+
+    public GameObject MainCanvas { get; private set; }
+    public GameObject SubCanvas { get; private set; }
+
     private void Awake()
     {
         if (Instance == null)
@@ -28,7 +32,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private async void Start()
+    private void Start()
     {
         try
         {
@@ -37,6 +41,7 @@ public class UIManager : MonoBehaviour
                 Debug.LogError("[UIManager] UI_Creator is null. Place UI_Creator in the scene.");
                 return;
             }
+
             if (JsonLoader.Instance.settings == null)
             {
                 Debug.LogError("[UIManager] Settings are not loaded yet.");
@@ -44,10 +49,9 @@ public class UIManager : MonoBehaviour
             }
 
             jsonSetting = JsonLoader.Instance.settings;
-            titleSetting = jsonSetting.titleSetting;
             inactivityThreshold = jsonSetting.inactivityTime;
-            
-            await InitUI();
+
+            InitUI();
         }
         catch (OperationCanceledException)
         {
@@ -68,9 +72,10 @@ public class UIManager : MonoBehaviour
         catch
         {
         }
+
         cts?.Dispose();
         cts = null;
-        
+
         // Ensure creator cleans up any remaining instances and cached assets   
         if (UICreator.Instance != null)
         {
@@ -79,22 +84,13 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>초기 UI(캔버스/배경/아이들 페이지) 생성 및 연결</summary>
-    private async Task InitUI(CancellationToken token = default)
+    private void InitUI(CancellationToken token = default)
     {
         CancellationToken ct = UIUtility.MergeTokens(cts.Token, token); // 내부 CTS와 외부 토큰 병합
         try
-        {
-            GameObject canvas = await UICreator.Instance.CreateCanvasAsync(ct); // 캔버스 생성
-            MainBackground = await UICreator.Instance.CreateVideoPlayerAsync(titleSetting.mainBackground, canvas, ct);
-            // MainBackground = await UICreator.Instance.CreateBackgroundImageAsync(
-            //     jsonSetting.mainBackground, canvas, ct); // 메인 배경 생성
-            //
-            // idlePage = await UICreator.Instance.CreatePageAsync(
-            //     jsonSetting.idlePage, MainBackground, ct); // Idle 페이지 생성
-            // if (idlePage != null)
-            // {
-            //     idlePage.AddComponent<IdlePage>(); // Idle 동작 스크립트 부착
-            // }
+        {   
+            titlePage = new GameObject("TitlePage");
+            titlePage.AddComponent<TitlePage>();
         }
         catch (OperationCanceledException)
         {
@@ -109,9 +105,9 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>동적으로 생성된 인스턴스를 모두 해제하고 초기 UI 재구성</summary>
-    public async Task ClearAllDynamic()
+    public void ClearAllDynamic()
     {
         UICreator.Instance.DestroyAllTrackedInstances();
-        await InitUI();
+        InitUI();
     }
 }
