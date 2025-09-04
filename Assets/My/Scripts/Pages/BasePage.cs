@@ -63,6 +63,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             canvas.targetDisplay = 1;
             canvasScaler.referenceResolution = new Vector2(1920, 540);
         }
+        subCanvasObj.transform.position += new Vector3(3000, 0, 0);
 
         var mainBackground = GetFieldOrProperty<VideoSetting>(setting, "mainBackground");
         if (mainBackground != null)

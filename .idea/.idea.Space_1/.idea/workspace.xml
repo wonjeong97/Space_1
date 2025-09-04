@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TutorialSetting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TutorialSetting.json.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Fonts/TMPro/BlackHanSans-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Fonts/TMPro/BlackHanSans-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Fonts/TMPro/BlackHanSans-Regular SDF.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Fonts/TMPro/BlackHanSans-Regular SDF.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Fonts/TMPro/DungGeunMo SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Fonts/TMPro/DungGeunMo SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Fonts/TMPro/DungGeunMo SDF.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Fonts/TMPro/DungGeunMo SDF.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/FadeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Managers/FadeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI/UICreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/UI/UICreator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/UI/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1756889183731</updated>
       <workItem from="1756889185606" duration="1738000" />
-      <workItem from="1756944700231" duration="18133000" />
+      <workItem from="1756944700231" duration="19745000" />
     </task>
     <servers />
   </component>

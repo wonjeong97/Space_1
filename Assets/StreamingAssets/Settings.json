@@ -5,7 +5,7 @@
 	"position": { "x": 1, "y": 0 },
 	"numToClose": 10,
 	"resetClickTime": 60,
-	"imageAlpha": 0.0
+	"imageAlpha": 1.0
   },
   "fontMap": {
 	"font1": "Fonts/TMPro/DungGeunMo SDF.asset",

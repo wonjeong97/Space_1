@@ -29,6 +29,8 @@ public class TutorialPage : BasePage<TutorialSetting>
     private bool inputReady;
     protected override string JsonPath => "JSON/TutorialSetting.json";
 
+    private GameObject game1Page;
+
     protected override async Task BuildContentAsync()
     {
         GameObject bg = await UICreator.Instance.CreateSingleImageAsync(setting.miniBackground, mainCanvasObj, CancellationToken.None);
@@ -64,8 +66,30 @@ public class TutorialPage : BasePage<TutorialSetting>
         inputReady = true;
     }
 
-    private void Update()
+    private async void Update()
     {
-        if (!inputReady) return;
+        try
+        {
+            if (!inputReady) return;
+            if (Input.GetMouseButtonDown(0))
+            {
+                await FadeManager.Instance.FadeOutAsync(jsonSetting.fadeTime);
+                gameObject.SetActive(false);
+                if (game1Page)
+                {
+                    game1Page.SetActive(true);
+                }
+                else
+                {
+                    game1Page = new GameObject("Game1Page");
+                    game1Page.AddComponent<Game1Page>();
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"[{GetType().Name}] Update failed: {e}");
+        }
+       
     }
 }

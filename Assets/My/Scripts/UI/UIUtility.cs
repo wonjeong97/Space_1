@@ -41,7 +41,6 @@ public static class UIUtility
         string fullPath = Path.Combine(Application.streamingAssetsPath, relativePath);
         if (!File.Exists(fullPath)) return null;
 
-
         byte[] fileData = File.ReadAllBytes(fullPath);
         var texture = new Texture2D(2, 2);
         texture.LoadImage(fileData);

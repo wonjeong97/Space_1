@@ -1,0 +1,15 @@
+{
+  "titleButton": {
+	"name": "Title Button",
+	"position": { "x": 1870, "y": 50 },
+	"size": { "x": 100, "y": 100 },
+	"buttonBackgroundImage": { "sourceImage": "Image/Button/home.png" }
+  },
+  "crosshairImage": {
+	"name": "Crosshair",
+	"position": { "x": 960, "y": 520 },
+	"size": { "x": 200, "y": 200 },
+	"sourceImage": "Image/Crosshair/Crosshair_11.png",
+	"color": { "r": 1, "g": 1, "b": 1, "a": 1 }
+  }
+}
