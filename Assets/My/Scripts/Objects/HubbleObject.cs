@@ -4,7 +4,14 @@ public class HubbleObject : BaseObject
 {
     protected override void PlayVideo()
     {
-        Debug.Log("허블 비디오 실행");
-        GamePage.Instance.RestartVideoFromStart(0); // 첫 번째 비디오 실행
+        // GamePage(또는 HubblePage) 싱글턴을 통해 비디오 재생
+        if (GamePage.Instance != null)
+        {
+            GamePage.Instance.PlayVideoByIndex(0);
+        }
+        else
+        {
+            Debug.LogError("[HubbleObject] No valid page instance found to play video.");
+        }
     }
 }

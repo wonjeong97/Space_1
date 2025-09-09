@@ -92,4 +92,65 @@ public class FadeManager : MonoBehaviour
         var c2 = subFadeImage.color;
         subFadeImage.color = new Color(c2.r, c2.g, c2.b, alpha);
     }
+    
+    public Task FadeInMainAsync(float duration, bool unscaledTime = false)
+        => RunFadeAsync(mainFadeImage, 1f, 0f, duration, unscaledTime);
+    
+    public Task FadeOutMainAsync(float duration, bool unscaledTime = false)
+        => RunFadeAsync(mainFadeImage, 0f, 1f, duration, unscaledTime);
+    
+    private async Task RunFadeAsync(Image target, float from, float to, float duration, bool unscaled)
+    {
+        if (!target)
+        {
+            Debug.LogWarning("[FadeManager] Target Image is null for single fade.");
+            return;
+        }
+
+        var tcs = new TaskCompletionSource<bool>();
+        
+        target.raycastTarget = true;
+        target.transform.SetAsLastSibling();
+
+        StartCoroutine(FadeSingle(target, from, to, duration, unscaled, () => tcs.TrySetResult(true)));
+        await tcs.Task;
+
+        if (to <= 0.001f)
+        {
+            target.raycastTarget = false;
+            
+            if (target == mainFadeImage)
+                target.transform.SetAsFirstSibling();
+            else
+                target.transform.SetAsLastSibling();
+        }
+    }
+
+    private IEnumerator FadeSingle(Image target, float from, float to, float duration, bool unscaled, Action onComplete)
+    {
+        if (!target)
+        {
+            onComplete?.Invoke();
+            yield break;
+        }
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            float alpha = Mathf.Lerp(from, to, Mathf.Clamp01(elapsed / duration));
+            SetAlpha(target, alpha);
+            elapsed += unscaled ? Time.unscaledDeltaTime : Time.deltaTime;
+            yield return null;
+        }
+
+        SetAlpha(target, to);
+        onComplete?.Invoke();
+    }
+
+    private void SetAlpha(Image target, float alpha)
+    {
+        if (!target) return;
+        var c = target.color;
+        target.color = new Color(c.r, c.g, c.b, alpha);
+    }
 }

@@ -2,21 +2,18 @@ using UnityEngine;
 
 public class BaseObject : MonoBehaviour
 {
-    private float rayHitTime;
+    public virtual void OnRayEnter() { }
+    public virtual void OnRayStay(float deltaTime) { }
+    public virtual void OnRayExit() { }
 
-    public virtual void OnRayEnter() => rayHitTime = 0f;
-
-    public virtual void OnRayStay(float deltaTime)
+    /// <summary>
+    /// 페이지에서 3초 조준이 확정되었을 때 호출됨
+    /// </summary>
+    public virtual void OnRayConfirmed()
     {
-        rayHitTime += deltaTime;
-        if (rayHitTime >= 2f)
-        {
-            PlayVideo();
-            gameObject.SetActive(false); // 비디오 실행 후 오브젝트 비활성화
-        }
+        PlayVideo();
+        gameObject.SetActive(false);
     }
-
-    public virtual void OnRayExit() => rayHitTime = 0f;
 
     protected virtual void PlayVideo() { }
 }

@@ -7,9 +7,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
+/// <summary>
+/// 공통 페이지 베이스
+/// - 카메라 중앙 레이캐스트로 BaseObject 타겟 추적
+/// - 같은 타겟을 dwellThreshold 초 이상 조준하면 확대 후 OnRayConfirmed() 호출
+/// - 확대/축소 시간, 확대 FOV는 jsonSetting에서 로드
+/// </summary>
 public abstract class BasePage<T> : MonoBehaviour where T : class
 {
-    [NonSerialized] protected T setting; // 페이지별 설정 데이터
+    [NonSerialized] protected T setting;        // 페이지별 설정 데이터
     protected Settings jsonSetting;
 
     protected abstract string JsonPath { get; }
@@ -20,46 +26,43 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
 
     protected Camera mainCamera;
 
-    // 마우스 회전 설정
+    // ===== 마우스 기반 카메라 회전 설정 =====
     private float mouseSensitivity;
     private float mouseSmoothing;
     private float minY;
     private float maxY;
 
-    private float yaw;
-    private float pitch;
+    protected float yaw;
+    protected float pitch;
     private Vector2 smoothedDelta;
     private Vector2 lastMousePos;
     private bool mouseInit;
 
-    // 카메라 줌
-    private float shutterThreshold;
-    private readonly float moveThreshold = 0.1f; // "정지"로 볼 마우스 델타 임계값
+    // ===== 카메라 줌 파라미터 (idle 기반 트리거는 제거됨) =====
     private float zoomInDuration;
     private float zoomOutDuration;
-    private float flashWaitSeconds;
     private float zoomFOV;
-
-    private float shutterTimer;
     private bool isZoomSequenceRunning;
     private float originFOV;
 
-    protected bool isCaptured;
     protected bool isPlayingVideo;
     protected bool shouldTurnCamera;
 
-    // 카메라 레이
+    // ===== 카메라 중앙 레이 =====
     protected bool shouldRay;
     protected readonly float rayDistance = 100000f;
     private LayerMask hitMask;
-    
-    private GameObject hitTarget;
+
     private BaseObject currentTarget;
 
+    // ===== 조준 유지(dwell) 로직 =====
+    [SerializeField] private float dwellThreshold = 3f; // n초 이상 조준 시 확정
+    private float dwellTimer;
+    private bool dwellInProgress; // 확대 중복 방지
+
+    // ===== 비디오 참조(파생 페이지에서 갱신/사용) =====
     protected VideoPlayer videoPlayer;
     protected GameObject pageVideo;
-
-    private int gameSequence;
 
     protected virtual void OnEnable()
     {
@@ -67,10 +70,8 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
         mouseInit = true;
         smoothedDelta = Vector2.zero;
 
-        shutterTimer = 0f;
         isZoomSequenceRunning = false;
-        isCaptured = false;
-        
+
         pitch = 0;
         yaw = 0;
     }
@@ -88,67 +89,77 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
         _ = StartAsync();
     }
 
-
     protected virtual void LateUpdate()
     {
         if (!mainCamera || isPlayingVideo) return;
 
+        // ===== 레이캐스트로 타겟 추적 및 dwell 누적 =====
         if (shouldRay)
         {
             Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, hitMask))
             {
-                GameObject newTarget = hit.collider.gameObject;
+                GameObject newGo = hit.collider.gameObject;
 
-                if (newTarget.TryGetComponent(out BaseObject obj))
+                if (newGo.TryGetComponent(out BaseObject obj))
                 {
-                    // 같은 오브젝트 계속 맞춤
                     if (currentTarget == obj)
                     {
+                        // 동일 타겟 계속 조준
                         currentTarget.OnRayStay(Time.deltaTime);
+                        dwellTimer += Time.deltaTime;
+
+                        // dwell 충족 & 아직 확대 시퀀스 시작 안 했을 때
+                        if (!dwellInProgress && dwellTimer >= dwellThreshold)
+                        {
+                            dwellInProgress = true;
+                            StartCoroutine(ZoomThenConfirmCurrentTarget());
+                        }
                     }
                     else
                     {
-                        // 타겟 변경됨 → 이전 타겟 리셋
+                        // 타겟 교체
+                        ResetDwell();
                         currentTarget?.OnRayExit();
-
                         currentTarget = obj;
                         currentTarget.OnRayEnter();
                     }
                 }
                 else
                 {
-                    // BaseObject가 없는 오브젝트를 맞춘 경우
+                    // BaseObject가 아닌 것에 맞음 → 리셋
                     if (currentTarget)
                     {
                         currentTarget.OnRayExit();
+                        ResetDwell();
                         currentTarget = null;
                     }
                 }
             }
             else
             {
-                // 레이가 아무 것도 안 맞음
+                // 아무것도 맞추지 못함 → 리셋
                 if (currentTarget)
                 {
                     currentTarget.OnRayExit();
+                    ResetDwell();
                     currentTarget = null;
                 }
             }
         }
 
+        // ===== 카메라 회전 (마우스 정지 트리거는 완전히 제거됨) =====
         if (shouldTurnCamera)
         {
-            // 마우스 델타 계산
             Vector2 now = Input.mousePosition;
             Vector2 rawDelta = mouseInit ? Vector2.zero : (now - lastMousePos);
             lastMousePos = now;
             mouseInit = false;
 
+            // 드문 예외 입력 보호
             if (rawDelta.sqrMagnitude > (Screen.width * Screen.height))
                 rawDelta = Vector2.zero;
 
-            // 카메라 회전
             float lerpT = (mouseSmoothing <= 0f) ? 1f : Mathf.Clamp01(Time.unscaledDeltaTime * mouseSmoothing);
             smoothedDelta = Vector2.Lerp(smoothedDelta, rawDelta, lerpT);
 
@@ -158,38 +169,66 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             yaw += dx;
             pitch = Mathf.Clamp(pitch + dy, minY, maxY);
             mainCamera.transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
-
-            // 마우스 정지 감지
-            bool isIdleThisFrame = rawDelta.magnitude <= moveThreshold;
-            if (isIdleThisFrame)
-            {
-                shutterTimer += Time.deltaTime;
-
-                // 설정한 시간 이상 정지 & 현재 줌 시퀀스가 돌고 있지 않다면 실행
-                if (!isZoomSequenceRunning && shutterTimer >= shutterThreshold && !isCaptured)
-                {
-                    StartCoroutine(ZoomFlashSequence());
-                    isCaptured = true;
-                }
-            }
-            else
-            {
-                shutterTimer = 0f;
-                // 움직임이 발생했는데 줌 시퀀스 중이면 즉시 원상복귀 시도
-                if (isZoomSequenceRunning)
-                {
-                    StopAllCoroutines();
-                    StartCoroutine(ZoomBackImmediately());
-                }
-            }
         }
+    }
+
+    private void ResetDwell()
+    {
+        dwellTimer = 0f;
+        dwellInProgress = false;
+    }
+
+    /// <summary>
+    /// dwell 확정 → 줌인 → (옵션) 플래시 → OnRayConfirmed() → 줌아웃
+    /// 비디오는 OnRayConfirmed()에서(=오브젝트/파생 페이지에서) 실행.
+    /// </summary>
+    private IEnumerator ZoomThenConfirmCurrentTarget()
+    {
+        if (!mainCamera || currentTarget == null)
+        {
+            dwellInProgress = false;
+            yield break;
+        }
+
+        isZoomSequenceRunning = true;
+
+        // 1) 줌 인
+        float start = mainCamera.fieldOfView;
+        float end = zoomFOV;
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / Mathf.Max(0.0001f, zoomInDuration);
+            mainCamera.fieldOfView = Mathf.Lerp(start, end, t);
+            yield return null;
+        }
+
+        // 2) (옵션) 플래시
+        //if (CameraFlash.Instance) CameraFlash.Instance.Flash();
+
+        // 3) 조준 확정: 오브젝트가 비디오 실행(예: GamePage.PlayVideoByIndex)
+        currentTarget.OnRayConfirmed();
+
+        // 4) 줌 아웃(즉시 원복. 비디오 종료 후 원복하고 싶으면 이 위치를 이동)
+        start = mainCamera.fieldOfView;
+        end = originFOV;
+        t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / Mathf.Max(0.0001f, zoomOutDuration);
+            mainCamera.fieldOfView = Mathf.Lerp(start, end, t);
+            yield return null;
+        }
+
+        isZoomSequenceRunning = false;
+        ResetDwell(); // 다음 조준을 위해 초기화
     }
 
     protected virtual void InitPage()
     {
         jsonSetting ??= JsonLoader.Instance.settings;
 
-        // Init Camera
+        // 카메라 초기화
         mainCamera = Camera.main;
         if (mainCamera)
         {
@@ -199,17 +238,18 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             originFOV = mainCamera.fieldOfView;
         }
 
+        // 카메라 회전 파라미터
         mouseSensitivity = jsonSetting.mouseSensitivity;
-        mouseSmoothing = jsonSetting.mouseSmoothing;
-        minY = jsonSetting.minY;
-        maxY = jsonSetting.maxY;
+        mouseSmoothing  = jsonSetting.mouseSmoothing;
+        minY            = jsonSetting.minY;
+        maxY            = jsonSetting.maxY;
 
-        shutterThreshold = jsonSetting.shutterThreshold;
-        zoomInDuration = jsonSetting.zoomInDuration;
+        // 줌 파라미터
+        zoomInDuration  = jsonSetting.zoomInDuration;
         zoomOutDuration = jsonSetting.zoomOutDuration;
-        flashWaitSeconds = jsonSetting.flashWaitSeconds;
-        zoomFOV = jsonSetting.zoomFOV;
+        zoomFOV         = jsonSetting.zoomFOV;
 
+        // 레이 마스크(Object 레이어)
         hitMask = LayerMask.GetMask("Object");
     }
 
@@ -251,6 +291,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             canvasScaler.referenceResolution = new Vector2(1920, 540);
         }
 
+        // 두 캔버스가 겹치지 않도록 화면 밖으로 이동(멀티 디스플레이 구성)
         subCanvasObj.transform.position += new Vector3(3000, 0, 0);
 
         var mainBackground = GetFieldOrProperty<VideoSetting>(setting, "mainBackground");
@@ -265,8 +306,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     }
 
     /// <summary>
-    /// 지정한 이름의 필드나 프로퍼티 값을 가져오는 유틸 메서드
-    /// (JSON 세팅에서 필드/프로퍼티 구분 없이 접근 가능)
+    /// 지정한 이름의 필드나 프로퍼티 값을 가져오는 유틸 (JSON 세팅에서 공통 접근)
     /// </summary>
     private static TField GetFieldOrProperty<TField>(object obj, string name) where TField : class
     {
@@ -274,106 +314,35 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
 
         var type = obj.GetType();
 
-        // Field 먼저
+        // Field
         var fi = type.GetField(name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         if (fi != null)
             return fi.GetValue(obj) as TField;
 
-        // Property 다음
+        // Property
         var pi = type.GetProperty(name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         if (pi != null)
             return pi.GetValue(obj) as TField;
 
         return null;
     }
-
-    protected async Task HandleTitleButtonAsync()
-    {
-        await GameManager.Instance.ShowTitlePageOnly();
-    }
-
+    
     protected void HandlePlayPauseButton()
     {
-        if (videoPlayer.isPlaying)
-        {
-            videoPlayer.Pause();
-        }
-        else
-        {
-            videoPlayer.Play();
-        }
+        if (!videoPlayer) return;
+        if (videoPlayer.isPlaying) videoPlayer.Pause();
+        else videoPlayer.Play();
     }
 
-    private IEnumerator ZoomFlashSequence()
-    {
-        isZoomSequenceRunning = true;
-
-        // 1) 줌 인
-        float start = mainCamera.fieldOfView;
-        float end = zoomFOV;
-        float t = 0f;
-
-        while (t < 1f)
-        {
-            t += Time.deltaTime / Mathf.Max(0.0001f, zoomInDuration);
-            mainCamera.fieldOfView = Mathf.Lerp(start, end, t);
-            yield return null;
-        }
-
-        // 2) 플래시
-        if (CameraFlash.Instance) CameraFlash.Instance.Flash();
-        ActivateCameraImage(gameSequence);
-
-        // 3) 대기
-        yield return new WaitForSeconds(flashWaitSeconds);
-
-        // 4) 줌 아웃(원복)
-        start = mainCamera.fieldOfView;
-        end = originFOV;
-        t = 0f;
-        while (t < 1f)
-        {
-            t += Time.deltaTime / Mathf.Max(0.0001f, zoomOutDuration);
-            mainCamera.fieldOfView = Mathf.Lerp(start, end, t);
-            yield return null;
-        }
-
-        // 종료 정리
-        isZoomSequenceRunning = false;
-        shutterTimer = 0f;
-    }
-
-    protected virtual void ActivateCameraImage(int index)
-    {
-    }
-
-    // 움직임이 감지되었을 때 진행 중 시퀀스를 끊고 즉시 원복
-    private IEnumerator ZoomBackImmediately()
-    {
-        // 현재 상태를 원복으로 부드럽게 되돌린다
-        float start = mainCamera.fieldOfView;
-        float end = originFOV;
-        float t = 0f;
-        while (t < 1f)
-        {
-            t += Time.deltaTime / Mathf.Max(0.0001f, zoomOutDuration * 0.6f);
-            mainCamera.fieldOfView = Mathf.Lerp(start, end, t);
-            yield return null;
-        }
-
-        isZoomSequenceRunning = false;
-        shutterTimer = 0f;
-    }
-    
     /// <summary>
-    /// 비디오를 0초부터 다시 시작한다. (비활성 상태여도 자동으로 활성화 후 Prepare → Play)
+    /// (공용) 현재 pageVideo/videoPlayer 기준으로 0초부터 다시 시작
     /// </summary>
     public void RestartVideoFromStart()
     {
         if (!isActiveAndEnabled) return;
         if (!videoPlayer)
         {
-            Debug.LogWarning("[HubblePage] VideoPlayer reference is missing.");
+            Debug.LogWarning($"[{GetType().Name}] VideoPlayer reference is missing.");
             return;
         }
 
@@ -383,10 +352,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
         StopAllCoroutines();
         StartCoroutine(RestartRoutine());
     }
-    
-    /// <summary>
-    /// 비디오 재시작 코루틴. Stop → time/frame 0 → Prepare(필요시) → Play 순서.
-    /// </summary>
+
     private IEnumerator RestartRoutine()
     {
         videoPlayer.Stop();

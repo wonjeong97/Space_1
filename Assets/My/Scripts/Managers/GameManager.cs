@@ -79,11 +79,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public async Task ShowTitlePageOnly()
+    public async Task ShowTitlePageOnly(bool isFadeOut = true)
     {
         try
-        {
-            await FadeManager.Instance.FadeOutAsync(JsonLoader.Instance.settings.fadeTime);
+        {   
+            if (isFadeOut) await FadeManager.Instance.FadeOutAsync(JsonLoader.Instance.settings.fadeTime);
+            
+            if (GamePage.Instance) GamePage.Instance.ResetToFirstStage();
             foreach (GameObject page in UIManager.Instance.pages)
             {
                 page.SetActive(false);

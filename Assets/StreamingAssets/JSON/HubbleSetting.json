@@ -94,44 +94,12 @@
 	  "sourceImage": "Image/Item/rocket.png"
 	}
   ],
-  "cameraImages": [
-	{
-	  "name": "1_Camera",
-	  "position": { "x": 55, "y": 125 },
-	  "size": { "x": 60, "y": 60 },
-	  "sourceImage": "Image/Item/Camera.png"
-	},
-	{
-	  "name": "2_Camera",
-	  "position": { "x": 200, "y": 125 },
-	  "size": { "x": 60, "y": 60 },
-	  "sourceImage": "Image/Item/Camera.png"
-	},
-	{
-	  "name": "3_Camera",
-	  "position": { "x": 345, "y": 125 },
-	  "size": { "x": 60, "y": 60 },
-	  "sourceImage": "Image/Item/Camera.png"
-	},
-	{
-	  "name": "4_Camera",
-	  "position": { "x": 495, "y": 125 },
-	  "size": { "x": 60, "y": 60 },
-	  "sourceImage": "Image/Item/Camera.png"
-	},
-	{
-	  "name": "5_Camera",
-	  "position": { "x": 642.5, "y": 125 },
-	  "size": { "x": 60, "y": 60 },
-	  "sourceImage": "Image/Item/Camera.png"
-	}
-  ],
   "videos": [
 	{
 	  "name": "Hubble Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1600, "y": 800 },
-	  "fileName": "Video/YTN.mp4",
+	  "fileName": "Video/TestVid5.mp4",
 	  "volume": 0.8
 	},
 	{
@@ -161,9 +129,16 @@
 	  "size": { "x": 1600, "y": 800 },
 	  "fileName": "Video/TestVid5.mp4",
 	  "volume": 0.8
+	},
+	{
+	  "name": "Final Video",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "fileName": "Video/TestVid3.mp4",
+	  "volume": 0.8
 	}
   ],
-  "objects":[
+  "objects": [
 	{
 	  "name": "Hubble Object",
 	  "position": { "x": 500, "y": 500, "z": 0 },
@@ -189,23 +164,97 @@
 	  "position": { "x": 0, "y": 500, "z": -500 },
 	  "size": { "x": 150, "y": 150, "z": 150 }
 	}
-  ],  
-  "missionText": {
-	"name": "Mission Text",
-	"position": { "x": 960, "y": 880 },
-	"text": "저 밤하늘에 반짝이는 것들은 무엇일까요?\n반짝이는 것을 찾아 보고, 우주로 가는 이유를 알아봅시다.",
-	"fontName": "font1",
-	"fontSize": 38
-  },
-  "subText1": {
-	"name": "Sub Text",
-	"position": { "x": 960, "y": 270 },
-	"text": "트랙볼을 조작하여\n허블망원경을 찾아보세요.",
-	"fontName": "font1",
-	"fontSize": 80
-  },
-  "subText2": {
-	"name": "Sub Text",
+  ],
+  "missionTexts": [
+	{
+	  "name": "Mission 1 Text",
+	  "position": { "x": 960, "y": 880 },
+	  "text": "저 밤하늘에 반짝이는 것들은 무엇일까요?\n반짝이는 것을 찾아 보고, 우주로 가는 이유를 알아봅시다.",
+	  "fontName": "font1",
+	  "fontSize": 38
+	},
+	{
+	  "name": "Mission 2 Text",
+	  "position": { "x": 960, "y": 880 },
+	  "text": "우주에 있는 달의 숨겨진 경제적 기회를 알아봅시다.",
+	  "fontName": "font1",
+	  "fontSize": 38
+	},
+	{
+	  "name": "Mission 3 Text",
+	  "position": { "x": 960, "y": 880 },
+	  "text": "우주에 수 많은 인공위성이 떠 있으며,\n이들은 다양한 역할을 수행합니다.\n그 중에서도 국가 안보를 강화하는 측면에 대해 알아봅시다.",
+	  "fontName": "font1",
+	  "fontSize": 38
+	},
+	{
+	  "name": "Mission 4 Text",
+	  "position": { "x": 960, "y": 880 },
+	  "text": "화성은 지구와 닮았지만, 아직은 생존에 가혹한 곳입니다.\n그러나 인류의 호기심과 기술은 이 붉은 행성을 언젠가\n우리의 두 번째 고향으로 만들지도 모릅니다.",
+	  "fontName": "font1",
+	  "fontSize": 38
+	},
+	{
+	  "name": "Mission 5 Text",
+	  "position": { "x": 960, "y": 880 },
+	  "text": "밤 하늘에 거대한 불꽃을 내뿜으며\n빠르게 날아가는 물체는 무엇일까요?",
+	  "fontName": "font1",
+	  "fontSize": 38
+	}
+  ],
+  "missionSubTexts": [
+	{
+	  "name": "Sub 1 Text",
+	  "position": { "x": 960, "y": 270 },
+	  "text": "트랙볼을 조작하여\n허블망원경을 찾아보세요.",
+	  "fontName": "font1",
+	  "fontSize": 80
+	},
+	{
+	  "name": "Sub 2 Text",
+	  "position": { "x": 960, "y": 270 },
+	  "text": "트랙볼을 조작하여\n달을 찾아보세요.",
+	  "fontName": "font1",
+	  "fontSize": 80
+	},
+	{
+	  "name": "Sub 3 Text",
+	  "position": { "x": 960, "y": 270 },
+	  "text": "트랙볼을 조작하여\n인공위성을 찾아보세요.",
+	  "fontName": "font1",
+	  "fontSize": 80
+	},
+	{
+	  "name": "Sub 4 Text",
+	  "position": { "x": 960, "y": 270 },
+	  "text": "트랙볼을 조작하여\n화성을 찾아보세요.",
+	  "fontName": "font1",
+	  "fontSize": 80
+	},
+	{
+	  "name": "Sub 5 Text",
+	  "position": { "x": 960, "y": 270 },
+	  "text": "트랙볼을 조작하여\n우주발사체를 찾아보세요.",
+	  "fontName": "font1",
+	  "fontSize": 80
+	},
+	{
+	  "name": "Sub 6 Text",
+	  "position": { "x": 960, "y": 270 },
+	  "text": "지금까지 우주로 가는 이유 5가지를\n알아보았습니다.",
+	  "fontName": "font1",
+	  "fontSize": 80
+	},
+	{
+	  "name": "Sub 7 Text",
+	  "position": { "x": 960, "y": 270 },
+	  "text": "전시체험을 종료합니다.\n다음 전시콘텐츠로 이동해 주세요.",
+	  "fontName": "font1",
+	  "fontSize": 80
+	}
+  ],
+  "playVideoText": {
+	"name": "playVideoText",
 	"position": { "x": 960, "y": 270 },
 	"text": "영상 화면이 닫히면\n다음 목표물 관측을 위해 이동합니다.",
 	"fontName": "font1",
