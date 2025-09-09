@@ -29,7 +29,7 @@ public class TutorialPage : BasePage<TutorialSetting>
     private bool inputReady;
     protected override string JsonPath => "JSON/TutorialSetting.json";
 
-    private GameObject game1Page;
+    private GameObject hubblePage;
 
     private GameObject text1Instance;
     private GameObject image1Instance;
@@ -40,7 +40,7 @@ public class TutorialPage : BasePage<TutorialSetting>
 
     private Coroutine tutorialCoroutine;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
         if (text1Instance && image1Instance && text2Instance && image2Instance && infoTextInstance)
         {
@@ -48,7 +48,7 @@ public class TutorialPage : BasePage<TutorialSetting>
         }
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
         StopAllCoroutines();
         tutorialCoroutine = null;
@@ -99,7 +99,7 @@ public class TutorialPage : BasePage<TutorialSetting>
         inputReady = true;
     }
 
-    private async void Update()
+    protected async void Update()
     {
         try
         {
@@ -108,15 +108,16 @@ public class TutorialPage : BasePage<TutorialSetting>
             {
                 await FadeManager.Instance.FadeOutAsync(jsonSetting.fadeTime);
                 gameObject.SetActive(false);
-                if (game1Page)
+                if (hubblePage)
                 {
-                    game1Page.SetActive(true);
+                    hubblePage.SetActive(true);
                     await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
                 }
                 else
                 {
-                    game1Page = new GameObject("Game1Page");
-                    game1Page.AddComponent<HubblePage>();
+                    hubblePage = new GameObject("Game1Page");
+                    hubblePage.AddComponent<GamePage>();
+                    UIManager.Instance.pages.Add(hubblePage);
                 }
             }
         }

@@ -39,12 +39,12 @@ public class ZoomBackground : MonoBehaviour
     private void Start()
     {
         var settings = JsonLoader.Instance?.settings;
-        if (settings != null)
-        {   
-            zoomThreshold = settings.zoomThreshold;
-            zoomScale = settings.zoomScale;
-            zoomDuration = settings.zoomDuration;
-        }
+        // if (settings != null)
+        // {   
+        //     zoomThreshold = settings.zoomThreshold;
+        //     zoomScale = settings.zoomScale;
+        //     zoomDuration = settings.zoomDuration;
+        // }
     }
 
     private void OnDisable()

@@ -1,5 +1,5 @@
 {
-  "inactivityTime": 150.0,
+  "inactivityTime": 30.0,
   "fadeTime": 0.5,
   "closeSetting": {
 	"position": { "x": 1, "y": 0 },
@@ -15,7 +15,13 @@
 	{ "key": "click1", "clipPath": "click1.wav", "volume": 1.0 },
 	{ "key": "click2", "clipPath": "click2.wav", "volume": 0.5 }
   ],
-  "zoomThreshold": 5,
-  "zoomScale": 1.5,
-  "zoomDuration": 1
+  "mouseSensitivity" : 0.12,
+  "mouseSmoothing": 10.0,
+  "minY": -60.0,
+  "maxY": 60.0,
+  "shutterThreshold": 5.0,
+  "zoomInDuration": 0.5,
+  "zoomOutDuration": 0.5,
+  "flashWaitSeconds": 1.0,
+  "zoomFOV": 35.0
 }

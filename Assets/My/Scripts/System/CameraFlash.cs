@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +8,7 @@ public class CameraFlash : MonoBehaviour
 
     [SerializeField] private Image flashImage;
     private readonly float flashDuration = 1f;
+    private float flashAlpha = 0.7f;
 
     private void Awake()
     {
@@ -39,29 +39,29 @@ public class CameraFlash : MonoBehaviour
     {
         StartCoroutine(FlashImage());
     }
-    
+
     private IEnumerator FlashImage()
-    {   
+    {
         if (!flashImage) yield break;
-        SetAlpha(1.0f);
+        SetAlpha(flashAlpha);
         flashImage.transform.SetAsLastSibling();
-        
+
         float t = 0f;
-        
+
         Color baseColor = flashImage.color;
 
         while (t < flashDuration)
         {
             t += Time.deltaTime;
-            float a = Mathf.Lerp(1f, 0f, t / flashDuration);
+            float a = Mathf.Lerp(flashAlpha, 0f, t / flashDuration);
             flashImage.color = new Color(baseColor.r, baseColor.g, baseColor.b, a);
             yield return null;
         }
-        
+
         SetAlpha(0.0f);
         flashImage.transform.SetAsFirstSibling();
     }
-    
+
     private void SetAlpha(float alpha)
     {
         if (!flashImage) return;

@@ -5,19 +5,19 @@ using UnityEngine.Video;
 [DisallowMultipleComponent]
 public class HubbleEffect : MonoBehaviour
 {
-    private HubblePage hubblePage;
+    private GamePage gamePage;
 
     private RectTransform crosshairRT;
     private RectTransform selfRT;
     private bool wasOverlapping;
 
-    private float overlapTimer;
-    private float requiredOverlapTime = 2f;
+    //private float overlapTimer;
+    //private float requiredOverlapTime = 2f;
 
     private void Awake()
     {
-        if (hubblePage == null)
-            hubblePage = GetComponentInParent<HubblePage>();
+        if (gamePage == null)
+            gamePage = GetComponentInParent<GamePage>();
 
         selfRT = GetComponent<RectTransform>();
 
@@ -31,7 +31,7 @@ public class HubbleEffect : MonoBehaviour
 
     private void Update()
     {
-        if (!selfRT || !crosshairRT) return;
+        /*if (!selfRT || !crosshairRT) return;
 
         bool overlapping = IsUIOverlapping(selfRT, crosshairRT);
 
@@ -56,7 +56,7 @@ public class HubbleEffect : MonoBehaviour
             // 겹침 해제 → 타이머 초기화
             overlapTimer = 0f;
             wasOverlapping = false;
-        }
+        }*/
     }
 
     private static bool IsUIOverlapping(RectTransform a, RectTransform b)

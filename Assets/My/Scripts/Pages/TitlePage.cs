@@ -36,7 +36,7 @@ public class TitlePage : BasePage<TitleSetting>
         GameManager.Instance.TitlePage = gameObject;
     }
 
-    private async void Update()
+    protected async void Update()
     {
         try
         {
@@ -55,6 +55,7 @@ public class TitlePage : BasePage<TitleSetting>
                 {
                     tutorialPage = new GameObject("TutorialPage");
                     tutorialPage.AddComponent<TutorialPage>();
+                    UIManager.Instance.pages.Add(tutorialPage);
                 }
             }
         }

@@ -219,9 +219,17 @@ public class Settings
     public CloseSetting closeSetting;
     public FontMaps fontMap;
     public SoundSetting[] sounds;
-    public float zoomThreshold;
-    public float zoomScale;
-    public float zoomDuration;
+
+    public float mouseSensitivity;
+    public float mouseSmoothing;
+    public float minY;
+    public float maxY;
+
+    public float shutterThreshold;
+    public float zoomInDuration;
+    public float zoomOutDuration;
+    public float flashWaitSeconds;
+    public float zoomFOV;
 }
 
 #endregion
