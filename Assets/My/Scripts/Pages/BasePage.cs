@@ -7,6 +7,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
+public enum PageState
+{
+    None,
+    Initializing,
+    Ready,
+    Entered,
+    Exiting,
+    Disposed
+}
+
 /// <summary>
 /// 공통 페이지 베이스
 /// - 카메라 중앙 레이캐스트로 BaseObject 타겟 추적
@@ -32,8 +42,8 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     private float minY;
     private float maxY;
 
-    protected float yaw;
-    protected float pitch;
+    private float yaw;
+    private float pitch;
     private Vector2 smoothedDelta;
     private Vector2 lastMousePos;
     private bool mouseInit;
