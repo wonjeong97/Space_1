@@ -162,13 +162,29 @@ public class UICreator : MonoBehaviour
         uiText.text = textValue; // 텍스트 내용 적용
     }
 
+    /// <summary>타깃 이미지에 Addressable로 로드한 머티리얼을 적용함 </summary>
+    public void LoadMaterialAndApply(Image targetImage, string materialKey)
+    {
+        if (targetImage == null || string.IsNullOrEmpty(materialKey)) return;
+        Addressables.LoadAssetAsync<Material>(materialKey).Completed += handle =>
+        {
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                targetImage.material = handle.Result;
+            }
+            else
+            {
+                Debug.LogWarning($"[UIManager] Material load failed: {materialKey}");
+            }
+        };
+    }
+
     // ---------- Public creation APIs ----------
 
     /// <summary>캔버스 프리팹을 Addressables로 비동기 생성해 반환</summary>
     public async Task<GameObject> CreateCanvasAsync(CancellationToken token = default)
     {
-        var go = await InstantiateAsync("Prefabs/CanvasPrefab.prefab", null, token);
-        return go;
+        return await InstantiateAsync("Prefabs/CanvasPrefab.prefab", null, token);
     }
 
     /// <summary>배경 이미지를 생성하고 RectTransform 기본값 설정 후 반환</summary>
@@ -504,7 +520,7 @@ public class UICreator : MonoBehaviour
             CreateImagesAsync(setting.popupImages, popupBg, token)
         };
         await Task.WhenAll(pending);
-        
+
         // 닫기 버튼이 있으면 연결
         if (setting.popupCloseButton != null)
         {
@@ -546,5 +562,38 @@ public class UICreator : MonoBehaviour
 
         await Task.WhenAll(jobs); // 모든 생성 작업 완료 대기
         return pageRoot; // 완성된 페이지 루트 반환
+    }
+
+    public async Task<GameObject> CreateEffectAsync(EffectSetting setting, GameObject parent, CancellationToken token = default)
+    {
+        var go = await InstantiateAsync("Prefabs/EffectPrefab.prefab", parent.transform, token);
+        go.name = setting.name;
+
+        if (go.TryGetComponent(out RectTransform rt) && (parent.TryGetComponent(out RectTransform parentRect)))
+        {
+            UIUtility.ApplyRect(
+                rt,
+                size: setting.size,
+                anchoredPos: new Vector2(setting.position.x, -setting.position.y)
+            );
+        }
+
+        return go;
+    }
+
+    public async Task<GameObject> CreateGameObjectAsync(GameObjectSetting setting, GameObject parent, CancellationToken token = default)
+    {
+        var go = await InstantiateAsync("Prefabs/GameObjectPrefab.prefab", parent.transform, token);
+        go.name = setting.name;
+
+        if (go.TryGetComponent(out Transform trans))
+        {
+            trans.parent = parent.transform;
+            trans.position = setting.position;
+            trans.localScale = setting.size;
+            trans.rotation = Quaternion.Euler(setting.rotation);
+        }
+
+        return go;
     }
 }

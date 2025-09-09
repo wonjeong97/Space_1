@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField] private Reporter reporter;
-
+    
     public event Action onReset;
+
+    public GameObject TitlePage { get; set; }
 
     private void Awake()
     {

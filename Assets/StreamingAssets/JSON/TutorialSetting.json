@@ -1,5 +1,5 @@
 {
-  "tutorialDisplayTime": 5.0,
+  "tutorialDisplayTime": 2.0,
   "mainBackground": {
 	"name": "Main Background",
 	"position": { "x": 960, "y": 540 },

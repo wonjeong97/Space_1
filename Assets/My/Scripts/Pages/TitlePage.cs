@@ -32,6 +32,8 @@ public class TitlePage : BasePage<TitleSetting>
         await UICreator.Instance.CreateSingleTextAsync(setting.subText, subCanvasObj, CancellationToken.None);
 
         inputReady = true;
+
+        GameManager.Instance.TitlePage = gameObject;
     }
 
     private async void Update()
@@ -47,6 +49,7 @@ public class TitlePage : BasePage<TitleSetting>
                 if (tutorialPage)
                 {
                     tutorialPage.SetActive(true);
+                    await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
                 }
                 else
                 {

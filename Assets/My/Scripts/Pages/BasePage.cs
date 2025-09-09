@@ -18,10 +18,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
 
     protected virtual void Start()
     {
-        if (jsonSetting == null)
-        {
-            jsonSetting = JsonLoader.Instance.settings;
-        }
+        jsonSetting ??= JsonLoader.Instance.settings;
 
         _ = StartAsync();
     }
@@ -38,7 +35,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             }
 
             await CreateUI();
-            await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime, true);
+            await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
         }
         catch (OperationCanceledException)
         {
@@ -97,5 +94,28 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             return pi.GetValue(obj) as TField;
 
         return null;
+    }
+    
+    
+    protected async Task HandleTitleButtonAsync()
+    {
+        try
+        {
+            await FadeManager.Instance.FadeOutAsync(JsonLoader.Instance.settings.fadeTime);
+            gameObject.SetActive(false);
+            if (GameManager.Instance && GameManager.Instance.TitlePage)
+            {
+                GameManager.Instance.TitlePage.gameObject.SetActive(true);
+                foreach (var cameraImage in UIManager.Instance.cameraImages)
+                {
+                    cameraImage.gameObject.SetActive(false);
+                }
+                await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"[BasePage] Button click failed: {e}");
+        }
     }
 }

@@ -14,5 +14,8 @@
   "sounds": [
 	{ "key": "click1", "clipPath": "click1.wav", "volume": 1.0 },
 	{ "key": "click2", "clipPath": "click2.wav", "volume": 0.5 }
-  ]
+  ],
+  "zoomThreshold": 5,
+  "zoomScale": 1.5,
+  "zoomDuration": 1
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -9,16 +10,17 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     private Settings jsonSetting;
-    public CancellationTokenSource cts;
+    private CancellationTokenSource cts;
     
-    private float inactivityTimer;
-    private float inactivityThreshold = 60f;
-    
-    private GameObject titlePage;
+    public List<GameObject> contentsImages = new List<GameObject>();
+    public List<GameObject> cameraImages = new List<GameObject>();
 
     public GameObject MainCanvas { get; private set; }
     public GameObject SubCanvas { get; private set; }
-
+    
+    public GameObject titlePage;
+    public List<GameObject> pages = new List<GameObject>();
+    
     private void Awake()
     {
         if (Instance == null)
@@ -49,8 +51,6 @@ public class UIManager : MonoBehaviour
             }
 
             jsonSetting = JsonLoader.Instance.settings;
-            inactivityThreshold = jsonSetting.inactivityTime;
-
             InitUI();
         }
         catch (OperationCanceledException)
@@ -91,6 +91,7 @@ public class UIManager : MonoBehaviour
         {   
             titlePage = new GameObject("TitlePage");
             titlePage.AddComponent<TitlePage>();
+            pages.Add(titlePage);
         }
         catch (OperationCanceledException)
         {

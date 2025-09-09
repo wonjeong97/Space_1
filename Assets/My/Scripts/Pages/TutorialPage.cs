@@ -8,7 +8,7 @@ using UnityEngine;
 public class TutorialSetting
 {
     public float tutorialDisplayTime;
-    
+
     public VideoSetting mainBackground;
     public ImageSetting miniBackground;
 
@@ -31,34 +31,67 @@ public class TutorialPage : BasePage<TutorialSetting>
 
     private GameObject game1Page;
 
+    private GameObject text1Instance;
+    private GameObject image1Instance;
+
+    private GameObject text2Instance;
+    private GameObject image2Instance;
+    private GameObject infoTextInstance;
+
+    private Coroutine tutorialCoroutine;
+
+    private void OnEnable()
+    {
+        if (text1Instance && image1Instance && text2Instance && image2Instance && infoTextInstance)
+        {
+            tutorialCoroutine = StartCoroutine(TutorialCoroutine(text1Instance, image1Instance, text2Instance, image2Instance, infoTextInstance));
+        }
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        tutorialCoroutine = null;
+
+        text1Instance.SetActive(true);
+        image1Instance.SetActive(true);
+
+        text2Instance.SetActive(false);
+        image2Instance.SetActive(false);
+        infoTextInstance.SetActive(false);
+
+        inputReady = false;
+    }
+
     protected override async Task BuildContentAsync()
     {
         GameObject bg = await UICreator.Instance.CreateSingleImageAsync(setting.miniBackground, mainCanvasObj, CancellationToken.None);
-        GameObject text1 = await UICreator.Instance.CreateSingleTextAsync(setting.tutorialText1, bg, CancellationToken.None);
-        GameObject image1 = await UICreator.Instance.CreateSingleImageAsync(setting.tutorialImage1, bg, CancellationToken.None);
-        
-        GameObject text2 = await UICreator.Instance.CreateSingleTextAsync(setting.tutorialText2, bg, CancellationToken.None);
-        text2.SetActive(false);
-        
-        GameObject image2 = await UICreator.Instance.CreateSingleImageAsync(setting.tutorialImage2, bg, CancellationToken.None);
-        image2.SetActive(false);
-        
-        GameObject infoText = await UICreator.Instance.CreateSingleTextAsync(setting.infoText, bg, CancellationToken.None);
-        infoText.SetActive(false);
-        infoText.AddComponent<TextBlink>();
-        
+        text1Instance = await UICreator.Instance.CreateSingleTextAsync(setting.tutorialText1, bg, CancellationToken.None);
+        image1Instance = await UICreator.Instance.CreateSingleImageAsync(setting.tutorialImage1, bg, CancellationToken.None);
+
+        text2Instance = await UICreator.Instance.CreateSingleTextAsync(setting.tutorialText2, bg, CancellationToken.None);
+        text2Instance.SetActive(false);
+
+        image2Instance = await UICreator.Instance.CreateSingleImageAsync(setting.tutorialImage2, bg, CancellationToken.None);
+        image2Instance.SetActive(false);
+
+        infoTextInstance = await UICreator.Instance.CreateSingleTextAsync(setting.infoText, bg, CancellationToken.None);
+        infoTextInstance.SetActive(false);
+        infoTextInstance.AddComponent<TextBlink>();
+
         await UICreator.Instance.CreateSingleTextAsync(setting.subText, subCanvasObj, CancellationToken.None);
-        
-        StartCoroutine(TutorialCoroutine(text1, image1, text2, image2, infoText));
+
+        tutorialCoroutine = StartCoroutine(TutorialCoroutine(text1Instance, image1Instance, text2Instance, image2Instance, infoTextInstance));
     }
 
-    private IEnumerator TutorialCoroutine(GameObject text1, GameObject image1,  GameObject text2, GameObject image2, GameObject infoText)
+    private IEnumerator TutorialCoroutine(GameObject text1, GameObject image1, GameObject text2, GameObject image2,
+        GameObject infoText)
     {
         yield return new WaitForSeconds(setting.tutorialDisplayTime);
-        
+
         text1.SetActive(false);
         image1.SetActive(false);
-        
+
         text2.SetActive(true);
         image2.SetActive(true);
         infoText.SetActive(true);
@@ -78,11 +111,12 @@ public class TutorialPage : BasePage<TutorialSetting>
                 if (game1Page)
                 {
                     game1Page.SetActive(true);
+                    await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
                 }
                 else
                 {
                     game1Page = new GameObject("Game1Page");
-                    game1Page.AddComponent<Game1Page>();
+                    game1Page.AddComponent<HubblePage>();
                 }
             }
         }
@@ -90,6 +124,5 @@ public class TutorialPage : BasePage<TutorialSetting>
         {
             Debug.LogError($"[{GetType().Name}] Update failed: {e}");
         }
-       
     }
 }

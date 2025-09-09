@@ -5,7 +5,126 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/HubblePage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Fonts/TMPro/DungGeunMo SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Fonts/TMPro/DungGeunMo SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/VideoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Managers/VideoManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/Game1Page.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/Game1Page.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/HubblePage.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TitlePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TitlePage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TutorialPage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TutorialPage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI/UICreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/UI/UICreator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/UI/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/1_Background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/1_Background.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/1_MissionClear.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/1_MissionClear.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/1_Overlap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/1_Overlap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/2_Background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/2_Background.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/3_Background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/3_Background.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/popup_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/popup_bg.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/popup_black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/popup_black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Camera.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Camera/1_Camera.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Camera/1_Camera.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Camera/2_Camera.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Camera/2_Camera.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Camera/3_Camera.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Camera/3_Camera.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Inventory.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Inventory.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Inventory/1_Inventory.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Inventory/1_Inventory.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Inventory/2_Inventory.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Inventory/2_Inventory.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Inventory/3_InventoryFull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Inventory/3_InventoryFull.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/10_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/10_Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/1_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/1_Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/1_Location.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/1_Location.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/1_Question.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/1_Question.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/2_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/2_Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/3_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/3_Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/4_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/4_Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/5_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/5_Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/6_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/6_Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/7_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/7_Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/8_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/8_Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/9_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/9_Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Overlap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Overlap/1_Overlap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Overlap/1_Overlap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Photo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Photo/0-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Photo/0-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Photo/1-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Photo/1-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Photo/2-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Photo/2-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Photo/3-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Photo/3-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Photo/Pin1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Photo/Pin1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/1_HowToPlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/1_HowToPlay.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/1_Popup.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/1_Popup.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/1_Text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/1_Text.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/2_Popup.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/2_Popup.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/2_Text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/2_Text.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/3_Text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/3_Text.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex0-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex0-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex0-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex0-2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex1-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex1-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex1-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex1-2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex2-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex2-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex2-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex2-2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex3-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex3-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex3-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Ex3-2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Pin1-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Pin1-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Pin1-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Pin1-2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Text_HowToPlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Text/Text_HowToPlay.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/Game1Setting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/Game1Setting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TutorialSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TutorialSetting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +135,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/0e/0e8383d9/Cursor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/c0/a3ac662f/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Objects/Crosshair.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Objects/HubbleEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Objects/ZoomBackground.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Pages/TutorialPage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/System/CameraFlash.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/StreamingAssets/JSON/Game1Setting.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/StreamingAssets/JSON/TitleSetting.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.22.3/Runtime/Addressables.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.22.3/Runtime/AddressablesImpl.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -42,6 +170,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -50,6 +179,18 @@
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.62f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath D:\Github\Space_1 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Github\Space_1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="독립실행형 플레이어" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Exe\Wonjeong.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Github\Space_1\Exe" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
@@ -110,7 +251,9 @@
       <option name="presentableId" value="Default" />
       <updated>1756889183731</updated>
       <workItem from="1756889185606" duration="1738000" />
-      <workItem from="1756944700231" duration="19745000" />
+      <workItem from="1756944700231" duration="27422000" />
+      <workItem from="1757031160241" duration="8818000" />
+      <workItem from="1757294613745" duration="22610000" />
     </task>
     <servers />
   </component>

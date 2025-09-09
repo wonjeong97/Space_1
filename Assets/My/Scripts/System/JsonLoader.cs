@@ -8,15 +8,17 @@ public class JsonLoader : MonoBehaviour
     [NonSerialized] public Settings settings;
 
     private static JsonLoader _instance;
+
     public static JsonLoader Instance
     {
         get
         {
             if (ReferenceEquals(_instance, null))
             {
-                _instance = FindFirstObjectByType<JsonLoader>() 
+                _instance = FindFirstObjectByType<JsonLoader>()
                             ?? new GameObject("JsonLoader").AddComponent<JsonLoader>();
             }
+
             return _instance;
         }
     }
@@ -63,7 +65,15 @@ public class JsonLoader : MonoBehaviour
 }
 
 #region Json Settings
-[Serializable] public enum UIImageType { Simple = 0, Sliced, Tiled, Filled }
+
+[Serializable]
+public enum UIImageType
+{
+    Simple = 0,
+    Sliced,
+    Tiled,
+    Filled
+}
 
 [Serializable]
 public class CloseSetting
@@ -81,17 +91,18 @@ public class ImageSetting
     public Vector2 position;
     public Vector2 size;
     public Vector3 rotation;
-    public string sourceImage;         
+    public string sourceImage;
     public Color color = Color.white;
     public UIImageType type = UIImageType.Simple;
 }
+
 [Serializable]
 public class TextSetting
 {
     public string name;
     public Vector2 position;
     public Vector3 rotation;
-    public string text;        
+    public string text;
     public string fontName;
     public float fontSize;
     public Color fontColor = Color.white;
@@ -169,7 +180,7 @@ public class ButtonSetting
     public ImageSetting buttonAdditionalImage;
     public TextSetting buttonText;
     public string buttonSound;
-    
+
     public string targetPopupName; // 클릭 시 열릴 팝업 이름
 }
 
@@ -184,6 +195,23 @@ public class PopupSetting
 }
 
 [Serializable]
+public class EffectSetting
+{
+    public string name;
+    public Vector2 position;
+    public Vector2 size;
+}
+
+[Serializable]
+public class GameObjectSetting
+{
+    public string name;
+    public Vector3 position;
+    public Vector3 size;
+    public Vector3 rotation;
+}
+
+[Serializable]
 public class Settings
 {
     public float inactivityTime; // 입력이 없을 시 타이틀로 되돌아가는 시간
@@ -191,5 +219,9 @@ public class Settings
     public CloseSetting closeSetting;
     public FontMaps fontMap;
     public SoundSetting[] sounds;
+    public float zoomThreshold;
+    public float zoomScale;
+    public float zoomDuration;
 }
+
 #endregion

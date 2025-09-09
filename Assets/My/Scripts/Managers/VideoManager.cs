@@ -148,7 +148,7 @@ public class VideoManager : MonoBehaviour
     public IEnumerator RestartFromStart(VideoPlayer vp)
     {
         // 소스가 없으면 조기 종료
-        if (vp.clip == null && string.IsNullOrEmpty(vp.url))
+        if (!vp.clip && string.IsNullOrEmpty(vp.url))
         {
             Debug.LogWarning("[VideoPlayerManager] No clip/url set on VideoPlayer.");
             yield break;
