@@ -5,7 +5,7 @@ public class HubbleObject : BaseObject
     protected override void PlayVideo()
     {
         // GamePage(또는 HubblePage) 싱글턴을 통해 비디오 재생
-        if (GamePage.Instance != null)
+        if (GamePage.Instance)
         {
             GamePage.Instance.PlayVideoByIndex(0);
         }

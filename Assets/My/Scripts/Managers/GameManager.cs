@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
     public event Action onReset;
 
     public GameObject TitlePage { get; set; }
+    
+    public RuntimeAnimatorController crosshairAnimator;
+    public Material rocketMaterial;
 
     private void Awake()
     {

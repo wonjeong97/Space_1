@@ -1,11 +1,16 @@
+using System;
 using UnityEngine;
 
 public class RocketObject : BaseObject
 {
+    private void OnEnable()
+    {
+        GetComponent<Renderer>().material = GameManager.Instance.rocketMaterial;
+    }
+
     protected override void PlayVideo()
     {
-        // GamePage(또는 HubblePage) 싱글턴을 통해 비디오 재생
-        if (GamePage.Instance != null)
+        if (GamePage.Instance)
         {
             GamePage.Instance.PlayVideoByIndex(4);
         }

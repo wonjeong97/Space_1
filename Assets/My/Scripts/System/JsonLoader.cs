@@ -225,10 +225,10 @@ public class Settings
     public float Up;
     public float Down;
 
-    public float shutterThreshold;
+    public float dwellThreshold;
     public float zoomInDuration;
     public float zoomOutDuration;
-    public float flashWaitSeconds;
+    public float waitBeforePlayVideo;
     public float zoomFOV;
     public float outroFadeTime;
 }

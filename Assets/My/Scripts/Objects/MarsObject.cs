@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class MarsObject : BaseObject
-{
+{   
+   
     protected override void PlayVideo()
     {
         // GamePage(또는 HubblePage) 싱글턴을 통해 비디오 재생

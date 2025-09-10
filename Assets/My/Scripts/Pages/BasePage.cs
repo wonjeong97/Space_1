@@ -49,7 +49,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     private BaseObject currentTarget;
 
     // ===== 조준 유지(dwell) 로직 =====
-    private const float DwellThreshold = 3f; // n초 이상 조준 시 확정
+    private float dwellThreshold; // n초 이상 조준 시 확정
     private float dwellTimer;
     private bool dwellInProgress; // 확대 중복 방지
 
@@ -58,7 +58,8 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     protected GameObject pageVideo;
 
     protected float outroFadeTime;
-
+    private float waitBeforePlayVideo;
+    
     #region Unity Life-cycle
 
     protected virtual void OnEnable()
@@ -106,9 +107,10 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
                         dwellTimer += Time.deltaTime;
 
                         // dwell 충족 & 아직 확대 시퀀스 시작 안 했을 때
-                        if (!dwellInProgress && dwellTimer >= DwellThreshold)
+                        if (!dwellInProgress && dwellTimer >= dwellThreshold)
                         {
                             dwellInProgress = true;
+                            shouldTurnCamera = false;
                             StartCoroutine(ZoomTargetObject());
                         }
                     }
@@ -196,6 +198,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             yield return null;
         }
 
+        yield return new WaitForSeconds(waitBeforePlayVideo);
         // 오브젝트에 맞는 비디오 실행
         currentTarget.OnRayConfirmed();
 
@@ -210,6 +213,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             yield return null;
         }
 
+        shouldTurnCamera = true;
         ResetDwell(); // 다음 조준을 위해 초기화
     }
 
@@ -235,6 +239,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
         Down = -jsonSetting.Down; // json 세팅에서 편의를 위해 Up, Down에 -를 곱함
 
         // 줌 파라미터
+        dwellThreshold = jsonSetting.dwellThreshold;
         zoomInDuration = jsonSetting.zoomInDuration;
         zoomOutDuration = jsonSetting.zoomOutDuration;
         zoomFOV = jsonSetting.zoomFOV;
@@ -243,6 +248,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
         hitMask = LayerMask.GetMask("Object");
 
         outroFadeTime = jsonSetting.outroFadeTime;
+        waitBeforePlayVideo = jsonSetting.waitBeforePlayVideo;
     }
 
     /// <summary> 시작 메서드, UI 생성 후 페이드인으로 페이지 시작 </summary>

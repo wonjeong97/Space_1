@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dome
+  m_Shader: {fileID: 4800000, guid: a6a934dc49c19324d9ed729e3e529fc6, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 3850932c321cd54498a6e815950abfb5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpTex:
+        m_Texture: {fileID: 2800000, guid: 3850932c321cd54498a6e815950abfb5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HeightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: c51f2c77fb8b3ea40ac59865354c4e0a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTexLR:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTexPR:
+        m_Texture: {fileID: 2800000, guid: 0a0c3b078ad69d646a9c3285119621e9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 21, y: 29}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AddNoise: 1
+    - _BumpScale: 1
+    - _CloudAnimation: 0.25
+    - _CloudsLightingDetails: 26.36
+    - _Complexity: 1
+    - _Contrast: 1.2
+    - _Cutoff: 0.5
+    - _Cutout: 3
+    - _Density: 1.79
+    - _DetailNormalMapScale: 1
+    - _Detalization: 1
+    - _DstBlend: 0
+    - _Escarpment: 2.37
+    - _Exposure: 2.13
+    - _Glossiness: 0.5
+    - _Height: 0.863
+    - _InvFade: 1
+    - _LightK: 0.91
+    - _Metallic: 0
+    - _Mode: 0
+    - _NoiseAdd: 1
+    - _NormalD: 1
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _Scale: 1
+    - _Shininess: 0.7
+    - _SrcBlend: 1
+    - _TextureBlend: 0.5
+    - _TextureTiling: 2
+    - _Tiling: 4
+    - _Tilling: 1
+    - _Translucency: 0.95
+    - _Transparency: 0.9
+    - _UVSec: 0
+    - _WindSpeed_X: 0.15
+    - _WindSpeed_Y: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 0.85882354, g: 0.89411765, b: 1, a: 1}
+    - _Emission: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Rnd: {r: 0, g: 0, b: 0, a: 0}
+    - _SColor: {r: 1, g: 0.60202104, b: 0, a: 1}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 0}
+    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+  m_BuildTextureStacks: []

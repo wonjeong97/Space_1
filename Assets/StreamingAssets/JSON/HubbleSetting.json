@@ -53,8 +53,7 @@
   "crosshairImage": {
 	"name": "Crosshair",
 	"position": { "x": 960, "y": 520 },
-	"size": { "x": 125, "y": 125 },
-	"sourceImage": "Image/Crosshair/Crosshair_11.png"
+	"size": { "x": 225, "y": 225 }
   },
   "inventoryImage": {
 	"name": "Inventory",
@@ -142,27 +141,27 @@
 	{
 	  "name": "Hubble Object",
 	  "position": { "x": 500, "y": 500, "z": 0 },
-	  "size": { "x": 150, "y": 150, "z": 150 }
+	  "size": { "x": 100, "y": 100, "z": 100 }
 	},
 	{
 	  "name": "Moon Object",
 	  "position": { "x": 500, "y": 500, "z": 500 },
-	  "size": { "x": 150, "y": 150, "z": 150 }
+	  "size": { "x": 100, "y": 100, "z": 100 }
 	},
 	{
 	  "name": "Satellite Object",
 	  "position": { "x": 0, "y": 500, "z": 500 },
-	  "size": { "x": 150, "y": 150, "z": 150 }
+	  "size": { "x": 100, "y": 100, "z": 100 }
 	},
 	{
 	  "name": "Mars Object",
 	  "position": { "x": -500, "y": 500, "z": 0 },
-	  "size": { "x": 150, "y": 150, "z": 150 }
+	  "size": { "x": 100, "y": 100, "z": 100 }
 	},
 	{
 	  "name": "Rocket Object",
 	  "position": { "x": 0, "y": 500, "z": -500 },
-	  "size": { "x": 150, "y": 150, "z": 150 }
+	  "size": { "x": 100, "y": 100, "z": 100 }
 	}
   ],
   "missionTexts": [

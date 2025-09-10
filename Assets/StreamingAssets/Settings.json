@@ -19,10 +19,10 @@
   "mouseSmoothing": 5.0,
   "Up": 70.0,
   "Down": -30.0,
-  "shutterThreshold": 5.0,
-  "zoomInDuration": 0.5,
-  "zoomOutDuration": 0.5,
-  "flashWaitSeconds": 1.0,
+  "dwellThreshold": 1,
+  "zoomInDuration": 4,
+  "zoomOutDuration": 1.5,
+  "waitBeforePlayVideo": 1.0,
   "zoomFOV": 35.0,
   "outroFadeTime": 5
 }

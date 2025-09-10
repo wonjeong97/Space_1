@@ -6,17 +6,45 @@
   <component name="ChangeListManager">
     <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Prefabs/FX001_01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Prefabs/FX001_01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/Anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/Anim/Anim.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/Anim/Anim.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/Anim/FX001_01.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/Anim/FX001_01.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/FX001_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/FX001_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/FX001_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/FX001_02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/FX001_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/FX001_03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/FX001_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/FX001_04.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/FX001_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FX/Sprites/Smoke/FX001/FX001_05.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Prefabs/GameObjectPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Prefabs/GameObjectPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/BaseObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Objects/BaseObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/Crosshair.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Objects/Crosshair.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/HubbleObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Objects/HubbleObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/MarsObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Objects/MarsObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/MoonObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Objects/MoonObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/RocketObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Objects/RocketObject.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/GamePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/GamePage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/IPageLifecycle.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/IPageLifecycle.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/PageContext.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/PageContext.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +111,7 @@
       <method v="2" />
     </configuration>
     <configuration name="독립실행형 플레이어" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/Exe\Wonjeong.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Exe\Space_1.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="D:\Github\Space_1\Exe" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -150,7 +178,8 @@
       <workItem from="1757031160241" duration="8818000" />
       <workItem from="1757294613745" duration="22610000" />
       <workItem from="1757376417291" duration="29024000" />
-      <workItem from="1757463196413" duration="7893000" />
+      <workItem from="1757463196413" duration="10647000" />
+      <workItem from="1757483019082" duration="8541000" />
     </task>
     <servers />
   </component>
