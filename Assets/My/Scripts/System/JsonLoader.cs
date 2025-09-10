@@ -222,14 +222,15 @@ public class Settings
 
     public float mouseSensitivity;
     public float mouseSmoothing;
-    public float minY;
-    public float maxY;
+    public float Up;
+    public float Down;
 
     public float shutterThreshold;
     public float zoomInDuration;
     public float zoomOutDuration;
     public float flashWaitSeconds;
     public float zoomFOV;
+    public float outroFadeTime;
 }
 
 #endregion

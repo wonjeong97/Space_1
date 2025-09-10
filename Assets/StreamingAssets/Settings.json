@@ -16,12 +16,13 @@
 	{ "key": "click2", "clipPath": "click2.wav", "volume": 0.5 }
   ],
   "mouseSensitivity" : 0.12,
-  "mouseSmoothing": 10.0,
-  "minY": -60.0,
-  "maxY": 60.0,
+  "mouseSmoothing": 5.0,
+  "Up": 70.0,
+  "Down": -30.0,
   "shutterThreshold": 5.0,
   "zoomInDuration": 0.5,
   "zoomOutDuration": 0.5,
   "flashWaitSeconds": 1.0,
-  "zoomFOV": 35.0
+  "zoomFOV": 35.0,
+  "outroFadeTime": 5
 }
