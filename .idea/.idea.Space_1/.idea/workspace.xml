@@ -6,24 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Animations/Crosshair.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Animations/Crosshair.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Animations/Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Animations/Idle.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Materials/M_Rocket.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Materials/M_Rocket.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Materials/M_Star.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Materials/M_Star.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Prefabs/GameObjectPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Prefabs/GameObjectPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/ObjectAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Objects/ObjectAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Sprite/별 스프라이트.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Sprite/별 스프라이트.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Sprite/별 스프라이트.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Sprite/별 스프라이트.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Sprite/우주발사체 스프라이트.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Sprite/우주발사체 스프라이트.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Sprite/우주발사체 스프라이트.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Sprite/우주발사체 스프라이트.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Texture/Crosshair.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Texture/Crosshair.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Materials.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Materials/Noise_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Materials/Noise_mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors/Materials.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors/Textures.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/DClouds_Control.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/DClouds_Control.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/Procedural_clouds_precomp_noise.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/Procedural_clouds_precomp_noise.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/Procedural_noise.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/Procedural_noise.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Textures.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Textures/Cloud_Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Textures/Cloud_Textures.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/prefabs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/prefabs/Mesh.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/prefabs/Mesh.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Prefabs/VideoPlayerPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Prefabs/VideoPlayerPrefab.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/ReporterScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/ReporterScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/test1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/test1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/test2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/test2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,14 +48,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Objects/HubbleEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Objects/ZoomBackground.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Pages/IPageLifecycle.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Pages/PageContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Pages/TutorialPage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/System/CameraFlash.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/StreamingAssets/JSON/TitleSetting.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.22.3/Runtime/Addressables.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.22.3/Runtime/AddressablesImpl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@14.0.12/ShaderLibrary/Sampling/Fibonacci.hlsl" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -161,6 +167,7 @@
       <workItem from="1757483019082" duration="8620000" />
       <workItem from="1757643640641" duration="894000" />
       <workItem from="1757644637227" duration="2349000" />
+      <workItem from="1757666625301" duration="341000" />
     </task>
     <servers />
   </component>
