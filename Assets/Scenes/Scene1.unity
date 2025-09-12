@@ -180,7 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 705507995}
     - target: {fileID: 11418740, guid: ce8f44b95bd9e464988de0eee519fc00, type: 3}
       propertyPath: drawGUI
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418740, guid: ce8f44b95bd9e464988de0eee519fc00, type: 3}
+      propertyPath: number_of_submeshes
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -216,8 +220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de7235b192600740b6a872c04d86706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 963194227}
+  subCamera: {fileID: 2015777586}
   reporter: {fileID: 1938616613}
   crosshairAnimator: {fileID: 9100000, guid: 3bcd1eaa52f979f4aa47fd32f54d3065, type: 2}
+  rocketMaterial: {fileID: 2100000, guid: 453d4fe6ef2451347bc80ace30503ea4, type: 2}
 --- !u!4 &285659931
 Transform:
   m_ObjectHideFlags: 0
@@ -359,11 +366,11 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.1
   m_Range: 10
   m_SpotAngle: 30

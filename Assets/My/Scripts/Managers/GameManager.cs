@@ -1,18 +1,20 @@
 using System;
 using System.Threading.Tasks;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Camera subCamera;
 
     [SerializeField] private Reporter reporter;
 
     // 미입력 시간 이후 타이틀로 되돌아가는 가게 하는 프로퍼티
     private float inactivityTimer;
     private float inactivityThreshold = 30f;
-    private Vector3 LastMousePosition;
+    private Vector3 lastMousePosition;
     public event Action onReset;
 
     public GameObject TitlePage { get; set; }
@@ -39,13 +41,15 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {
+    {   
         Cursor.visible = false;
-        LastMousePosition = Input.mousePosition;
+        lastMousePosition = Input.mousePosition;
 
         if (JsonLoader.Instance.settings != null)
         {
             inactivityThreshold = JsonLoader.Instance.settings.inactivityTime;
+            mainCamera.targetDisplay = JsonLoader.Instance.settings.canvas1TargetMonitorIndex;
+            subCamera.targetDisplay = JsonLoader.Instance.settings.canvas2TargetMonitorIndex;
         }
     }
 
@@ -76,10 +80,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Input.anyKeyDown || Input.touchCount > 0 || Input.GetMouseButton(0) || Input.mousePosition != LastMousePosition)
+        if (Input.anyKeyDown || Input.touchCount > 0 || Input.GetMouseButton(0) || Input.mousePosition != lastMousePosition)
         {
             inactivityTimer = 0f;
-            LastMousePosition = Input.mousePosition;
+            lastMousePosition = Input.mousePosition;
         }
     }
 

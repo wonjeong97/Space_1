@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4795454c16ef5b44d8d4f4fc5fc4349e
+guid: b5073ad04731834419993274c17c0093
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Crosshair_0
+      name: HUD_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2420
-        width: 605
-        height: 605
+        y: 2304
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2611ee1a0439f04ba40091580619da6
-      internalID: 1908246479
+      spriteID: ab59139a368db91418cdd19bb1ec6c1c
+      internalID: 1040589367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_1
+      name: HUD_1
       rect:
         serializedVersion: 2
-        x: 605
-        y: 2420
-        width: 605
-        height: 605
+        x: 256
+        y: 2304
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08f79744bc504454780afb414d8de6ac
-      internalID: -1324052740
+      spriteID: 1dfcbe02fe498e24985d21a642e2b2d5
+      internalID: -180763837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_2
+      name: HUD_2
       rect:
         serializedVersion: 2
-        x: 1210
-        y: 2420
-        width: 605
-        height: 605
+        x: 512
+        y: 2304
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a6118a8a7b3b1d438b369f08b5bd9b3
-      internalID: 949142640
+      spriteID: d0a62a4dcac58e149923e9bff2cea716
+      internalID: 283231447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_3
+      name: HUD_3
       rect:
         serializedVersion: 2
-        x: 1815
-        y: 2420
-        width: 605
-        height: 605
+        x: 768
+        y: 2304
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fdf419e2caffb54c81a57f688e9f1fb
-      internalID: 101836667
+      spriteID: 6b110f487a954004b9091de380d77931
+      internalID: -435293618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_4
+      name: HUD_4
       rect:
         serializedVersion: 2
-        x: 2420
-        y: 2420
-        width: 605
-        height: 605
+        x: 1024
+        y: 2304
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7df6b10ac400ec84b957399dfe14b9fe
-      internalID: -1310072433
+      spriteID: 628f220ed06795c46b3a6f04d83a2aae
+      internalID: 1131814640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_5
+      name: HUD_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1815
-        width: 605
-        height: 605
+        x: 1280
+        y: 2304
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d70673c16b97974bbbb19a35717e75a
-      internalID: 842932240
+      spriteID: 4048d8e2584b8a64b901864f3eede26c
+      internalID: 1399161421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_6
+      name: HUD_6
       rect:
         serializedVersion: 2
-        x: 605
-        y: 1815
-        width: 605
-        height: 605
+        x: 1536
+        y: 2304
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d43242062a204ad4bb3fa38e07ae5bda
-      internalID: -660140396
+      spriteID: 5c4b817a86ffff141b33aa15f9f96dfd
+      internalID: 1068541451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_7
+      name: HUD_7
       rect:
         serializedVersion: 2
-        x: 1210
-        y: 1815
-        width: 605
-        height: 605
+        x: 1792
+        y: 2304
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fda14fbec646184e99cdb1d6dbba0a0
-      internalID: 1805259840
+      spriteID: 967dd11060288cb47a28036f1c60cc4d
+      internalID: -1343110767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_8
+      name: HUD_8
       rect:
         serializedVersion: 2
-        x: 1815
-        y: 1815
-        width: 605
-        height: 605
+        x: 2048
+        y: 2304
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a5202e77347a2342812d4612b6e7df5
-      internalID: -325256520
+      spriteID: fc00ea95dda95d844ad4c2a13d003032
+      internalID: -1602694999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_9
+      name: HUD_9
       rect:
         serializedVersion: 2
-        x: 2420
-        y: 1815
-        width: 605
-        height: 605
+        x: 2304
+        y: 2304
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,125 +326,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ab445df098517a4d812fb5aaaa13acf
-      internalID: 1081651727
+      spriteID: 0d4bc98001f335a45ae0d81fed9c140d
+      internalID: -1031244865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_10
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1210
-        width: 605
-        height: 605
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7bae6b9507cad0441a63c2e90c3ccc21
-      internalID: -1267353082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crosshair_11
-      rect:
-        serializedVersion: 2
-        x: 605
-        y: 1210
-        width: 605
-        height: 605
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b0c81e09d8b9746458bc3e685f955fc3
-      internalID: -553724442
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crosshair_12
-      rect:
-        serializedVersion: 2
-        x: 1210
-        y: 1210
-        width: 605
-        height: 605
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3800663a2fb23946b1304c5ad313575
-      internalID: -792483284
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crosshair_13
-      rect:
-        serializedVersion: 2
-        x: 1815
-        y: 1210
-        width: 605
-        height: 605
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b8b3ae09c28835b48aed3f2e76d8dd94
-      internalID: -267250364
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crosshair_14
-      rect:
-        serializedVersion: 2
-        x: 2420
-        y: 1210
-        width: 605
-        height: 605
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1fbdf9ceff3b234595df74cb77e1668
-      internalID: 1607026199
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crosshair_15
+      name: HUD_10
       rect:
         serializedVersion: 2
         x: 0
-        y: 605
-        width: 605
-        height: 605
+        y: 2048
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -452,20 +347,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df377c106d1d3b64fb04ee3b152664d8
-      internalID: 17995037
+      spriteID: d0f6397e4fdb61b48b6a339b43160234
+      internalID: -190282055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_16
+      name: HUD_11
       rect:
         serializedVersion: 2
-        x: 605
-        y: 605
-        width: 605
-        height: 605
+        x: 256
+        y: 2048
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -473,20 +368,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9fcfc673946a26429ef2ef7ffa4f83b
-      internalID: -604320119
+      spriteID: 4e33bf55c6a064b428294b06f1926730
+      internalID: -420476595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_17
+      name: HUD_12
       rect:
         serializedVersion: 2
-        x: 1210
-        y: 605
-        width: 605
-        height: 605
+        x: 512
+        y: 2048
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -494,20 +389,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ae92fbd768ba0442ad3494ab3a88547
-      internalID: -367835978
+      spriteID: c367587dd3ee65247bf0a7965ea22aa0
+      internalID: 811557671
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_18
+      name: HUD_13
       rect:
         serializedVersion: 2
-        x: 1815
-        y: 605
-        width: 605
-        height: 605
+        x: 768
+        y: 2048
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -515,20 +410,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c421431d689502d41968b67be7c258bd
-      internalID: 69762009
+      spriteID: 2b37f401aeb5a5948856cc90d15d570d
+      internalID: -362026795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_19
+      name: HUD_14
       rect:
         serializedVersion: 2
-        x: 2420
-        y: 605
-        width: 605
-        height: 605
+        x: 1024
+        y: 2048
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -536,20 +431,125 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fca3a64f91e9fa34eb4856594af17a9a
-      internalID: 1658011992
+      spriteID: 112f817908331af4b892d0ca18f47107
+      internalID: -810558965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_20
+      name: HUD_15
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92cb46b4f0a1f16419360b2326324bd9
+      internalID: 1733201029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_16
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 790ee520785601a4eb3358ecfb0feccd
+      internalID: -931612251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_17
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca4970f12b9bf434b9002bef5ad114f1
+      internalID: -658818964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_18
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 292da47d395d9094e9a4841d67bbcb4e
+      internalID: 1593029001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_19
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a17ec40e07675e41a727fa9e13db4e2
+      internalID: 1945742653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_20
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 605
-        height: 605
+        y: 1792
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -557,20 +557,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fe7991329227ca4384744edb3c8fe8e
-      internalID: -559792991
+      spriteID: e7e26cd625b1c06429059ab0d1dc9f47
+      internalID: -274757469
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_21
+      name: HUD_21
       rect:
         serializedVersion: 2
-        x: 605
-        y: 0
-        width: 605
-        height: 605
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -578,20 +578,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 634bc3e2de4f2a441acfae7b2622d7a4
-      internalID: -1687526532
+      spriteID: 2cc8825d449c7224f8f0a37354fddb3d
+      internalID: 981017136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_22
+      name: HUD_22
       rect:
         serializedVersion: 2
-        x: 1210
-        y: 0
-        width: 605
-        height: 605
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -599,20 +599,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd6923a9f30a23940bde3cd0d50d7cda
-      internalID: -1720650111
+      spriteID: 7aca12bf2ebf05e4a802cb2f2e055956
+      internalID: 1524303201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_23
+      name: HUD_23
       rect:
         serializedVersion: 2
-        x: 1815
-        y: 0
-        width: 605
-        height: 605
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -620,20 +620,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e78a5f97927e57408269aa7a2a86ccc
-      internalID: 668712613
+      spriteID: 1b869b614b174cf42b6d4742133f309a
+      internalID: 420710890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crosshair_24
+      name: HUD_24
       rect:
         serializedVersion: 2
-        x: 2420
-        y: 0
-        width: 605
-        height: 605
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -641,8 +641,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71f02a5570cf81d47a278196690aace8
-      internalID: -221028535
+      spriteID: bdd3b57c2559ad042b2676f519dbb194
+      internalID: -1203130226
       vertices: []
       indices: 
       edges: []
@@ -650,7 +650,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4b6a1aa15b55f6f438cc03bc0178f5cb
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -658,31 +658,31 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Crosshair_0: 1908246479
-      Crosshair_1: -1324052740
-      Crosshair_10: -1267353082
-      Crosshair_11: -553724442
-      Crosshair_12: -792483284
-      Crosshair_13: -267250364
-      Crosshair_14: 1607026199
-      Crosshair_15: 17995037
-      Crosshair_16: -604320119
-      Crosshair_17: -367835978
-      Crosshair_18: 69762009
-      Crosshair_19: 1658011992
-      Crosshair_2: 949142640
-      Crosshair_20: -559792991
-      Crosshair_21: -1687526532
-      Crosshair_22: -1720650111
-      Crosshair_23: 668712613
-      Crosshair_24: -221028535
-      Crosshair_3: 101836667
-      Crosshair_4: -1310072433
-      Crosshair_5: 842932240
-      Crosshair_6: -660140396
-      Crosshair_7: 1805259840
-      Crosshair_8: -325256520
-      Crosshair_9: 1081651727
+      HUD_0: 1040589367
+      HUD_1: -180763837
+      HUD_10: -190282055
+      HUD_11: -420476595
+      HUD_12: 811557671
+      HUD_13: -362026795
+      HUD_14: -810558965
+      HUD_15: 1733201029
+      HUD_16: -931612251
+      HUD_17: -658818964
+      HUD_18: 1593029001
+      HUD_19: 1945742653
+      HUD_2: 283231447
+      HUD_20: -274757469
+      HUD_21: 981017136
+      HUD_22: 1524303201
+      HUD_23: 420710890
+      HUD_24: -1203130226
+      HUD_3: -435293618
+      HUD_4: 1131814640
+      HUD_5: 1399161421
+      HUD_6: 1068541451
+      HUD_7: -1343110767
+      HUD_8: -1602694999
+      HUD_9: -1031244865
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

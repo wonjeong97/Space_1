@@ -3,16 +3,18 @@ using UnityEngine;
 [RequireComponent(typeof(Renderer))]
 public class ObjectAnimation : MonoBehaviour
 {
-  [Header("Sheet Layout")]
+    [Header("Sheet Layout")]
     [Tooltip("가로 프레임 수 (열)")]
-    public int columns = 5;
+    public int columns = 10;
     [Tooltip("세로 프레임 수 (행)")]
-    public int rows = 5;
+    public int rows = 10;
+    [Tooltip("실제 사용되는 프레임 수 (0 ~ columns*rows)")]
+    public int validFrames = 25;
 
     [Header("Playback")]
     [Tooltip("초당 프레임 수")]
     public float fps = 12f;
-    [Tooltip("재생 시작 프레임 (0 ~ columns*rows-1)")]
+    [Tooltip("재생 시작 프레임 (0 ~ validFrames-1)")]
     public int startFrame = 0;
     [Tooltip("재생 모드: 정방향, 역방향, 핑퐁")]
     public PlayMode playMode = PlayMode.Forward;
@@ -36,7 +38,11 @@ public class ObjectAnimation : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         mpb = new MaterialPropertyBlock();
-        totalFrames = Mathf.Max(1, columns * rows);
+
+        // 유효 프레임 개수 제한
+        int maxFrames = columns * rows;
+        totalFrames = Mathf.Clamp(validFrames, 1, maxFrames);
+
         frameTime = 1f / Mathf.Max(1e-4f, fps);
         currentFrame = Mathf.Clamp(startFrame, 0, totalFrames - 1);
 

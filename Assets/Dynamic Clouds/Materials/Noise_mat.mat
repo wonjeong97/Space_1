@@ -62,7 +62,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _CloudAnimation: 0.84745765
+    - _CloudAnimation: 0.7118644
     - _Cutoff: 0.5
     - _Cutout: 0
     - _Density: 1

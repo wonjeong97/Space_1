@@ -231,6 +231,9 @@ public class Settings
     public float waitBeforePlayVideo;
     public float zoomFOV;
     public float outroFadeTime;
+    
+    public int canvas1TargetMonitorIndex;
+    public int canvas2TargetMonitorIndex;
 }
 
 #endregion

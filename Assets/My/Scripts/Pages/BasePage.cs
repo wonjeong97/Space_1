@@ -85,6 +85,14 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
         _ = StartAsync();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            shouldTurnCamera = !shouldTurnCamera;
+        }
+    }
+
     protected virtual void LateUpdate()
     {
         // 카메라가 없거나 비디오 재생 중에는 마우스 이동 금지
@@ -281,13 +289,17 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     {
         mainCanvasObj = await UICreator.Instance.CreateCanvasAsync(CancellationToken.None);
         mainCanvasObj.transform.SetParent(gameObject.transform);
+        if (mainCanvasObj.TryGetComponent(out Canvas canvas1))
+        {
+            canvas1.targetDisplay = jsonSetting.canvas1TargetMonitorIndex;
+        }
 
         subCanvasObj = await UICreator.Instance.CreateCanvasAsync(CancellationToken.None);
         subCanvasObj.transform.SetParent(gameObject.transform);
-        if (subCanvasObj.TryGetComponent(out Canvas canvas) &&
+        if (subCanvasObj.TryGetComponent(out Canvas canvas2) &&
             subCanvasObj.TryGetComponent(out CanvasScaler canvasScaler))
         {
-            canvas.targetDisplay = 1;
+            canvas2.targetDisplay = jsonSetting.canvas2TargetMonitorIndex;
             canvasScaler.referenceResolution = new Vector2(1920, 540);
         }
 
