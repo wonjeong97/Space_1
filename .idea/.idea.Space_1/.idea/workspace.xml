@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Materials/Noise_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Materials/Noise_mat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Projectors/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/DClouds_Control.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/DClouds_Control.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/Procedural_clouds_precomp_noise.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/Procedural_clouds_precomp_noise.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/Procedural_noise.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/ScriptsAndShaders/Procedural_noise.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/Textures/Cloud_Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/Textures/Cloud_Textures.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/prefabs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dynamic Clouds/prefabs/Mesh.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dynamic Clouds/prefabs/Mesh.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Prefabs/VideoPlayerPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Prefabs/VideoPlayerPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/ReporterScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/ReporterScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/test1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/test1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/test2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Test/test2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-    </list>
+    <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,6 +141,7 @@
       <workItem from="1757643640641" duration="894000" />
       <workItem from="1757644637227" duration="2349000" />
       <workItem from="1757666625301" duration="341000" />
+      <workItem from="1757667924466" duration="558000" />
     </task>
     <servers />
   </component>
