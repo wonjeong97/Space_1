@@ -7,11 +7,12 @@ using UnityEngine;
 public class TitleSetting
 {
     public VideoSetting mainBackground;
-    public TextSetting titleText;
-    public TextSetting infoText;
+
+    public ImageSetting titleImage;
+    public ImageSetting titleGuideImage;
 
     public VideoSetting subBackground;
-    public TextSetting subText;
+    public ImageSetting assistance;
 }
 
 public class TitlePage : BasePage<TitleSetting>
@@ -21,15 +22,16 @@ public class TitlePage : BasePage<TitleSetting>
 
     private GameObject tutorialPage;
 
+    private GameObject titleImage;
+    private GameObject titleGuideImage;
+
     protected override async Task BuildContentAsync()
     {
-        await UICreator.Instance.CreateSingleTextAsync(setting.titleText, mainCanvasObj, CancellationToken.None);
-
-        GameObject infoText =
-            await UICreator.Instance.CreateSingleTextAsync(setting.infoText, mainCanvasObj, CancellationToken.None);
-        infoText.AddComponent<TextBlink>();
-
-        await UICreator.Instance.CreateSingleTextAsync(setting.subText, subCanvasObj, CancellationToken.None);
+        titleImage = await UICreator.Instance.CreateSingleImageAsync(setting.titleImage, mainCanvasObj, CancellationToken.None);
+        titleGuideImage = await UICreator.Instance.CreateSingleImageAsync(setting.titleGuideImage, mainCanvasObj, CancellationToken.None);
+        titleGuideImage.AddComponent<Blink>();
+        
+        await UICreator.Instance.CreateSingleImageAsync(setting.assistance, subCanvasObj, CancellationToken.None);
 
         inputReady = true;
 

@@ -111,7 +111,6 @@ public class ZoomBackground : MonoBehaviour
         }
         
         CameraFlash.Instance.Flash();
-        UIManager.Instance.cameraImages[backgroundIndex].SetActive(true);
         yield return new WaitForSeconds(zoomDuration);
         
         // Zoom Out (0.5s)

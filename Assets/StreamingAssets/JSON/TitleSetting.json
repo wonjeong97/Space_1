@@ -5,33 +5,30 @@
 	"size": { "x": 1920, "y": 1080 },
 	"fileName": "Video/SpaceBackground.mp4",
 	"volume": 0
+  }, 
+  "titleImage": {
+	"name": "Image_우리가 우주로 가는 이유",
+	"position": { "x": 960, "y": 540 },
+	"size": { "x": 1920, "y": 1080 },
+	"sourceImage": "Image/Title/1_Title.png"
   },
-  "titleText": {
-	"name": "Title Text",
-	"position": { "x": 960, "y": 450 },
-	"text": "우리가 우주로 가는 이유",
-	"fontName": "font1",
-	"fontSize": 80
-  },
-  "infoText": {
-	"name": "Information Text",
-	"position": { "x": 960, "y": 980 },
-	"text": "트랙볼 마우스를 누르면 시작합니다.",
-	"fontName": "font1",
-	"fontSize": 60
-  },
+  "titleGuideImage":{
+	"name": "Image_트랙볼 마우스를 누르면 시작합니다",
+	"position": { "x": 960, "y": 945 },
+	"size": { "x": 1562, "y": 218 },
+	"sourceImage": "Image/Title/1_Guide.png"
+  },		  
   "subBackground": {
 	"name": "Sub Background",
 	"position": { "x": 960, "y": 270 },
-	"size": { "x": 1920, "y": 540 },
+	"size": { "x": 1920, "y": 640 },
 	"fileName": "Video/SpaceBackground.mp4",
 	"volume": 0
   },
-  "subText": {
-	"name": "Sub Text",
+  "assistance": {
+	"name": "Image_우주로 가는 이유는 무엇일까요",
 	"position": { "x": 960, "y": 270 },
-	"text": "우주 탐사를 기획하고 있습니다.",
-	"fontName": "font1",
-	"fontSize": 80
+	"size": { "x": 1920, "y": 640 },	
+	"sourceImage": "Image/Title/1_Assistance.png"
   }
 }

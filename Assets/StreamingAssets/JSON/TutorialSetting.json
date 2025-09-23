@@ -7,52 +7,35 @@
 	"fileName": "Video/SpaceBackground.mp4",
 	"volume": 0
   },
-  "miniBackground": {
-	"name": "Tutorial Background",
-	"position": { "x": 960, "y": 540 },
-	"size": { "x": 1500, "y": 800 },
-	"sourceImage": "Image/Background/1_white.png",
-	"color": { "r": 1, "g": 1, "b": 1, "a": 0.5 }
+  "tutorial1": {
+	"name": "Image_트랙볼을 움직여 반짝이는 물체를 찾아보세요",
+	"position": {"x":960, "y":540},
+	"size": {"x":1920, "y":1080},
+	"sourceImage": "Image/Tutorial/1_Tutorial.png"
   },
-  "tutorialText1": {
-	"name": "Tutorial Text 1",
-	"position": { "x": 750, "y": 100 },
-	"text": "정보를 출력할 타겟을 발견하면 트랙볼을 움직여 클릭해보세요!",
-	"fontName": "font1",
-	"fontSize": 48,
-	"fontColor": { "r": 0, "g": 0, "b": 0, "a": 1 }
-  },
-  "tutorialImage1": {
-  },
-  "tutorialText2": {
-	"name": "Tutorial Text 2",
-	"position": { "x": 750, "y": 100 },
-	"text": "트랙볼을 움직이며 마음에 드는 구도를 찾아 사진을 찍어보세요!",
-	"fontName": "font1",
-	"fontSize": 48,
-	"fontColor": { "r": 0, "g": 0, "b": 0, "a": 1 }
-  },
-  "tutorialImage2": {
-  },
-  "infoText": {
-	"name": "Info Text",
-	"position": { "x": 750, "y": 860 },
-	"text": "마우스를 클릭하여 콘텐츠를 시작하세요",
-	"fontName": "font1",
-	"fontSize": 60	
-  },
+  "tutorial2": {
+  "name": "Image_트랙볼을 움직여 반짝이는 물체를 클릭해서 관측해보세요",
+  "position": {"x":960, "y":540},
+  "size": {"x":1920, "y":1080},
+  "sourceImage": "Image/Tutorial/2_Tutorial.png"
+},
   "subBackground": {
 	"name": "Sub Background",
 	"position": { "x": 960, "y": 270 },
-	"size": { "x": 1920, "y": 540 },
+	"size": { "x": 1920, "y": 640 },
 	"fileName": "Video/SpaceBackground.mp4",
 	"volume": 0
   },
-  "subText": {
-	"name": "Sub Text",
+  "assistance2": {
+	"name": "Image_우주로 가는 이유를 알아볼까요",
 	"position": { "x": 960, "y": 270 },
-	"text": "우주 탐사를 기획하고 있습니다.",
-	"fontName": "font1",
-	"fontSize": 80
+	"size": { "x": 1920, "y": 640 },
+	"sourceImage": "Image/Tutorial/2_Assistance.png"
+  },
+  "assistance3": {
+	"name": "Image_우주 관측 방법을 알아봅시다",
+	"position": { "x": 960, "y": 270 },
+	"size": { "x": 1920, "y": 640 },
+	"sourceImage": "Image/Tutorial/3_Assistance.png"
   }
 }

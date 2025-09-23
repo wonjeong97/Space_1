@@ -12,8 +12,8 @@ public class UIManager : MonoBehaviour
     private Settings jsonSetting;
     private CancellationTokenSource cts;
     
-    public List<GameObject> contentsImages = new List<GameObject>();
-    public List<GameObject> cameraImages = new List<GameObject>();
+    public List<GameObject> contentsImagesOff = new List<GameObject>();
+    public List<GameObject> contentsImagesOn = new List<GameObject>();
 
     public GameObject MainCanvas { get; private set; }
     public GameObject SubCanvas { get; private set; }

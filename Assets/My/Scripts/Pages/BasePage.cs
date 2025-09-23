@@ -58,7 +58,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     protected GameObject pageVideo;
 
     protected float outroFadeTime;
-    private float waitBeforePlayVideo;
+    private int waitBeforePlayVideo;
     
     #region Unity Life-cycle
 
@@ -119,7 +119,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
                         {
                             dwellInProgress = true;
                             shouldTurnCamera = false;
-                            StartCoroutine(ZoomTargetObject());
+                            _ = ZoomTargetObject();
                         }
                     }
                     else
@@ -187,15 +187,29 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     }
 
     /// <summary> 타겟 줌 인 -> 비디오 플레이 -> 줌 아웃 </summary>
-    private IEnumerator ZoomTargetObject()
+    private async Task ZoomTargetObject()
     {
         if (!mainCamera || !currentTarget)
         {
             dwellInProgress = false;
-            yield break;
+            await Task.Yield();
         }
 
         // 줌 인
+        await ZoomInTarget();
+        await Task.Delay((int)waitBeforePlayVideo);
+        // 오브젝트에 맞는 비디오 실행
+        currentTarget.OnRayConfirmed();
+
+        // 줌 아웃
+        await ZoomOutTarget();
+        
+        shouldTurnCamera = true;
+        ResetDwell(); // 다음 조준을 위해 초기화
+    }
+
+    private async Task ZoomInTarget()
+    {
         float start = mainCamera.fieldOfView;
         float end = zoomFOV;
         float time = 0f;
@@ -203,26 +217,21 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
         {
             time += Time.deltaTime / Mathf.Max(0.0001f, zoomInDuration);
             mainCamera.fieldOfView = Mathf.Lerp(start, end, time);
-            yield return null;
+            await Task.Yield();
         }
+    }
 
-        yield return new WaitForSeconds(waitBeforePlayVideo);
-        // 오브젝트에 맞는 비디오 실행
-        currentTarget.OnRayConfirmed();
-
-        // 줌 아웃
-        start = mainCamera.fieldOfView;
-        end = originFOV;
-        time = 0f;
+    public async Task ZoomOutTarget()
+    {
+        float start = mainCamera.fieldOfView;
+        float end = originFOV;
+        float time = 0f;
         while (time < 1f)
         {
             time += Time.deltaTime / Mathf.Max(0.0001f, zoomOutDuration);
             mainCamera.fieldOfView = Mathf.Lerp(start, end, time);
-            yield return null;
+            await Task.Yield();
         }
-
-        shouldTurnCamera = true;
-        ResetDwell(); // 다음 조준을 위해 초기화
     }
 
     /// <summary> setting 제이슨 파일에서 초기값을 불러옴 </summary>

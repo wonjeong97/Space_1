@@ -4,7 +4,113 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="" />
+    <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Button/1_Home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Button/1_Playing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/10_Assistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/11_Assistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/1_Observe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/2_Observe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/3_Observe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/4_Assistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/4_Observe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/5_Assistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/5_Observe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/6_Assistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/7_Assistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/8_Assistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/9_Assistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/Hubble_Off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/Hubble_On.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/Mars_Off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/Mars_On.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/Moon_Off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/Moon_On.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/Rocket_Off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/Rocket_On.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/Satellite_Off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Game/Satellite_On.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Title/1_Assistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Title/1_Guide.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/2_Assistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/3_Assistance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/100.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/100.mp4.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/101.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/101.mp4.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/102.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/102.mp4.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/103.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/103.mp4.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/104.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/104.mp4.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/105.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/105.mp4.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/TextBlink.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Objects/Blink.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/TextBlink.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Objects/Blink.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/ZoomBackground.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Objects/ZoomBackground.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/GamePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/GamePage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TitlePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TitlePage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TutorialPage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TutorialPage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/UI/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-Balanced.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-Balanced.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-Performant.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/1_White.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Background/1_White.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Button/Button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Button/Button.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Button/home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Button/home.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Crosshair.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Crosshair/Crosshair_11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Crosshair/Crosshair_11.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/GameImage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/GameImage/1_Image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/GameImage/1_Image.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Inventory.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Inventory/Inventory.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Inventory/Inventory.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/Camera.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/Camera.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/hubble.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/hubble.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/mars.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/mars.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/moon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/moon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/rocket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/rocket.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/satellite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Item/satellite.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TitleSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TitleSetting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TutorialSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TutorialSetting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/TestVid2.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/TestVid2.mp4.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/TestVid3.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/TestVid3.mp4.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/TestVid4.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/TestVid4.mp4.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/TestVid5.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/TestVid5.mp4.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/YTN.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/YTN.mp4.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TerrainSampleAssets/Materials/Bush.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TerrainSampleAssets/Materials/Bush.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TerrainSampleAssets/Materials/Fern.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TerrainSampleAssets/Materials/Fern.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TerrainSampleAssets/ShaderGraphs/TerrainGrass.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TerrainSampleAssets/ShaderGraphs/TerrainGrass.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +123,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/0e/0e8383d9/Cursor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/c0/a3ac662f/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Objects/BaseObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Objects/Blink.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Objects/Crosshair.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Objects/HubbleEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/Objects/ZoomBackground.cs" root0="FORCE_HIGHLIGHTING" />
@@ -142,6 +249,10 @@
       <workItem from="1757644637227" duration="2349000" />
       <workItem from="1757666625301" duration="341000" />
       <workItem from="1757667924466" duration="558000" />
+      <workItem from="1758586065845" duration="1126000" />
+      <workItem from="1758587261436" duration="11000" />
+      <workItem from="1758587416919" duration="9886000" />
+      <workItem from="1758602282283" duration="6934000" />
     </task>
     <servers />
   </component>

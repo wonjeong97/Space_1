@@ -228,7 +228,7 @@ public class Settings
     public float dwellThreshold;
     public float zoomInDuration;
     public float zoomOutDuration;
-    public float waitBeforePlayVideo;
+    public int waitBeforePlayVideo;
     public float zoomFOV;
     public float outroFadeTime;
     

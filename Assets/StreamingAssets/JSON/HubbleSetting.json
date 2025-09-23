@@ -6,48 +6,49 @@
 	"sourceImage": "Image/GameImage/1_Image.jpg"
   },
   "titleButton": {
-	"name": "Title Button",
-	"position": { "x": 1410, "y": 425 },
-	"size": { "x": 400, "y": 100 },
+	"name": "Button_처음으로",
+	"position": { "x": 960, "y": 320 },
+	"size": { "x": 900, "y": 180 },
 	"buttonBackgroundImage": {
-	  "sourceImage": "Image/Button/Button.png"
-	},
-	"buttonText": {
-	  "position": { "x": 0, "y": 10 },
-	  "text": "처음으로",
-	  "fontName": "font1",
-	  "fontSize": 42,
-	  "fontColor": { "r": 0, "g": 0, "b": 0, "a": 1 }
+	  "sourceImage": "Image/Button/1_Home.png"
 	}
   },
-  "playPauseButton": {
-	"name": "Play|Pause Button",
-	"position": { "x": 510, "y": 425 },
-	"size": { "x": 400, "y": 100 },
+  "playImage": {
+	"name": "Image_Play",
+	"position": { "x": 960, "y": 320 },
+	"size": { "x": 900, "y": 180 },
+	"sourceImage": "Image/Button/1_Playing.png"
+  },
+  "homeButton": {
+	"name": "Button_Home",
+	"position": { "x": 210, "y": 92 },
+	"size": { "x": 80, "y": 80 }	,
 	"buttonBackgroundImage": {
-	  "sourceImage": "Image/Button/Button.png"
-	},
-	"buttonText": {
-	  "position": { "x": 0, "y": 10 },
-	  "text": "재생/멈춤",
-	  "fontName": "font1",
-	  "fontSize": 42,
-	  "fontColor": { "r": 0, "g": 0, "b": 0, "a": 1 }
+	 	"color": {"a" : 0}
+	}
+  },
+  "playButton": {
+	"name": "Button_VideoPlay",
+	"position": { "x": 375, "y": 92 },
+	"size": { "x": 80, "y": 80 },
+	"buttonBackgroundImage": {
+	  "color": {"a" : 0}
+	}
+  },
+  "pauseButton": {
+	"name": "Button_VideoPause",
+	"position": { "x": 538, "y": 92 },
+	"size": { "x": 80, "y": 80 },
+	"buttonBackgroundImage": {
+	  "color": {"a" : 0}
 	}
   },
   "skipButton": {
-	"name": "Skip Button",
-	"position": { "x": 960, "y": 425 },
-	"size": { "x": 400, "y": 100 },
+	"name": "Button_VideoSkip",
+	"position": { "x": 704, "y": 92 },
+	"size": { "x": 80, "y": 80 },
 	"buttonBackgroundImage": {
-	  "sourceImage": "Image/Button/Button.png"
-	},
-	"buttonText": {
-	  "position": { "x": 0, "y": 10 },
-	  "text": "건너뛰기",
-	  "fontName": "font1",
-	  "fontSize": 42,
-	  "fontColor": { "r": 0, "g": 0, "b": 0, "a": 1 }
+	  "color": {"a" : 0}
 	}
   },
   "crosshairImage": {
@@ -55,42 +56,68 @@
 	"position": { "x": 960, "y": 520 },
 	"size": { "x": 225, "y": 225 }
   },
-  "inventoryImage": {
-	"name": "Inventory",
-	"position": { "x": 960, "y": 100 },
-	"size": { "x": 700, "y": 120 },
-	"sourceImage": "Image/Inventory/Inventory.png"
-  },
-  "contentsImages": [
+  "contentsImagesOff": [
 	{
-	  "name": "1_Location",
-	  "position": { "x": 55, "y": 60 },
-	  "size": { "x": 75, "y": 75 },
-	  "sourceImage": "Image/Item/hubble.png"
+	  "name": "Image_Hubble_Off",
+	  "position": { "x": 553, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Hubble_Off.png"
 	},
 	{
-	  "name": "2_Location",
-	  "position": { "x": 200, "y": 60 },
-	  "size": { "x": 75, "y": 75 },
-	  "sourceImage": "Image/Item/moon.png"
+	  "name": "Image_Moon_Off",
+	  "position": { "x": 761, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Moon_Off.png"
 	},
 	{
-	  "name": "3_Location",
-	  "position": { "x": 345, "y": 60 },
-	  "size": { "x": 75, "y": 75 },
-	  "sourceImage": "Image/Item/satellite.png"
+	  "name": "Image_Satellite_Off",
+	  "position": { "x": 960, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Satellite_Off.png"
 	},
 	{
-	  "name": "4_Location",
-	  "position": { "x": 495, "y": 60 },
-	  "size": { "x": 75, "y": 75 },
-	  "sourceImage": "Image/Item/mars.png"
+	  "name": "Image_Mars_Off",
+	  "position": { "x": 1159, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Mars_Off.png"
 	},
 	{
-	  "name": "5_Location",
-	  "position": { "x": 642.5, "y": 60 },
-	  "size": { "x": 75, "y": 75 },
-	  "sourceImage": "Image/Item/rocket.png"
+	  "name": "Image_Rocket_Off",
+	  "position": { "x": 1373, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Rocket_Off.png"
+	}
+  ],
+  "contentsImagesOn": [
+	{
+	  "name": "Image_Hubble_On",
+	  "position": { "x": 553, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Hubble_On.png"
+	},
+	{
+	  "name": "Image_Moon_On",
+	  "position": { "x": 761, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Moon_On.png"
+	},
+	{
+	  "name": "Image_Satellite_On",
+	  "position": { "x": 960, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Satellite_On.png"
+	},
+	{
+	  "name": "Image_Mars_On",
+	  "position": { "x": 1159, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Mars_On.png"
+	},
+	{
+	  "name": "Image_Rocket_On",
+	  "position": { "x": 1373, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Rocket_On.png"
 	}
   ],
   "videos": [
@@ -98,42 +125,42 @@
 	  "name": "Hubble Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1600, "y": 800 },
-	  "fileName": "Video/TestVid5.mp4",
+	  "fileName": "Video/100.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Moon Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1600, "y": 800 },
-	  "fileName": "Video/TestVid2.mp4",
+	  "fileName": "Video/101.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Satellite Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1600, "y": 800 },
-	  "fileName": "Video/TestVid3.mp4",
+	  "fileName": "Video/102.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Mars Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1600, "y": 800 },
-	  "fileName": "Video/TestVid4.mp4",
+	  "fileName": "Video/103.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Rocket Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1600, "y": 800 },
-	  "fileName": "Video/TestVid5.mp4",
+	  "fileName": "Video/104.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Final Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1920, "y": 1080 },
-	  "fileName": "Video/TestVid3.mp4",
+	  "fileName": "Video/105.mp4",
 	  "volume": 0.8
 	}
   ],
@@ -164,99 +191,86 @@
 	  "size": { "x": 100, "y": 100, "z": 100 }
 	}
   ],
-  "missionTexts": [
+  "missionImages": [
 	{
-	  "name": "Mission 1 Text",
-	  "position": { "x": 960, "y": 880 },
-	  "text": "저 밤하늘에 반짝이는 것들은 무엇일까요?\n반짝이는 것을 찾아 보고, 우주로 가는 이유를 알아봅시다.",
-	  "fontName": "font1",
-	  "fontSize": 38
+	  "name": "Image_HubbleGuide",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "sourceImage": "Image/Game/1_Observe.png"
 	},
 	{
-	  "name": "Mission 2 Text",
-	  "position": { "x": 960, "y": 880 },
-	  "text": "우주에 있는 달의 숨겨진 경제적 기회를 알아봅시다.",
-	  "fontName": "font1",
-	  "fontSize": 38
+	  "name": "Image_MoonGuide",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "sourceImage": "Image/Game/2_Observe.png"
 	},
 	{
-	  "name": "Mission 3 Text",
-	  "position": { "x": 960, "y": 880 },
-	  "text": "우주에 수 많은 인공위성이 떠 있으며,\n이들은 다양한 역할을 수행합니다.\n그 중에서도 국가 안보를 강화하는 측면에 대해 알아봅시다.",
-	  "fontName": "font1",
-	  "fontSize": 38
+	  "name": "Image_SatelliteGuide",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "sourceImage": "Image/Game/3_Observe.png"
 	},
 	{
-	  "name": "Mission 4 Text",
-	  "position": { "x": 960, "y": 880 },
-	  "text": "화성은 지구와 닮았지만, 아직은 생존에 가혹한 곳입니다.\n그러나 인류의 호기심과 기술은 이 붉은 행성을 언젠가\n우리의 두 번째 고향으로 만들지도 모릅니다.",
-	  "fontName": "font1",
-	  "fontSize": 38
+	  "name": "Image_MarsGuide",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "sourceImage": "Image/Game/4_Observe.png"
 	},
 	{
-	  "name": "Mission 5 Text",
-	  "position": { "x": 960, "y": 880 },
-	  "text": "밤 하늘에 거대한 불꽃을 내뿜으며\n빠르게 날아가는 물체는 무엇일까요?",
-	  "fontName": "font1",
-	  "fontSize": 38
+	  "name": "Image_RocketGuide",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "sourceImage": "Image/Game/5_Observe.png"
 	}
   ],
-  "missionSubTexts": [
+  "missionSubImages": [
 	{
-	  "name": "Sub 1 Text",
+	  "name": "Image_트랙볼을 조작하여 허블망원경을 찾아보세요",
 	  "position": { "x": 960, "y": 270 },
-	  "text": "트랙볼을 조작하여\n허블망원경을 찾아보세요.",
-	  "fontName": "font1",
-	  "fontSize": 80
+	  "size": { "x": 1920, "y": 640 },
+	  "sourceImage": "Image/Game/4_Assistance.png"
 	},
 	{
-	  "name": "Sub 2 Text",
+	  "name": "Image_트랙볼을 조작하여 달을 찾아보세요",
 	  "position": { "x": 960, "y": 270 },
-	  "text": "트랙볼을 조작하여\n달을 찾아보세요.",
-	  "fontName": "font1",
-	  "fontSize": 80
+	  "size": { "x": 1920, "y": 640 },
+	  "sourceImage": "Image/Game/5_Assistance.png"
 	},
 	{
-	  "name": "Sub 3 Text",
+	  "name": "Image_트랙볼을 조작하여 인공위성을 찾아보세요",
 	  "position": { "x": 960, "y": 270 },
-	  "text": "트랙볼을 조작하여\n인공위성을 찾아보세요.",
-	  "fontName": "font1",
-	  "fontSize": 80
+	  "size": { "x": 1920, "y": 640 },
+	  "sourceImage": "Image/Game/6_Assistance.png"
 	},
 	{
-	  "name": "Sub 4 Text",
+	  "name": "Image_트랙볼을 조작하여 화성을 찾아보세요",
 	  "position": { "x": 960, "y": 270 },
-	  "text": "트랙볼을 조작하여\n화성을 찾아보세요.",
-	  "fontName": "font1",
-	  "fontSize": 80
+	  "size": { "x": 1920, "y": 640 },
+	  "sourceImage": "Image/Game/7_Assistance.png"
 	},
 	{
-	  "name": "Sub 5 Text",
+	  "name": "Image_트랙볼을 조작하여 우주발사체을 찾아보세요",
 	  "position": { "x": 960, "y": 270 },
-	  "text": "트랙볼을 조작하여\n우주발사체를 찾아보세요.",
-	  "fontName": "font1",
-	  "fontSize": 80
+	  "size": { "x": 1920, "y": 640 },
+	  "sourceImage": "Image/Game/8_Assistance.png"
 	},
 	{
-	  "name": "Sub 6 Text",
+	  "name": "Image_지금까지 우주로 가는 이유 5가지를 알아보았습니다",
 	  "position": { "x": 960, "y": 270 },
-	  "text": "지금까지 우주로 가는 이유 5가지를\n알아보았습니다.",
-	  "fontName": "font1",
-	  "fontSize": 80
+	  "size": { "x": 1920, "y": 640 },
+	  "sourceImage": "Image/Game/9_Assistance.png"
 	},
 	{
-	  "name": "Sub 7 Text",
+	  "name": "Image_전시체험을 종료합니다",
 	  "position": { "x": 960, "y": 270 },
-	  "text": "전시체험을 종료합니다.\n다음 전시콘텐츠로 이동해 주세요.",
-	  "fontName": "font1",
-	  "fontSize": 80
+	  "size": { "x": 1920, "y": 640 },
+	  "sourceImage": "Image/Game/10_Assistance.png"
 	}
   ],
-  "playVideoText": {
-	"name": "playVideoText",
+  "playVideoImage": {
+	"name": "Image_영상 화면이 닫히면",
 	"position": { "x": 960, "y": 270 },
-	"text": "영상 화면이 닫히면\n다음 목표물 관측을 위해 이동합니다.",
-	"fontName": "font1",
-	"fontSize": 80
+	"size": { "x": 1920, "y": 640 },
+	"sourceImage": "Image/Game/11_Assistance.png"
   }
 }

@@ -22,7 +22,7 @@
   "dwellThreshold": 1,
   "zoomInDuration": 1,
   "zoomOutDuration": 1.5,
-  "waitBeforePlayVideo": 1.0,
+  "waitBeforePlayVideo": 1,
   "zoomFOV": 35.0,
   "outroFadeTime": 5,
   "canvas1TargetMonitorIndex": 0,

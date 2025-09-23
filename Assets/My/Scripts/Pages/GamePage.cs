@@ -13,20 +13,24 @@ public class GameSetting
     public ImageSetting backgroundImage;
 
     public ButtonSetting titleButton;
-    public ButtonSetting playPauseButton;
+
+    public ImageSetting playImage;
+    public ButtonSetting homeButton;
+    public ButtonSetting playButton;
+    public ButtonSetting pauseButton;
     public ButtonSetting skipButton;
 
     public ImageSetting crosshairImage;
-    public ImageSetting inventoryImage;
-    public ImageSetting[] contentsImages;
+    public ImageSetting[] contentsImagesOff;
+    public ImageSetting[] contentsImagesOn;
 
     public VideoSetting[] videos;
     public GameObjectSetting[] objects;
 
-    public TextSetting[] missionTexts;
-    public TextSetting[] missionSubTexts;
+    public ImageSetting[] missionImages;
+    public ImageSetting[] missionSubImages;
 
-    public TextSetting playVideoText;
+    public ImageSetting playVideoImage;
 }
 
 public enum StageEntry
@@ -47,12 +51,16 @@ public class GamePage : BasePage<GameSetting>
 
     // UI
     private GameObject titleButton;
-    private GameObject playPauseButton;
+
+    private GameObject playImage;
+    private GameObject homeButton;
+    private GameObject playButton;
+    private GameObject pauseButton;
     private GameObject skipButton;
 
-    private readonly List<GameObject> missionTextGos = new();
-    private readonly List<GameObject> missionSubTextGos = new();
-    private GameObject playVideoTextGo;
+    private readonly List<GameObject> missionGuides = new();
+    private readonly List<GameObject> missionSubGuides = new();
+    private GameObject playVideoImage;
 
     // 비디오 / 타겟 오브젝트
     private readonly List<GameObject> videoObjectList = new();
@@ -95,65 +103,71 @@ public class GamePage : BasePage<GameSetting>
     {
         // === 서브 디스플레이 버튼 생성 ===
         (titleButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.titleButton, subCanvasObj, CancellationToken.None);
-        if (titleButton.TryGetComponent(out Button button1))
-            button1.onClick.AddListener(() => _ = HandleTitleButtonAsync());
+        if (titleButton.TryGetComponent(out Button button1)) button1.onClick.AddListener(() => _ = HandleTitleButtonAsync());
 
-        (playPauseButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.playPauseButton, subCanvasObj, CancellationToken.None);
-        if (playPauseButton.TryGetComponent(out Button button2))
-            button2.onClick.AddListener(HandlePlayPauseButton);
-        playPauseButton.SetActive(false);
+        playImage = await UICreator.Instance.CreateSingleImageAsync(setting.playImage, subCanvasObj, CancellationToken.None);
+        playImage.SetActive(false);
 
-        (skipButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.skipButton, subCanvasObj, CancellationToken.None);
-        if (skipButton.TryGetComponent(out Button button3))
-            button3.onClick.AddListener(HandleSkipButton);
-        skipButton.SetActive(false);
+        (homeButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.homeButton, playImage, CancellationToken.None);
+        if (homeButton.TryGetComponent(out Button button2)) button2.onClick.AddListener(() => _ = HandleTitleButtonAsync());
+
+        (playButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.playButton, playImage, CancellationToken.None);
+        if (playButton.TryGetComponent(out Button button3)) button3.onClick.AddListener(HandlePlayButton);
+
+        (pauseButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.pauseButton, playImage, CancellationToken.None);
+        if (pauseButton.TryGetComponent(out Button button4)) button4.onClick.AddListener(HandlePauseButton);
+
+        (skipButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.skipButton, playImage, CancellationToken.None);
+        if (skipButton.TryGetComponent(out Button button5)) button5.onClick.AddListener(() => _ = HandleSkipButton());
 
         // === 크로스헤어 생성 ===
         GameObject crosshair = await UICreator.Instance.CreateSingleImageAsync(setting.crosshairImage, mainCanvasObj, CancellationToken.None);
         crosshair.AddComponent<Crosshair>();
 
-        // === 인벤토리 및 허블, 달, 인공위성, 화성, 로켓 이미지 생성 ===
-        GameObject inventory = await UICreator.Instance.CreateSingleImageAsync(setting.inventoryImage, mainCanvasObj, CancellationToken.None);
-        foreach (ImageSetting image in setting.contentsImages)
+        // === 허블, 달, 인공위성, 화성, 로켓 이미지 생성 ===
+        foreach (ImageSetting image in setting.contentsImagesOff)
         {
-            GameObject go = await UICreator.Instance.CreateSingleImageAsync(image, inventory, CancellationToken.None);
-            if (go.TryGetComponent(out Image imageComponent))
-            {
-                // 생성한 이미지에 회색 셰이더 적용
-                UICreator.Instance.LoadMaterialAndApply(imageComponent, "Materials/M_Grayscale.mat");
-            }
+            GameObject go = await UICreator.Instance.CreateSingleImageAsync(image, mainCanvasObj, CancellationToken.None);
+            UIManager.Instance.contentsImagesOff.Add(go);
+        }
 
-            UIManager.Instance.contentsImages.Add(go);
+        foreach (ImageSetting image in setting.contentsImagesOn)
+        {
+            GameObject go = await UICreator.Instance.CreateSingleImageAsync(image, mainCanvasObj, CancellationToken.None);
+            go.SetActive(false);
+            UIManager.Instance.contentsImagesOn.Add(go);
         }
 
         // === 메인,서브 텍스트 및 비디오 재생 텍스트 생성 ===
-        // 메인 텍스트
-        missionTextGos.Clear();
-        if (setting.missionTexts != null)
+        // 메인 이미지
+        missionGuides.Clear();
+        if (setting.missionImages != null)
         {
-            foreach (TextSetting t in setting.missionTexts)
+            foreach (ImageSetting img in setting.missionImages)
             {
-                GameObject go = await UICreator.Instance.CreateSingleTextAsync(t, mainCanvasObj, CancellationToken.None);
+                GameObject go = await UICreator.Instance.CreateSingleImageAsync(img, mainCanvasObj, CancellationToken.None);
                 go.SetActive(false);
-                missionTextGos.Add(go);
+                missionGuides.Add(go);
             }
         }
 
-        // 서브 텍스트
-        missionSubTextGos.Clear();
-        if (setting.missionSubTexts != null)
+        // 서브 이미지
+        missionSubGuides.Clear();
+        if (setting.missionSubImages != null)
         {
-            foreach (TextSetting t in setting.missionSubTexts)
+            foreach (ImageSetting img in setting.missionSubImages)
             {
-                GameObject go = await UICreator.Instance.CreateSingleTextAsync(t, subCanvasObj, CancellationToken.None);
+                GameObject go = await UICreator.Instance.CreateSingleImageAsync(img, subCanvasObj, CancellationToken.None);
+                if (go.TryGetComponent(out Image subImg)) subImg.raycastTarget = false;
                 go.SetActive(false);
-                missionSubTextGos.Add(go);
+                missionSubGuides.Add(go);
             }
         }
 
-        // 비디오 텍스트
-        playVideoTextGo = await UICreator.Instance.CreateSingleTextAsync(setting.playVideoText, subCanvasObj, CancellationToken.None);
-        playVideoTextGo.SetActive(false);
+        // 비디오 플레이 시 표시하는 "영상 화면이 닫히면 ..." 이미지
+        playVideoImage = await UICreator.Instance.CreateSingleImageAsync(setting.playVideoImage, subCanvasObj, CancellationToken.None);
+        if (playVideoImage.TryGetComponent(out Image playVideoImg)) playVideoImg.raycastTarget = false;
+        playVideoImage.SetActive(false);
 
         // === 스테이지 별 비디오 및 타겟 오브젝트 생성 ===
         await CreateVideoObject();
@@ -166,11 +180,16 @@ public class GamePage : BasePage<GameSetting>
 
     #region Sub-Display Button Click Event
 
-    private void HandlePlayPauseButton()
+    private void HandlePlayButton()
+    {
+        if (!videoPlayer) return;
+        if (!videoPlayer.isPlaying) videoPlayer.Play();
+    }
+
+    private void HandlePauseButton()
     {
         if (!videoPlayer) return;
         if (videoPlayer.isPlaying) videoPlayer.Pause();
-        else videoPlayer.Play();
     }
 
     private async Task HandleTitleButtonAsync()
@@ -178,7 +197,7 @@ public class GamePage : BasePage<GameSetting>
         await GameManager.Instance.ShowTitlePageOnly();
     }
 
-    private void HandleSkipButton()
+    private async Task HandleSkipButton()
     {
         if (!isPlayingVideo) return;
 
@@ -206,7 +225,8 @@ public class GamePage : BasePage<GameSetting>
         isPlayingVideo = false;
 
         // 아이콘 컬러 복원(스킵도 완료로 간주)
-        ClearGrayscaleIcon(videoIndex);
+        GameObject fromGo = UIManager.Instance.contentsImagesOff[videoIndex];
+        GameObject toGo = UIManager.Instance.contentsImagesOn[videoIndex];
 
         if (currentStage == StageEntry.Rocket)
         {
@@ -220,6 +240,7 @@ public class GamePage : BasePage<GameSetting>
         NextStage();
         ApplyStageActivation(currentStage);
         UpdateStageUI(currentStage);
+        await CrossFadeIcon(fromGo, toGo, 1);
     }
 
     #endregion
@@ -296,7 +317,7 @@ public class GamePage : BasePage<GameSetting>
         GameObject selected = videoObjectList[index];
 
         // 선택 비디오 활성화 + 알파 0으로 준비
-        SetAlpha(selected, 0f);
+        SetRawAlpha(selected, 0f);
         if (!selected.activeSelf) selected.SetActive(true);
 
         if (selected.TryGetComponent(out VideoPlayer vp))
@@ -312,12 +333,6 @@ public class GamePage : BasePage<GameSetting>
 
             // 준비 -> 완료 대기 -> 재생 및 페이드인
             StartCoroutine(PlayVideoAndFadeIn(videoPlayer, selected));
-        }
-        else
-        {
-            StartCoroutine(FadeInVideo(selected, VideoFadeDuration));
-            isPlayingVideo = true;
-            ChangeSubDisplayOnVideo();
         }
     }
 
@@ -340,39 +355,48 @@ public class GamePage : BasePage<GameSetting>
     }
 
     /// <summary> 비디오 종료 시 실행 함수 </summary>
-    private void OnVideoEnded(VideoPlayer vp)
+    private async void OnVideoEnded(VideoPlayer vp)
     {
-        if (currentStage == StageEntry.Final)
+        try
         {
-            OnFinalVideoEnded();
-            return;
+            if (currentStage == StageEntry.Final)
+            {
+                OnFinalVideoEnded();
+                return;
+            }
+
+            isPlayingVideo = false;
+
+            // 현재 비디오 오브젝트 페이드아웃 및 비활성화
+            if (pageVideo)
+            {
+                if (videoPlayer) videoPlayer.Stop();
+                StartCoroutine(FadeOutVideo(pageVideo, VideoFadeDuration));
+                pageVideo = null;
+                videoPlayer = null;
+            }
+
+            // 스테이지 아이콘 색 복원
+            int videoIndex = videoObjectList.IndexOf(vp.gameObject);
+            GameObject fromGo = UIManager.Instance.contentsImagesOff[videoIndex];
+            GameObject toGo = UIManager.Instance.contentsImagesOn[videoIndex];
+
+            if (currentStage == StageEntry.Rocket)
+            {
+                StartFinalStage();
+                return;
+            }
+
+            NextStage(); // 다음 스테이지로 갱신
+            ApplyStageActivation(currentStage); // 스테이지 별 타깃 오브젝트 갱신
+            UpdateStageUI(currentStage); // 미션, 서브 텍스트 업데이트
+            UpdateVideoUIVisible(false); // 재생/밈춤, 건너뛰기 버튼 숨김
+            await CrossFadeIcon(fromGo, toGo, 1);
         }
-
-        isPlayingVideo = false;
-
-        // 현재 비디오 오브젝트 페이드아웃 및 비활성화
-        if (pageVideo)
+        catch (Exception e)
         {
-            if (videoPlayer) videoPlayer.Stop();
-            StartCoroutine(FadeOutVideo(pageVideo, VideoFadeDuration));
-            pageVideo = null;
-            videoPlayer = null;
+            Console.WriteLine(e);
         }
-
-        // 스테이지 아이콘 색 복원
-        int videoIndex = videoObjectList.IndexOf(vp.gameObject);
-        ClearGrayscaleIcon(videoIndex);
-
-        if (currentStage == StageEntry.Rocket)
-        {
-            StartFinalStage();
-            return;
-        }
-
-        NextStage(); // 다음 스테이지로 갱신
-        ApplyStageActivation(currentStage); // 스테이지 별 타깃 오브젝트 갱신
-        UpdateStageUI(currentStage); // 미션, 서브 텍스트 업데이트
-        UpdateVideoUIVisible(false); // 재생/밈춤, 건너뛰기 버튼 숨김
     }
 
     /// <summary> 모든 체험이 끝난 후 처음으로 되돌아감 </summary>
@@ -390,16 +414,16 @@ public class GamePage : BasePage<GameSetting>
         currentStage = StageEntry.Final;
         ApplyStageActivation(currentStage); // 모든 타깃 오브젝트 비활성화
 
-        if (titleButton) titleButton.SetActive(false);
         UpdateVideoUIVisible(false); // 서브 디스플레이의 모든 버튼을 비활성화
+        if (titleButton) titleButton.SetActive(false);
 
         // 메인 미션 텍스트 모두 숨김
-        foreach (GameObject missionText in missionTextGos)
+        foreach (GameObject missionText in missionGuides)
             SetActiveObject(missionText, false);
 
         // Sub 6 Text 표시
-        SetSubDisplayText(Sub6Index);
-        SetActiveObject(playVideoTextGo, false);
+        SetActiveObject(missionSubGuides[Sub6Index], true);
+        SetActiveObject(playVideoImage, false);
 
         // 마지막 비디오 재생
         PlayVideoByIndex(GetFinalVideoIndex());
@@ -409,7 +433,8 @@ public class GamePage : BasePage<GameSetting>
     private IEnumerator Outro()
     {
         // Sub 7 Text 표시
-        SetSubDisplayText(Sub7Index);
+        SetActiveObject(missionSubGuides[Sub6Index], false);
+        SetActiveObject(missionSubGuides[Sub7Index], true);
 
         // 메인 디스플레이 페이드아웃
         Task fadeTask = FadeManager.Instance.FadeOutMainAsync(FinalMainFadeDuration);
@@ -460,14 +485,14 @@ public class GamePage : BasePage<GameSetting>
         int idx = (int)stage;
 
         // 메인 텍스트
-        for (int i = 0; i < missionTextGos.Count; i++)
-            SetActiveObject(missionTextGos[i], stage != StageEntry.Final && i == idx);
+        for (int i = 0; i < missionGuides.Count; i++)
+            SetActiveObject(missionGuides[i], stage != StageEntry.Final && i == idx);
 
         // 서브 텍스트
-        for (int i = 0; i < missionSubTextGos.Count; i++)
-            SetActiveObject(missionSubTextGos[i], stage != StageEntry.Final && i == idx);
+        for (int i = 0; i < missionSubGuides.Count; i++)
+            SetActiveObject(missionSubGuides[i], stage != StageEntry.Final && i == idx);
 
-        SetActiveObject(playVideoTextGo, false);
+        SetActiveObject(playVideoImage, false);
 
         // 비디오 미재생 시 재생/멈춤, 건너뛰기 버튼 숨김
         if (!isPlayingVideo) UpdateVideoUIVisible(false);
@@ -478,24 +503,23 @@ public class GamePage : BasePage<GameSetting>
     private void ChangeSubDisplayOnVideo()
     {
         // 메인 미션 텍스트는 모두 숨김
-        foreach (GameObject missionText in missionTextGos)
+        foreach (GameObject missionText in missionGuides)
             SetActiveObject(missionText, false);
 
         // 허블 ~ 로켓 스테이지
         if (currentStage != StageEntry.Final)
         {
             // 서브 미션 텍스트 숨김 
-            foreach (GameObject missionSubText in missionSubTextGos)
+            foreach (GameObject missionSubText in missionSubGuides)
                 SetActiveObject(missionSubText, false);
 
-            SetActiveObject(playVideoTextGo, true); // 비디오 재생 중 텍스트 활성화
+            SetActiveObject(playVideoImage, true); // 비디오 재생 중 텍스트 활성화
             UpdateVideoUIVisible(true); // 재생/스킵 버튼 보이기
-            if (titleButton) titleButton.SetActive(true);
         }
         else // 로켓 이후 마지막 영상 재생 중
         {
-            SetActiveObject(playVideoTextGo, false);
-            SetSubDisplayText(Sub6Index);
+            SetActiveObject(playVideoImage, false);
+            SetActiveObject(missionSubGuides[Sub6Index], true);
 
             UpdateVideoUIVisible(false);
             if (titleButton) titleButton.SetActive(false); // 모든 버튼 숨김
@@ -523,14 +547,28 @@ public class GamePage : BasePage<GameSetting>
         SetStage((StageEntry)next);
     }
 
-    /// <summary> 머티리얼을 제거 아이콘의 색을 되돌림 </summary>
-    private void ClearGrayscaleIcon(int index)
+    /// <summary> 아이콘 On, Off의 크로스 페이드 </summary>
+    private async Task CrossFadeIcon(GameObject fromGo, GameObject toGo, float duration)
     {
-        if (index >= 0 && index < UIManager.Instance.contentsImages.Count)
+        if (!fromGo || !toGo) return;
+        if (!fromGo.TryGetComponent(out Image from) || !toGo.TryGetComponent(out Image to)) return;
+
+        toGo.SetActive(true);
+        SetImageAlpha(to, 0f);
+
+        float time = 0f;
+        while (time < duration)
         {
-            GameObject iconGo = UIManager.Instance.contentsImages[index];
-            if (iconGo && iconGo.TryGetComponent(out Image img)) img.material = null;
+            float alpha = time / duration;
+            SetImageAlpha(from, 1f - alpha);
+            SetImageAlpha(to, alpha);
+            time += Time.deltaTime;
+            await Task.Yield(); // 다음 프레임까지 양보
         }
+
+        SetImageAlpha(from, 0f);
+        fromGo.SetActive(false);
+        SetImageAlpha(to, 1f);
     }
 
     /// <summary> 게임 오브젝트를 활성/비활성화 함</summary>
@@ -539,21 +577,14 @@ public class GamePage : BasePage<GameSetting>
         if (go && go.activeSelf != active) go.SetActive(active);
     }
 
-    /// <summary> 서브 디스플레이 텍스트만 변경함 </summary>
-    private void SetSubDisplayText(int subIndex)
-    {
-        for (int i = 0; i < missionSubTextGos.Count; i++)
-            SetActiveObject(missionSubTextGos[i], i == subIndex);
-    }
-
     /// <summary> 서브 디스플레이의 재생/멈춤, 건너뛰기 버튼의 표시를 정함 </summary>
     private void UpdateVideoUIVisible(bool visible)
     {
-        if (playPauseButton) playPauseButton.SetActive(visible);
-        if (skipButton) skipButton.SetActive(visible);
+        if (playImage) playImage.SetActive(visible);
+        if (titleButton) titleButton.SetActive(!visible);
     }
 
-    private void SetAlpha(GameObject go, float alpha)
+    private void SetRawAlpha(GameObject go, float alpha)
     {
         if (!go) return;
         if (go.TryGetComponent(out RawImage raw))
@@ -561,6 +592,14 @@ public class GamePage : BasePage<GameSetting>
             Color c = raw.color;
             raw.color = new Color(c.r, c.g, c.b, alpha);
         }
+    }
+
+    private void SetImageAlpha(Image img, float alpha)
+    {
+        if (!img) return;
+        Color c = img.color;
+        c.a = alpha;
+        img.color = c;
     }
 
     /// <summary> 타이틀로 되돌아가기 전 레퍼런스, 아이콘 등을 초기화 함 </summary>
@@ -582,19 +621,22 @@ public class GamePage : BasePage<GameSetting>
         isPlayingVideo = false;
 
         // 서브 디스플레이 버튼 숨김
-        if (playPauseButton) playPauseButton.SetActive(false);
-        if (skipButton) skipButton.SetActive(false);
+        UpdateVideoUIVisible(false);
 
-        // 아이콘 Grayscale 재적용
-        if (UIManager.Instance?.contentsImages != null)
+        // 아이콘 On -> Off
+        if (UIManager.Instance?.contentsImagesOff != null && UIManager.Instance.contentsImagesOn != null)
         {
-            foreach (GameObject imgGo in UIManager.Instance.contentsImages)
+            foreach (GameObject img1 in UIManager.Instance.contentsImagesOn)
             {
-                if (!imgGo) continue;
-                if (imgGo.TryGetComponent(out Image img))
-                {
-                    UICreator.Instance.LoadMaterialAndApply(img, "Materials/M_Grayscale.mat");
-                }
+                if (!img1) continue;
+                img1.SetActive(false);
+            }
+
+            foreach (GameObject img2 in UIManager.Instance.contentsImagesOff)
+            {
+                if (!img2) continue;
+                if (img2.TryGetComponent(out Image image)) SetImageAlpha(image, 1f);
+                img2.SetActive(true);
             }
         }
 
@@ -642,7 +684,7 @@ public class GamePage : BasePage<GameSetting>
     private IEnumerator FadeInVideo(GameObject go, float duration)
     {
         if (!go) yield break;
-        SetAlpha(go, 0f);
+        SetRawAlpha(go, 0f);
         go.SetActive(true);
 
         yield return StartCoroutine(RawImageFade(go, 0f, 1f, duration));

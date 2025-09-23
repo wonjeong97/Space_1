@@ -92,16 +92,18 @@ public class GameManager : MonoBehaviour
         try
         {   
             if (isFadeOut) await FadeManager.Instance.FadeOutAsync(JsonLoader.Instance.settings.fadeTime);
-            
-            if (GamePage.Instance) GamePage.Instance.ResetToFirstStage();
+
+            if (GamePage.Instance)
+            {
+                await GamePage.Instance.ZoomOutTarget();
+                GamePage.Instance.ResetToFirstStage();  
+            }
+                
             foreach (GameObject page in UIManager.Instance.pages)
             {
                 page.SetActive(false);
             }
-            foreach (var cameraImage in UIManager.Instance.cameraImages)
-            {
-                cameraImage.gameObject.SetActive(false);
-            }
+
             TitlePage.SetActive(true);
             await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
         }

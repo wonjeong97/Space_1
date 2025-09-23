@@ -10,18 +10,12 @@ public class TutorialSetting
     public float tutorialDisplayTime;
 
     public VideoSetting mainBackground;
-    public ImageSetting miniBackground;
-
-    public TextSetting tutorialText1;
-    public ImageSetting tutorialImage1;
-
-    public TextSetting tutorialText2;
-    public ImageSetting tutorialImage2;
-
-    public TextSetting infoText;
+    public ImageSetting tutorial1;
+    public ImageSetting tutorial2;
 
     public VideoSetting subBackground;
-    public TextSetting subText;
+    public ImageSetting assistance2;
+    public ImageSetting assistance3;
 }
 
 public class TutorialPage : BasePage<TutorialSetting>
@@ -31,20 +25,19 @@ public class TutorialPage : BasePage<TutorialSetting>
 
     private GameObject hubblePage;
 
-    private GameObject text1Instance;
-    private GameObject image1Instance;
+    private GameObject imageTutorial1;
+    private GameObject imageTutorial2;
 
-    private GameObject text2Instance;
-    private GameObject image2Instance;
-    private GameObject infoTextInstance;
-
+    private GameObject imageAssistance1;
+    private GameObject imageAssistance2;
+    
     private Coroutine tutorialCoroutine;
 
     protected override void OnEnable()
     {
-        if (text1Instance && image1Instance && text2Instance && image2Instance && infoTextInstance)
+        if (imageTutorial1 && imageTutorial2 && imageAssistance1 && imageAssistance2)
         {
-            tutorialCoroutine = StartCoroutine(TutorialCoroutine(text1Instance, image1Instance, text2Instance, image2Instance, infoTextInstance));
+            StartCoroutine(TutorialCoroutine(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2));
         }
     }
 
@@ -53,49 +46,35 @@ public class TutorialPage : BasePage<TutorialSetting>
         StopAllCoroutines();
         tutorialCoroutine = null;
 
-        text1Instance.SetActive(true);
-        image1Instance.SetActive(true);
-
-        text2Instance.SetActive(false);
-        image2Instance.SetActive(false);
-        infoTextInstance.SetActive(false);
+        imageTutorial1.SetActive(true);
+        imageTutorial2.SetActive(false);
 
         inputReady = false;
     }
 
     protected override async Task BuildContentAsync()
     {
-        GameObject bg = await UICreator.Instance.CreateSingleImageAsync(setting.miniBackground, mainCanvasObj, CancellationToken.None);
-        text1Instance = await UICreator.Instance.CreateSingleTextAsync(setting.tutorialText1, bg, CancellationToken.None);
-        image1Instance = await UICreator.Instance.CreateSingleImageAsync(setting.tutorialImage1, bg, CancellationToken.None);
+        imageTutorial1 = await UICreator.Instance.CreateSingleImageAsync(setting.tutorial1, mainCanvasObj, CancellationToken.None);
+        imageTutorial2 = await UICreator.Instance.CreateSingleImageAsync(setting.tutorial2, mainCanvasObj, CancellationToken.None);
+        imageTutorial2.SetActive(false);
+        
+        imageAssistance1 = await UICreator.Instance.CreateSingleImageAsync(setting.assistance2, subCanvasObj, CancellationToken.None);
+        imageAssistance2 = await UICreator.Instance.CreateSingleImageAsync(setting.assistance3, subCanvasObj, CancellationToken.None);
+        imageAssistance2.SetActive(false);
 
-        text2Instance = await UICreator.Instance.CreateSingleTextAsync(setting.tutorialText2, bg, CancellationToken.None);
-        text2Instance.SetActive(false);
-
-        image2Instance = await UICreator.Instance.CreateSingleImageAsync(setting.tutorialImage2, bg, CancellationToken.None);
-        image2Instance.SetActive(false);
-
-        infoTextInstance = await UICreator.Instance.CreateSingleTextAsync(setting.infoText, bg, CancellationToken.None);
-        infoTextInstance.SetActive(false);
-        infoTextInstance.AddComponent<TextBlink>();
-
-        await UICreator.Instance.CreateSingleTextAsync(setting.subText, subCanvasObj, CancellationToken.None);
-
-        tutorialCoroutine = StartCoroutine(TutorialCoroutine(text1Instance, image1Instance, text2Instance, image2Instance, infoTextInstance));
+        tutorialCoroutine = StartCoroutine(TutorialCoroutine(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2));
     }
 
-    private IEnumerator TutorialCoroutine(GameObject text1, GameObject image1, GameObject text2, GameObject image2,
-        GameObject infoText)
+    private IEnumerator TutorialCoroutine(GameObject tuto1, GameObject tuto2, GameObject assist1, GameObject assist2)
     {
         yield return new WaitForSeconds(setting.tutorialDisplayTime);
 
-        text1.SetActive(false);
-        image1.SetActive(false);
-
-        text2.SetActive(true);
-        image2.SetActive(true);
-        infoText.SetActive(true);
-
+        tuto1.SetActive(false);
+        tuto2.SetActive(true);
+        
+        assist1.SetActive(false);
+        assist2.SetActive(true);
+        
         inputReady = true;
     }
 
