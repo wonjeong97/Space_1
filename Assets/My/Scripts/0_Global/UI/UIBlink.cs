@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class Blink : MonoBehaviour
+public class UIBlink : MonoBehaviour
 {
     private float periodSeconds = 3f; // 한 사이클(밝아졌다 어두워짐) 시간
     private readonly int minAlpha255 = 0;

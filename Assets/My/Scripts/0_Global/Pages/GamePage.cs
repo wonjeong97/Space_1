@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -74,7 +75,9 @@ public class GamePage : BasePage<GameSetting>
     private const int Sub7Index = 6;
     private const float FinalMainFadeDuration = 2.5f; // 메인 디스플레이 페이드아웃 시간
 
-    private const float VideoFadeDuration = 0.1f;
+    private const float VideoFadeDuration = 0.5f;
+
+    public GameObject MainCanvasObj => mainCanvasObj;
 
     #region Unity Life-cycle
 
@@ -217,7 +220,7 @@ public class GamePage : BasePage<GameSetting>
         if (videoPlayer) videoPlayer.Stop();
         if (pageVideo)
         {
-            StartCoroutine(FadeOutVideo(pageVideo, VideoFadeDuration));
+            pageVideo.SetActive(false);
             pageVideo = null;
         }
 
@@ -252,9 +255,12 @@ public class GamePage : BasePage<GameSetting>
     {
         foreach (VideoSetting videoSetting in setting.videos)
         {
-            GameObject videoGo = await UICreator.Instance.CreateVideoPlayerAsync(videoSetting, mainCanvasObj, CancellationToken.None);
+            GameObject videoGo = await UICreator.Instance.CreateVideoPlayerAsync(videoSetting, mainCanvasObj, CancellationToken.None, true);
+            RawImage videoRaw =  videoGo.GetComponentInChildren<RawImage>();
+            videoRaw.AddComponent<VideoAnimation>();
+            
             videoGo.SetActive(false);
-
+ 
             // 종료 이벤트 바인딩
             if (videoGo.TryGetComponent(out VideoPlayer vp))
             {
@@ -299,7 +305,7 @@ public class GamePage : BasePage<GameSetting>
             return;
         }
 
-        // 다른 비디오들은 정지 + 페이드아웃 후 비활성화
+        // 다른 비디오들은 정지 + 비활성화
         for (int i = 0; i < videoObjectList.Count; i++)
         {
             if (i == index) continue;
@@ -308,10 +314,7 @@ public class GamePage : BasePage<GameSetting>
             if (go.TryGetComponent(out VideoPlayer otherVp))
                 otherVp.Stop();
 
-            if (go.activeSelf)
-                StartCoroutine(FadeOutVideo(go, VideoFadeDuration));
-            else
-                go.SetActive(false);
+            go.SetActive(false);
         }
 
         GameObject selected = videoObjectList[index];
@@ -351,7 +354,6 @@ public class GamePage : BasePage<GameSetting>
         isPlayingVideo = true;
 
         ChangeSubDisplayOnVideo(); // 서브 디스플레이 변경
-        yield return StartCoroutine(RawImageFade(go, 0f, 1f, VideoFadeDuration));
     }
 
     /// <summary> 비디오 종료 시 실행 함수 </summary>
@@ -366,12 +368,12 @@ public class GamePage : BasePage<GameSetting>
             }
 
             isPlayingVideo = false;
-
-            // 현재 비디오 오브젝트 페이드아웃 및 비활성화
+            
+            // 현재 비디오 오브젝트 비활성화
             if (pageVideo)
             {
                 if (videoPlayer) videoPlayer.Stop();
-                StartCoroutine(FadeOutVideo(pageVideo, VideoFadeDuration));
+                pageVideo.SetActive(false);
                 pageVideo = null;
                 videoPlayer = null;
             }
@@ -644,59 +646,6 @@ public class GamePage : BasePage<GameSetting>
         currentStage = StageEntry.Hubble;
         ApplyStageActivation(currentStage);
         UpdateStageUI(currentStage);
-    }
-
-    #endregion
-
-    #region Fade Method
-
-    /// <summary> 게임 오브젝트의 로우 이미지를 페이드 함 </summary>
-    private IEnumerator RawImageFade(GameObject go, float from, float to, float duration)
-    {
-        if (!go) yield break;
-        if (go.TryGetComponent(out RawImage raw))
-        {
-            float time = 0f;
-            while (time < duration)
-            {
-                float clamp = duration <= 0f ? 1f : Mathf.Clamp01(time / duration);
-                float alpha = Mathf.Lerp(from, to, clamp);
-
-                if (raw)
-                {
-                    Color c = raw.color;
-                    raw.color = new Color(c.r, c.g, c.b, alpha);
-                }
-
-                time += Time.deltaTime;
-                yield return null;
-            }
-
-            if (raw) // 마지막 값 보정
-            {
-                Color c = raw.color;
-                raw.color = new Color(c.r, c.g, c.b, to);
-            }
-        }
-    }
-
-    /// <summary> 비디오 오브젝트를 0부터 활성화 후 페이드 인 표시 </summary>
-    private IEnumerator FadeInVideo(GameObject go, float duration)
-    {
-        if (!go) yield break;
-        SetRawAlpha(go, 0f);
-        go.SetActive(true);
-
-        yield return StartCoroutine(RawImageFade(go, 0f, 1f, duration));
-    }
-
-    /// <summary> 비디오 오브젝트를 1부터 페이드 아웃 후 비활성화 </summary>
-    private IEnumerator FadeOutVideo(GameObject go, float duration)
-    {
-        if (!go || !go.activeSelf) yield break;
-
-        yield return StartCoroutine(RawImageFade(go, 1f, 0f, duration));
-        go.SetActive(false);
     }
 
     #endregion

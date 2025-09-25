@@ -124,35 +124,35 @@
 	{
 	  "name": "Hubble Video",
 	  "position": { "x": 960, "y": 540 },
-	  "size": { "x": 1600, "y": 800 },
+	  "size": { "x": 1930, "y": 1090 },
 	  "fileName": "Video/100.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Moon Video",
 	  "position": { "x": 960, "y": 540 },
-	  "size": { "x": 1600, "y": 800 },
+	  "size": { "x": 1930, "y": 1090 },
 	  "fileName": "Video/101.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Satellite Video",
 	  "position": { "x": 960, "y": 540 },
-	  "size": { "x": 1600, "y": 800 },
+	  "size": { "x": 1930, "y": 1090 },
 	  "fileName": "Video/102.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Mars Video",
 	  "position": { "x": 960, "y": 540 },
-	  "size": { "x": 1600, "y": 800 },
+	  "size": { "x": 1930, "y": 1090 },
 	  "fileName": "Video/103.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Rocket Video",
 	  "position": { "x": 960, "y": 540 },
-	  "size": { "x": 1600, "y": 800 },
+	  "size": { "x": 1930, "y": 1090 },
 	  "fileName": "Video/104.mp4",
 	  "volume": 0.8
 	},
@@ -227,50 +227,50 @@
 	{
 	  "name": "Image_트랙볼을 조작하여 허블망원경을 찾아보세요",
 	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 640 },
+	  "size": { "x": 1920, "y": 540 },
 	  "sourceImage": "Image/Game/4_Assistance.png"
 	},
 	{
 	  "name": "Image_트랙볼을 조작하여 달을 찾아보세요",
 	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 640 },
+	  "size": { "x": 1920, "y": 540 },
 	  "sourceImage": "Image/Game/5_Assistance.png"
 	},
 	{
 	  "name": "Image_트랙볼을 조작하여 인공위성을 찾아보세요",
 	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 640 },
+	  "size": { "x": 1920, "y": 540 },
 	  "sourceImage": "Image/Game/6_Assistance.png"
 	},
 	{
 	  "name": "Image_트랙볼을 조작하여 화성을 찾아보세요",
 	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 640 },
+	  "size": { "x": 1920, "y": 540 },
 	  "sourceImage": "Image/Game/7_Assistance.png"
 	},
 	{
 	  "name": "Image_트랙볼을 조작하여 우주발사체을 찾아보세요",
 	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 640 },
+	  "size": { "x": 1920, "y": 540 },
 	  "sourceImage": "Image/Game/8_Assistance.png"
 	},
 	{
 	  "name": "Image_지금까지 우주로 가는 이유 5가지를 알아보았습니다",
 	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 640 },
+	  "size": { "x": 1920, "y": 540 },
 	  "sourceImage": "Image/Game/9_Assistance.png"
 	},
 	{
 	  "name": "Image_전시체험을 종료합니다",
 	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 640 },
+	  "size": { "x": 1920, "y": 540 },
 	  "sourceImage": "Image/Game/10_Assistance.png"
 	}
   ],
   "playVideoImage": {
 	"name": "Image_영상 화면이 닫히면",
 	"position": { "x": 960, "y": 270 },
-	"size": { "x": 1920, "y": 640 },
+	"size": { "x": 1920, "y": 540 },
 	"sourceImage": "Image/Game/11_Assistance.png"
   }
 }

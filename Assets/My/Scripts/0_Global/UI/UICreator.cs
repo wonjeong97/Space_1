@@ -263,8 +263,7 @@ public class UICreator : MonoBehaviour
     }
 
     /// <summary>단일 Image 프리팹 생성 후 스프라이트/색/타입 및 RectTransform 적용</summary>
-    public async Task<GameObject> CreateSingleImageAsync(ImageSetting setting, GameObject parent,
-        CancellationToken token)
+    public async Task<GameObject> CreateSingleImageAsync(ImageSetting setting, GameObject parent, CancellationToken token)
     {
         GameObject go = await InstantiateAsync("Prefabs/ImagePrefab.prefab", parent.transform, token); // 프리팹 인스턴스화
         if (go == null) return null; // 생성 실패 방어
@@ -287,6 +286,46 @@ public class UICreator : MonoBehaviour
             image.type = (Image.Type)setting.type; // 이미지 타입 적용
         }
 
+        if (go.TryGetComponent(out RectTransform rt)) // RectTransform 있으면
+        {
+            // UI 좌표 보정: 위쪽 원점 기준을 위해 y에 음수 부호 적용
+            UIUtility.ApplyRect(rt,
+                size: setting.size,
+                anchoredPos: new Vector2(setting.position.x, -setting.position.y),
+                rotation: setting.rotation
+            );
+        }
+
+        return go; // 생성된 이미지 반환
+    }
+    
+    /// <summary> 튜토리얼 페이지에서 사용할 스타 프리팹 </summary>
+    public async Task<GameObject> CreateSingleStarAsync(ImageSetting setting, GameObject parent, CancellationToken token)
+    {
+        GameObject go = await InstantiateAsync("Prefabs/StarPrefab.prefab", parent.transform, token);
+        if (go == null) return null;
+        go.name = setting.name;
+        
+        if (go.TryGetComponent(out RectTransform rt)) // RectTransform 있으면
+        {
+            // UI 좌표 보정: 위쪽 원점 기준을 위해 y에 음수 부호 적용
+            UIUtility.ApplyRect(rt,
+                size: setting.size,
+                anchoredPos: new Vector2(setting.position.x, -setting.position.y),
+                rotation: setting.rotation
+            );
+        }
+
+        return go; // 생성된 이미지 반환
+    }
+    
+    /// <summary> 튜토리얼 페이지에서 사용할 크로스헤어 프리팹 </summary>
+    public async Task<GameObject> CreateSingleCrosshairAsync(ImageSetting setting, GameObject parent, CancellationToken token)
+    {
+        GameObject go =  await InstantiateAsync("Prefabs/CrosshairPrefab.prefab", parent.transform, token);
+        if (go == null) return null;
+        go.name = setting.name;
+        
         if (go.TryGetComponent(out RectTransform rt)) // RectTransform 있으면
         {
             // UI 좌표 보정: 위쪽 원점 기준을 위해 y에 음수 부호 적용
@@ -440,21 +479,28 @@ public class UICreator : MonoBehaviour
     }
 
     /// <summary>VideoPlayer 프리팹 생성 후 RenderTexture/오디오 연결 및 재생 준비</summary>
-    public async Task<GameObject> CreateVideoPlayerAsync(VideoSetting setting, GameObject parent,
-        CancellationToken token)
+    public async Task<GameObject> CreateVideoPlayerAsync(VideoSetting setting, GameObject parent, CancellationToken token, bool shouldMask = false)
     {
         if (setting == null || string.IsNullOrEmpty(setting.fileName) || VideoManager.Instance == null)
             return null; // 설정/파일명/비디오 매니저 검사
 
         token.ThrowIfCancellationRequested(); // 즉시 취소 검사
 
-        GameObject go =
-            await InstantiateAsync("Prefabs/VideoPlayerPrefab.prefab", parent.transform, token); // 프리팹 인스턴스화
+        GameObject go;
+        if (shouldMask)
+        {
+            go = await InstantiateAsync("Prefabs/VideoPlayerPrefab.prefab", parent.transform, token); // 프리팹 인스턴스화    
+        }
+        else
+        {
+            go = await InstantiateAsync("Prefabs/VideoPlayerPrefab_NoMask.prefab", parent.transform, token); // 프리팹 인스턴스화
+        }
+        
         if (go == null) return null; // 생성 실패 방어
         go.name = setting.name; // 이름 지정
 
         VideoPlayer vp = go.GetComponent<VideoPlayer>(); // 비디오 플레이어
-        RawImage raw = go.GetComponent<RawImage>(); // 출력 대상
+        RawImage raw = go.GetComponentInChildren<RawImage>(); // 출력 대상
         AudioSource audioSource = UIUtility.GetOrAdd<AudioSource>(go); // 오디오 소스 확보
 
         if (vp == null)
@@ -489,55 +535,7 @@ public class UICreator : MonoBehaviour
 
         return go; // 생성된 비디오 플레이어 반환
     }
-
-    /// <summary>여러 팝업 설정 중 지정 인덱스 팝업 생성 요청을 내부 메서드로 위임</summary>
-    public Task<GameObject> CreatePopupsAsync(PopupSetting[] allPopups, int index, GameObject parent,
-        UnityAction<GameObject> onClose = null, CancellationToken token = default)
-        => CreatePopupAsync(allPopups, index, parent, onClose, token);
-
-    /// <summary>지정 인덱스의 팝업을 생성하고 배경/텍스트/이미지/버튼을 구성해 반환</summary>
-    private async Task<GameObject> CreatePopupAsync(
-        PopupSetting[] allPopups, int index,
-        GameObject parent, UnityAction<GameObject> onClose, CancellationToken token)
-    {
-        if (allPopups == null || index < 0 || index >= allPopups.Length) return null; // 인덱스/배열 유효성 검사
-        PopupSetting setting = allPopups[index]; // 대상 팝업 설정
-
-        // 팝업 루트 생성 및 부모 연결
-        GameObject popupRoot = new GameObject(string.IsNullOrEmpty(setting.name) ? "GeneratedPopup" : setting.name);
-        popupRoot.transform.SetParent(parent.transform, false);
-        popupRoot.AddComponent<PopupObject>(); // 비활성화 시 정리 담당
-
-        // 팝업 배경 생성(없으면 루트만 반환)
-        GameObject popupBg = await CreateBackgroundImageAsync(setting.popupBackgroundImage, popupRoot, token);
-        if (!popupBg) return popupRoot;
-        popupBg.transform.SetAsLastSibling(); // 배경을 뒤로 배치
-
-        // 텍스트/이미지 병렬 생성
-        List<Task> pending = new List<Task>(2)
-        {
-            CreateTextsAsync(setting.popupTexts, popupBg, token),
-            CreateImagesAsync(setting.popupImages, popupBg, token)
-        };
-        await Task.WhenAll(pending);
-
-        // 닫기 버튼이 있으면 연결
-        if (setting.popupCloseButton != null)
-        {
-            (GameObject btnGo, GameObject _) = await CreateSingleButtonAsync(setting.popupCloseButton, popupBg, token);
-            if (btnGo != null && btnGo.TryGetComponent(out Button btn))
-            {
-                btn.onClick.AddListener(() =>
-                {
-                    onClose?.Invoke(popupRoot); // 외부 콜백
-                    popupRoot.SetActive(false); // 비활성화 → PopupObject.OnDisable에서 정리
-                });
-            }
-        }
-
-        return popupRoot; // 완성된 팝업 루트 반환
-    }
-
+    
     /// <summary>페이지 루트를 생성하고 RectTransform 설정 후 하위 요소들(텍스트/이미지/버튼) 병렬 생성</summary>
     public async Task<GameObject> CreatePageAsync(PageSetting page, GameObject parent, CancellationToken token)
     {

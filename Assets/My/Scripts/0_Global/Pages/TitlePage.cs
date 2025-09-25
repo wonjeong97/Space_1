@@ -29,7 +29,7 @@ public class TitlePage : BasePage<TitleSetting>
     {
         titleImage = await UICreator.Instance.CreateSingleImageAsync(setting.titleImage, mainCanvasObj, CancellationToken.None);
         titleGuideImage = await UICreator.Instance.CreateSingleImageAsync(setting.titleGuideImage, mainCanvasObj, CancellationToken.None);
-        titleGuideImage.AddComponent<Blink>();
+        titleGuideImage.AddComponent<UIBlink>();
         
         await UICreator.Instance.CreateSingleImageAsync(setting.assistance, subCanvasObj, CancellationToken.None);
 
