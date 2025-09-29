@@ -76,7 +76,6 @@ public class GamePage : BasePage<GameSetting>
     private const float FinalMainFadeDuration = 2.5f; // 메인 디스플레이 페이드아웃 시간
 
     private const float VideoFadeDuration = 0.5f;
-
     public GameObject MainCanvasObj => mainCanvasObj;
 
     #region Unity Life-cycle
@@ -256,9 +255,6 @@ public class GamePage : BasePage<GameSetting>
         foreach (VideoSetting videoSetting in setting.videos)
         {
             GameObject videoGo = await UICreator.Instance.CreateVideoPlayerAsync(videoSetting, mainCanvasObj, CancellationToken.None, true);
-            RawImage videoRaw =  videoGo.GetComponentInChildren<RawImage>();
-            videoRaw.AddComponent<VideoAnimation>();
-            
             videoGo.SetActive(false);
  
             // 종료 이벤트 바인딩

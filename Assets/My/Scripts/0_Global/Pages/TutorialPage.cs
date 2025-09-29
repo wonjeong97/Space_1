@@ -56,7 +56,8 @@ public class TutorialPage : BasePage<TutorialSetting>
     protected override void OnEnable()
     {
         if (imageTutorial1 && imageTutorial2 && imageAssistance1 && imageAssistance2)
-        {   
+        {
+            inputReady = false;
             crosshair1.transform.SetParent(imageTutorial1.transform);
             
             StartCoroutine(TutorialCoroutine(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2));
@@ -70,8 +71,6 @@ public class TutorialPage : BasePage<TutorialSetting>
 
         imageTutorial1.SetActive(true);
         imageTutorial2.SetActive(false);
-
-        inputReady = false;
     }
 
     protected override async Task BuildContentAsync()
@@ -121,30 +120,28 @@ public class TutorialPage : BasePage<TutorialSetting>
 
         _ = SampleVideoAnim(sample, 1f);
         
+        yield return new WaitForSeconds(3f);
+        LoadGamePage();
         inputReady = true;
     }
 
-    protected async void Update()
+    private async void LoadGamePage()
     {
         try
         {
-            if (!inputReady) return;
-            if (Input.GetMouseButtonDown(0))
+            await FadeManager.Instance.FadeOutAsync(jsonSetting.fadeTime);
+            gameObject.SetActive(false);
+            if (hubblePage)
             {
-                await FadeManager.Instance.FadeOutAsync(jsonSetting.fadeTime);
-                gameObject.SetActive(false);
-                if (hubblePage)
-                {
-                    hubblePage.SetActive(true);
-                    await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
-                }
-                else
-                {
-                    hubblePage = new GameObject("Game1Page");
-                    hubblePage.AddComponent<GamePage>();
+                hubblePage.SetActive(true);
+                await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
+            }
+            else
+            {
+                hubblePage = new GameObject("Game1Page");
+                hubblePage.AddComponent<GamePage>();
                     
-                    UIManager.Instance.pages.Add(hubblePage);
-                }
+                UIManager.Instance.pages.Add(hubblePage);
             }
         }
         catch (Exception e)

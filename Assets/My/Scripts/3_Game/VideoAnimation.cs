@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 /// <summary> 비디오 등장 시 Y scale 0 -> 1, 사라질 때 alpha 1 -> 0 </summary>
 public class VideoAnimation : MonoBehaviour
-{   
+{
+    [SerializeField] private Image maskingImage;
     [SerializeField] private float scaleDuration = 0.5f; // 스케일 애니메이션 시간
     [SerializeField] private float fadeDuration = 0.5f;  // 알파 페이드 시간
     
@@ -12,10 +13,9 @@ public class VideoAnimation : MonoBehaviour
 
     private void Awake()
     {
-        rawImage = GetComponentInChildren<RawImage>();
-        if (!rawImage)
+        if (!maskingImage)
         {
-            Debug.LogError($"[VideoAnimation] {gameObject.name}: RawImage not found");
+            Debug.LogError($"[VideoAnimation] {gameObject.name}: maskingImage not found");
         }
     }
 
@@ -25,11 +25,11 @@ public class VideoAnimation : MonoBehaviour
         Vector3 localScale = transform.localScale;
         transform.localScale = new Vector3(localScale.x, 0f, localScale.z);
         
-        if (rawImage)
+        if (maskingImage)
         {
-            Color c = rawImage.color;
+            Color c = maskingImage.color;
             c.a = 1f;
-            rawImage.color = c;
+            maskingImage.color = c;
         }
         
         StartCoroutine(YScaleAnimation());
@@ -54,21 +54,21 @@ public class VideoAnimation : MonoBehaviour
 
     private IEnumerator FadeOutAlpha()
     {
-        if (!rawImage) yield break;
+        if (!maskingImage) yield break;
 
         float elapsed = 0f;
-        Color start = rawImage.color;
+        Color start = maskingImage.color;
         Color target = new Color(start.r, start.g, start.b, 0f);
 
         while (elapsed < fadeDuration)
         {
             float t = elapsed / fadeDuration;
-            rawImage.color = Color.Lerp(start, target, t);
+            maskingImage.color = Color.Lerp(start, target, t);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        rawImage.color = target;
+        maskingImage.color = target;
         gameObject.SetActive(false);
     }
 }
