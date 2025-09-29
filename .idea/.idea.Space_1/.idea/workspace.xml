@@ -4,76 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Animations/Crosshair.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Animations/Crosshair.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Prefabs/VideoPlayerPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Prefabs/VideoPlayerPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/AudioManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/AudioManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/FadeManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/FadeManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/GameManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/VideoManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Managers/VideoManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/BaseObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/BaseObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/Blink.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/Blink.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/ButtonObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/ButtonObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/Crosshair.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/Crosshair.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/HubbleEffect.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/HubbleEffect.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/HubbleObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/HubbleObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/MarsObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/MarsObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/MoonObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/MoonObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/ObjectAnimation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/ObjectAnimation.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/PopupObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/PopupObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/RocketObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/RocketObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/SatelliteObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/SatelliteObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/ZoomBackground.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Objects/ZoomBackground.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/BasePage.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/GamePage.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/GamePage.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TitlePage.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TitlePage.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TutorialPage.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/Pages/TutorialPage.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System/CameraFlash.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System/CameraFlash.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System/GameCloser.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System/GameCloser.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/System/JsonLoader.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI/UICreator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI/UICreator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI/UIManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI/UIManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI/UIUtility.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/UI/UIUtility.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TitleSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TitleSetting.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TutorialSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TutorialSetting.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
-    </list>
+    <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,6 +146,7 @@
       <workItem from="1758759073690" duration="21000" />
       <workItem from="1758759177013" duration="13000" />
       <workItem from="1758759208418" duration="3464000" />
+      <workItem from="1759114464661" duration="3753000" />
     </task>
     <servers />
   </component>
