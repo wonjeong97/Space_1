@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
+//using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -101,41 +101,41 @@ public class GamePage : BasePage<GameSetting>
 
     #endregion
 
-    protected override async Task BuildContentAsync()
+    protected override async UniTask BuildContentAsync(CancellationToken token)
     {
         // === 서브 디스플레이 버튼 생성 ===
-        (titleButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.titleButton, subCanvasObj, CancellationToken.None);
-        if (titleButton.TryGetComponent(out Button button1)) button1.onClick.AddListener(() => _ = HandleTitleButtonAsync());
+        (titleButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.titleButton, subCanvasObj, token);
+        if (titleButton.TryGetComponent(out Button button1)) button1.onClick.AddListener(() => _ = HandleTitleButtonAsync(cancelToken.Token));
 
-        playImage = await UICreator.Instance.CreateSingleImageAsync(setting.playImage, subCanvasObj, CancellationToken.None);
+        playImage = await UICreator.Instance.CreateSingleImageAsync(setting.playImage, subCanvasObj, token);
         playImage.SetActive(false);
 
-        (homeButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.homeButton, playImage, CancellationToken.None);
-        if (homeButton.TryGetComponent(out Button button2)) button2.onClick.AddListener(() => _ = HandleTitleButtonAsync());
+        (homeButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.homeButton, playImage, token);
+        if (homeButton.TryGetComponent(out Button button2)) button2.onClick.AddListener(() => _ = HandleTitleButtonAsync(cancelToken.Token));
 
-        (playButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.playButton, playImage, CancellationToken.None);
+        (playButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.playButton, playImage, token);
         if (playButton.TryGetComponent(out Button button3)) button3.onClick.AddListener(HandlePlayButton);
 
-        (pauseButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.pauseButton, playImage, CancellationToken.None);
+        (pauseButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.pauseButton, playImage, token);
         if (pauseButton.TryGetComponent(out Button button4)) button4.onClick.AddListener(HandlePauseButton);
 
-        (skipButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.skipButton, playImage, CancellationToken.None);
+        (skipButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.skipButton, playImage, token);
         if (skipButton.TryGetComponent(out Button button5)) button5.onClick.AddListener(() => _ = HandleSkipButton());
 
         // === 크로스헤어 생성 ===
-        GameObject crosshair = await UICreator.Instance.CreateSingleImageAsync(setting.crosshairImage, mainCanvasObj, CancellationToken.None);
+        GameObject crosshair = await UICreator.Instance.CreateSingleImageAsync(setting.crosshairImage, mainCanvasObj, token);
         crosshair.AddComponent<Crosshair>();
 
         // === 허블, 달, 인공위성, 화성, 로켓 이미지 생성 ===
         foreach (ImageSetting image in setting.contentsImagesOff)
         {
-            GameObject go = await UICreator.Instance.CreateSingleImageAsync(image, mainCanvasObj, CancellationToken.None);
+            GameObject go = await UICreator.Instance.CreateSingleImageAsync(image, mainCanvasObj, token);
             UIManager.Instance.contentsImagesOff.Add(go);
         }
 
         foreach (ImageSetting image in setting.contentsImagesOn)
         {
-            GameObject go = await UICreator.Instance.CreateSingleImageAsync(image, mainCanvasObj, CancellationToken.None);
+            GameObject go = await UICreator.Instance.CreateSingleImageAsync(image, mainCanvasObj, token);
             go.SetActive(false);
             UIManager.Instance.contentsImagesOn.Add(go);
         }
@@ -147,7 +147,7 @@ public class GamePage : BasePage<GameSetting>
         {
             foreach (ImageSetting img in setting.missionImages)
             {
-                GameObject go = await UICreator.Instance.CreateSingleImageAsync(img, mainCanvasObj, CancellationToken.None);
+                GameObject go = await UICreator.Instance.CreateSingleImageAsync(img, mainCanvasObj, token);
                 go.SetActive(false);
                 missionGuides.Add(go);
             }
@@ -159,7 +159,7 @@ public class GamePage : BasePage<GameSetting>
         {
             foreach (ImageSetting img in setting.missionSubImages)
             {
-                GameObject go = await UICreator.Instance.CreateSingleImageAsync(img, subCanvasObj, CancellationToken.None);
+                GameObject go = await UICreator.Instance.CreateSingleImageAsync(img, subCanvasObj, token);
                 if (go.TryGetComponent(out Image subImg)) subImg.raycastTarget = false;
                 go.SetActive(false);
                 missionSubGuides.Add(go);
@@ -167,17 +167,19 @@ public class GamePage : BasePage<GameSetting>
         }
 
         // 비디오 플레이 시 표시하는 "영상 화면이 닫히면 ..." 이미지
-        playVideoImage = await UICreator.Instance.CreateSingleImageAsync(setting.playVideoImage, subCanvasObj, CancellationToken.None);
+        playVideoImage = await UICreator.Instance.CreateSingleImageAsync(setting.playVideoImage, subCanvasObj, token);
         if (playVideoImage.TryGetComponent(out Image playVideoImg)) playVideoImg.raycastTarget = false;
         playVideoImage.SetActive(false);
 
         // === 스테이지 별 비디오 및 타겟 오브젝트 생성 ===
-        await CreateVideoObject();
-        await CreateTargetObject();
+        await CreateVideoObject(token);
+        await CreateTargetObject(token);
 
         ApplyStageActivation(currentStage);
         UpdateStageUI(currentStage);
         UpdateVideoUIVisible(false);
+
+        isCreated = true;
     }
 
     #region Sub-Display Button Click Event
@@ -194,12 +196,12 @@ public class GamePage : BasePage<GameSetting>
         if (videoPlayer.isPlaying) videoPlayer.Pause();
     }
 
-    private async Task HandleTitleButtonAsync()
+    private async UniTask HandleTitleButtonAsync(CancellationToken token)
     {
-        await GameManager.Instance.ShowTitlePageOnly();
+        await GameManager.Instance.ShowTitlePageOnly(token, true);
     }
 
-    private async Task HandleSkipButton()
+    private async UniTask HandleSkipButton()
     {
         if (!isPlayingVideo) return;
 
@@ -250,11 +252,11 @@ public class GamePage : BasePage<GameSetting>
     #region Create
 
     /// <summary> 각 스테이지 별 비디오 플레이어 생성 </summary>
-    private async Task CreateVideoObject()
+    private async UniTask CreateVideoObject(CancellationToken token)
     {
         foreach (VideoSetting videoSetting in setting.videos)
         {
-            GameObject videoGo = await UICreator.Instance.CreateVideoPlayerAsync(videoSetting, mainCanvasObj, CancellationToken.None, true);
+            GameObject videoGo = await UICreator.Instance.CreateVideoPlayerAsync(videoSetting, mainCanvasObj, token, true);
             videoGo.SetActive(false);
  
             // 종료 이벤트 바인딩
@@ -269,11 +271,11 @@ public class GamePage : BasePage<GameSetting>
     }
 
     /// <summary> 각 스테이지 별 타겟 오브젝트 생성 </summary>>
-    private async Task CreateTargetObject()
+    private async UniTask CreateTargetObject(CancellationToken token)
     {
         for (int i = 0; i < setting.objects.Length; i++)
         {
-            GameObject objectGo = await UICreator.Instance.CreateGameObjectAsync(setting.objects[i], mainCanvasObj, CancellationToken.None);
+            GameObject objectGo = await UICreator.Instance.CreateGameObjectAsync(setting.objects[i], mainCanvasObj, token);
             switch (i) // 단계별 컴포넌트 부착
             {
                 case (int)StageEntry.Hubble: objectGo.AddComponent<HubbleObject>(); break;
@@ -401,7 +403,7 @@ public class GamePage : BasePage<GameSetting>
     private void OnFinalVideoEnded()
     {
         // 메인 디스플레이 페이드아웃 + Sub7 + 5초 후 타이틀 복귀
-        StartCoroutine(Outro());
+        _ = OutroAsync(this.GetCancellationTokenOnDestroy());
     }
 
     #endregion
@@ -428,15 +430,14 @@ public class GamePage : BasePage<GameSetting>
     }
 
     /// <summary> 마지막 비디오가 끝난 후 메인 디스플레이 페이드아웃 및 Sub 7 Text 표시 </summary>
-    private IEnumerator Outro()
+    private async UniTask OutroAsync(CancellationToken token)
     {
         // Sub 7 Text 표시
         SetActiveObject(missionSubGuides[Sub6Index], false);
         SetActiveObject(missionSubGuides[Sub7Index], true);
 
         // 메인 디스플레이 페이드아웃
-        Task fadeTask = FadeManager.Instance.FadeOutMainAsync(FinalMainFadeDuration);
-        while (!fadeTask.IsCompleted) yield return null;
+        await FadeManager.Instance.FadeOutMainAsync(FinalMainFadeDuration, false, token);
 
         // 정리
         if (videoPlayer) videoPlayer.Stop();
@@ -446,11 +447,11 @@ public class GamePage : BasePage<GameSetting>
         isPlayingVideo = false;
 
         // 대기
-        yield return new WaitForSeconds(outroFadeTime);
+        int delayMs = Mathf.RoundToInt(outroFadeTime * 1000f);
+        await UniTask.Delay(delayMs, DelayType.DeltaTime, PlayerLoopTiming.Update, token);
 
         // 타이틀 화면 복귀
-        Task titleTask = GameManager.Instance.ShowTitlePageOnly(false);
-        while (!titleTask.IsCompleted) yield return null;
+        await GameManager.Instance.ShowTitlePageOnly(token, false);
     }
 
     #region Utility
@@ -546,7 +547,7 @@ public class GamePage : BasePage<GameSetting>
     }
 
     /// <summary> 아이콘 On, Off의 크로스 페이드 </summary>
-    private async Task CrossFadeIcon(GameObject fromGo, GameObject toGo, float duration)
+    private async UniTask CrossFadeIcon(GameObject fromGo, GameObject toGo, float duration)
     {
         if (!fromGo || !toGo) return;
         if (!fromGo.TryGetComponent(out Image from) || !toGo.TryGetComponent(out Image to)) return;
@@ -561,7 +562,7 @@ public class GamePage : BasePage<GameSetting>
             SetImageAlpha(from, 1f - alpha);
             SetImageAlpha(to, alpha);
             time += Time.deltaTime;
-            await Task.Yield(); // 다음 프레임까지 양보
+            await UniTask.Yield(); // 다음 프레임까지 양보
         }
 
         SetImageAlpha(from, 0f);

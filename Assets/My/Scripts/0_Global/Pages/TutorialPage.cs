@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Threading;
-using System.Threading.Tasks;
-using UnityEditor.PackageManager.UI;
+//using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 [Serializable]
@@ -51,58 +51,61 @@ public class TutorialPage : BasePage<TutorialSetting>
     private GameObject sample;
     private GameObject frame;
 
-    private Coroutine tutorialCoroutine;
+    
 
     protected override void OnEnable()
-    {
+    {   
+        base.OnEnable();
         if (imageTutorial1 && imageTutorial2 && imageAssistance1 && imageAssistance2)
         {
             inputReady = false;
             crosshair1.transform.SetParent(imageTutorial1.transform);
             
-            StartCoroutine(TutorialCoroutine(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2));
+            _ = TutorialSequenceAsync(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2, cancelToken.Token);
         }
     }
 
     protected override void OnDisable()
     {
-        StopAllCoroutines();
-        tutorialCoroutine = null;
+        base.OnDisable();
 
         imageTutorial1.SetActive(true);
         imageTutorial2.SetActive(false);
     }
 
-    protected override async Task BuildContentAsync()
+    protected override async UniTask BuildContentAsync(CancellationToken token)
     {
-        imageTutorial1 = await UICreator.Instance.CreateSingleImageAsync(setting.tutorial1, mainCanvasObj, CancellationToken.None);
-        imageTutorial2 = await UICreator.Instance.CreateSingleImageAsync(setting.tutorial2, mainCanvasObj, CancellationToken.None);
+        imageTutorial1 = await UICreator.Instance.CreateSingleImageAsync(setting.tutorial1, mainCanvasObj, token);
+        imageTutorial2 = await UICreator.Instance.CreateSingleImageAsync(setting.tutorial2, mainCanvasObj, token);
         imageTutorial2.SetActive(false);
 
-        imageAssistance1 = await UICreator.Instance.CreateSingleImageAsync(setting.assistance2, subCanvasObj, CancellationToken.None);
-        imageAssistance2 = await UICreator.Instance.CreateSingleImageAsync(setting.assistance3, subCanvasObj, CancellationToken.None);
+        imageAssistance1 = await UICreator.Instance.CreateSingleImageAsync(setting.assistance2, subCanvasObj, token);
+        imageAssistance2 = await UICreator.Instance.CreateSingleImageAsync(setting.assistance3, subCanvasObj, token);
         imageAssistance2.SetActive(false);
 
-        star1 = await UICreator.Instance.CreateSingleStarAsync(setting.star1, imageTutorial1, CancellationToken.None);
-        star2 = await UICreator.Instance.CreateSingleStarAsync(setting.star2, imageTutorial1, CancellationToken.None);
-        star3 = await UICreator.Instance.CreateSingleStarAsync(setting.star3, imageTutorial2, CancellationToken.None);
-        crosshair1 = await UICreator.Instance.CreateSingleImageAsync(setting.crosshair1, imageTutorial1,  CancellationToken.None);    
+        star1 = await UICreator.Instance.CreateSingleStarAsync(setting.star1, imageTutorial1, token);
+        star2 = await UICreator.Instance.CreateSingleStarAsync(setting.star2, imageTutorial1, token);
+        star3 = await UICreator.Instance.CreateSingleStarAsync(setting.star3, imageTutorial2, token);
+        crosshair1 = await UICreator.Instance.CreateSingleImageAsync(setting.crosshair1, imageTutorial1,  token);    
         crosshair1.AddComponent<TutorialCrosshair>();
         
         crosshair1.TryGetComponent(out crosshairRT);
         star2.TryGetComponent(out star2RT);
         
-        sample = await UICreator.Instance.CreateSingleImageAsync(setting.sample, imageTutorial2, CancellationToken.None);
-        frame = await UICreator.Instance.CreateSingleImageAsync(setting.frame, sample, CancellationToken.None);
+        sample = await UICreator.Instance.CreateSingleImageAsync(setting.sample, imageTutorial2, token);
+        frame = await UICreator.Instance.CreateSingleImageAsync(setting.frame, sample, token);
         sample.transform.localScale = new Vector3(1, 0, 1);
+
+        isCreated = true;
         
-        tutorialCoroutine = StartCoroutine(TutorialCoroutine(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2));
+        _ = TutorialSequenceAsync(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2, token);
     }
 
-    private IEnumerator TutorialCoroutine(GameObject tuto1, GameObject tuto2, GameObject assist1, GameObject assist2)
+    private async UniTask TutorialSequenceAsync(GameObject tuto1, GameObject tuto2, GameObject assist1, GameObject assist2, CancellationToken token)
     {   
         _ = CrosshairMove(crosshairRT, crosshairRT.anchoredPosition, star2RT.anchoredPosition, 2);
-        yield return new WaitForSeconds(setting.tutorialDisplayTime);
+        int waitMs = Mathf.RoundToInt(setting.tutorialDisplayTime * 1000f);
+        await UniTask.Delay(waitMs, DelayType.DeltaTime, PlayerLoopTiming.Update, token);
         
         crosshair1.transform.SetParent(tuto2.transform);
         crosshair1.transform.position = star3.transform.position;
@@ -120,21 +123,22 @@ public class TutorialPage : BasePage<TutorialSetting>
 
         _ = SampleVideoAnim(sample, 1f);
         
-        yield return new WaitForSeconds(3f);
-        LoadGamePage();
+        await UniTask.Delay(TimeSpan.FromSeconds(3), DelayType.DeltaTime, PlayerLoopTiming.Update, token);
+        await LoadGamePageAsync(token);
         inputReady = true;
     }
 
-    private async void LoadGamePage()
+    private async UniTask LoadGamePageAsync(CancellationToken token)
     {
         try
         {
-            await FadeManager.Instance.FadeOutAsync(jsonSetting.fadeTime);
+            await FadeManager.Instance.FadeOutAsync(jsonSetting.fadeTime, external: token);
             gameObject.SetActive(false);
             if (hubblePage)
             {
                 hubblePage.SetActive(true);
-                await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
+                
+                //await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime, external: token);
             }
             else
             {
@@ -142,6 +146,8 @@ public class TutorialPage : BasePage<TutorialSetting>
                 hubblePage.AddComponent<GamePage>();
                     
                 UIManager.Instance.pages.Add(hubblePage);
+                
+                Debug.Log("Create Hubble Page");
             }
         }
         catch (Exception e)
@@ -150,7 +156,7 @@ public class TutorialPage : BasePage<TutorialSetting>
         }
     }
 
-    private async Task CrosshairMove(RectTransform rt, Vector2 start, Vector2 end, float duration)
+    private async UniTask CrosshairMove(RectTransform rt, Vector2 start, Vector2 end, float duration)
     {
         rt.anchoredPosition = start;          
 
@@ -160,7 +166,7 @@ public class TutorialPage : BasePage<TutorialSetting>
             float p = time / duration;
             rt.anchoredPosition = Vector2.LerpUnclamped(start, end, p);
             time += Time.deltaTime;
-            await Task.Yield();
+            await UniTask.Yield();
         }
         
         rt.anchoredPosition = end;
@@ -170,7 +176,7 @@ public class TutorialPage : BasePage<TutorialSetting>
         }
     }
 
-    private async Task SampleVideoAnim(GameObject target, float duration)
+    private async UniTask SampleVideoAnim(GameObject target, float duration)
     {
         if (!target) return;
         
@@ -187,7 +193,7 @@ public class TutorialPage : BasePage<TutorialSetting>
             target.transform.localScale = newScale;
             
             elapsed += Time.deltaTime;
-            await Task.Yield();
+            await UniTask.Yield();
         }
         
         target.transform.localScale = end;

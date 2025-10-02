@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 [Serializable]
@@ -25,17 +26,19 @@ public class TitlePage : BasePage<TitleSetting>
     private GameObject titleImage;
     private GameObject titleGuideImage;
 
-    protected override async Task BuildContentAsync()
+    protected override async UniTask BuildContentAsync(CancellationToken token)
     {
-        titleImage = await UICreator.Instance.CreateSingleImageAsync(setting.titleImage, mainCanvasObj, CancellationToken.None);
-        titleGuideImage = await UICreator.Instance.CreateSingleImageAsync(setting.titleGuideImage, mainCanvasObj, CancellationToken.None);
+        titleImage = await UICreator.Instance.CreateSingleImageAsync(setting.titleImage, mainCanvasObj, token);
+        titleGuideImage = await UICreator.Instance.CreateSingleImageAsync(setting.titleGuideImage, mainCanvasObj, token);
         titleGuideImage.AddComponent<UIBlink>();
         
-        await UICreator.Instance.CreateSingleImageAsync(setting.assistance, subCanvasObj, CancellationToken.None);
+        await UICreator.Instance.CreateSingleImageAsync(setting.assistance, subCanvasObj, token);
 
         inputReady = true;
+        isCreated = true;
 
         GameManager.Instance.TitlePage = gameObject;
+        
     }
 
     protected async void Update()

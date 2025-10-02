@@ -1,8 +1,8 @@
 using System;
-using System.Collections;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -13,7 +13,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     protected Settings jsonSetting;
 
     protected abstract string JsonPath { get; }
-    protected abstract Task BuildContentAsync();
+    protected abstract UniTask BuildContentAsync(CancellationToken token);
 
     protected GameObject mainCanvasObj;
     protected GameObject subCanvasObj;
@@ -23,8 +23,8 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
 
     private float mouseSensitivity;
     private float mouseSmoothing;
-    private float Up;
-    private float Down;
+    private float up;
+    private float down;
 
     private float yaw;
     private float pitch;
@@ -59,21 +59,39 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
 
     protected float outroFadeTime;
     private int waitBeforePlayVideo;
-    
+
+    protected CancellationTokenSource cancelToken;
+    protected bool isCreated = false;
+
     #region Unity Life-cycle
 
     protected virtual void OnEnable()
     {
+        cancelToken = new CancellationTokenSource();
+
         lastMousePos = Input.mousePosition;
         mouseInit = true;
         smoothedDelta = Vector2.zero;
 
         pitch = 0;
         yaw = 0;
+
+        if (isCreated)
+        {
+           _ = FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime, false, cancelToken.Token);
+        }
     }
 
     protected virtual void OnDisable()
     {
+        // 페이지 비활성화 시 진행 중인 작업 취소
+        if (cancelToken != null)
+        {
+            cancelToken.Cancel();
+            cancelToken.Dispose();
+            cancelToken = null;
+        }
+
         if (pageVideo) pageVideo.SetActive(false);
     }
 
@@ -82,11 +100,12 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
         jsonSetting ??= JsonLoader.Instance.settings;
 
         InitPage();
-        _ = StartAsync();
+        _ = StartAsync(cancelToken.Token);
     }
 
     private void Update()
     {
+        // 테스트 용도
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             shouldTurnCamera = !shouldTurnCamera;
@@ -95,7 +114,6 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
 
     protected virtual void LateUpdate()
     {
-        // 카메라가 없거나 비디오 재생 중에는 마우스 이동 금지
         if (!mainCamera || isPlayingVideo) return;
 
         // 레이캐스트로 타겟 추적 및 dwell 누적
@@ -119,7 +137,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
                         {
                             dwellInProgress = true;
                             shouldTurnCamera = false;
-                            _ = ZoomTargetObject();
+                            _ = ZoomTargetObject(cancelToken.Token);
                         }
                     }
                     else
@@ -172,7 +190,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             float dy = smoothedDelta.y * mouseSensitivity * -1f;
 
             yaw += dx;
-            pitch = Mathf.Clamp(pitch + dy, Up, Down);
+            pitch = Mathf.Clamp(pitch + dy, up, down);
             mainCamera.transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
         }
     }
@@ -187,50 +205,62 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     }
 
     /// <summary> 타겟 줌 인 -> 비디오 플레이 -> 줌 아웃 </summary>
-    private async Task ZoomTargetObject()
+    private async UniTask ZoomTargetObject(CancellationToken token)
     {
-        if (!mainCamera || !currentTarget)
+        try
         {
-            dwellInProgress = false;
-            await Task.Yield();
+            if (!mainCamera || !currentTarget)
+            {
+                dwellInProgress = false;
+                return;
+            }
+
+            // 줌 인
+            await ZoomInTarget(token);
+            token.ThrowIfCancellationRequested();
+
+            await UniTask.Delay(waitBeforePlayVideo, DelayType.DeltaTime, PlayerLoopTiming.Update, token);
+            token.ThrowIfCancellationRequested();
+
+            // 오브젝트에 맞는 비디오 실행
+            currentTarget.OnRayConfirmed();
+
+            // 줌 아웃
+            await ZoomOutTarget(token);
+            token.ThrowIfCancellationRequested();
         }
-
-        // 줌 인
-        await ZoomInTarget();
-        await Task.Delay((int)waitBeforePlayVideo);
-        // 오브젝트에 맞는 비디오 실행
-        currentTarget.OnRayConfirmed();
-
-        // 줌 아웃
-        await ZoomOutTarget();
-        
-        shouldTurnCamera = true;
-        ResetDwell(); // 다음 조준을 위해 초기화
+        finally
+        {
+            shouldTurnCamera = true;
+            ResetDwell();
+        }
     }
 
-    private async Task ZoomInTarget()
+    private async UniTask ZoomInTarget(CancellationToken token)
     {
         float start = mainCamera.fieldOfView;
         float end = zoomFOV;
         float time = 0f;
         while (time < 1f)
-        {
+        {   
+            token.ThrowIfCancellationRequested();
             time += Time.deltaTime / Mathf.Max(0.0001f, zoomInDuration);
             mainCamera.fieldOfView = Mathf.Lerp(start, end, time);
-            await Task.Yield();
+            await UniTask.Yield(PlayerLoopTiming.Update, token);
         }
     }
-
-    public async Task ZoomOutTarget()
+    
+    public async UniTask ZoomOutTarget(CancellationToken token)
     {
         float start = mainCamera.fieldOfView;
         float end = originFOV;
         float time = 0f;
         while (time < 1f)
         {
+            token.ThrowIfCancellationRequested();
             time += Time.deltaTime / Mathf.Max(0.0001f, zoomOutDuration);
             mainCamera.fieldOfView = Mathf.Lerp(start, end, time);
-            await Task.Yield();
+            await UniTask.Yield(PlayerLoopTiming.Update, token);
         }
     }
 
@@ -252,8 +282,8 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
         // 카메라 회전 파라미터
         mouseSensitivity = jsonSetting.mouseSensitivity;
         mouseSmoothing = jsonSetting.mouseSmoothing;
-        Up = -jsonSetting.Up; 
-        Down = -jsonSetting.Down; // json 세팅에서 편의를 위해 Up, Down에 -를 곱함
+        up = -jsonSetting.Up;
+        down = -jsonSetting.Down; // json 세팅에서 편의를 위해 Up, Down에 -를 곱함
 
         // 줌 파라미터
         dwellThreshold = jsonSetting.dwellThreshold;
@@ -269,7 +299,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     }
 
     /// <summary> 시작 메서드, UI 생성 후 페이드인으로 페이지 시작 </summary>
-    protected virtual async Task StartAsync()
+    protected virtual async UniTask StartAsync(CancellationToken token)
     {
         try
         {
@@ -280,12 +310,12 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
                 return;
             }
 
-            await CreateUI();
+            await CreateUI(token);
             await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
         }
         catch (OperationCanceledException)
         {
-            Debug.LogWarning($"[{GetType().Name}] Start canceled.");
+            // 정상 취소
         }
         catch (Exception e)
         {
@@ -294,16 +324,16 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     }
 
     /// <summary> 페이지 UI 생성 메서드 </summary>
-    private async Task CreateUI()
+    private async UniTask CreateUI(CancellationToken token)
     {
-        mainCanvasObj = await UICreator.Instance.CreateCanvasAsync(CancellationToken.None);
+        mainCanvasObj = await UICreator.Instance.CreateCanvasAsync(token);
         mainCanvasObj.transform.SetParent(gameObject.transform);
         if (mainCanvasObj.TryGetComponent(out Canvas canvas1))
         {
             canvas1.targetDisplay = jsonSetting.canvas1TargetMonitorIndex;
         }
 
-        subCanvasObj = await UICreator.Instance.CreateCanvasAsync(CancellationToken.None);
+        subCanvasObj = await UICreator.Instance.CreateCanvasAsync(token);
         subCanvasObj.transform.SetParent(gameObject.transform);
         if (subCanvasObj.TryGetComponent(out Canvas canvas2) &&
             subCanvasObj.TryGetComponent(out CanvasScaler canvasScaler))
@@ -314,13 +344,13 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
 
         VideoSetting mainBackground = GetFieldOrProperty<VideoSetting>(setting, "mainBackground");
         if (mainBackground != null)
-            await UICreator.Instance.CreateVideoPlayerAsync(mainBackground, mainCanvasObj, CancellationToken.None);
+            await UICreator.Instance.CreateVideoPlayerAsync(mainBackground, mainCanvasObj, token);
 
         VideoSetting subBackground = GetFieldOrProperty<VideoSetting>(setting, "subBackground");
         if (subBackground != null)
-            await UICreator.Instance.CreateVideoPlayerAsync(subBackground, subCanvasObj, CancellationToken.None);
+            await UICreator.Instance.CreateVideoPlayerAsync(subBackground, subCanvasObj, token);
 
-        await BuildContentAsync();
+        await BuildContentAsync(token);
     }
 
     /// <summary> 지정한 이름의 필드나 프로퍼티 값을 가져오는 유틸 (JSON 세팅에서 공통 접근) </summary>

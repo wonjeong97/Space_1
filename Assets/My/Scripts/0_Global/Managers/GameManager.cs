@@ -1,11 +1,13 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    
+
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera subCamera;
 
@@ -18,9 +20,11 @@ public class GameManager : MonoBehaviour
     public event Action onReset;
 
     public GameObject TitlePage { get; set; }
-    
+
     public RuntimeAnimatorController crosshairAnimator;
     public Material rocketMaterial;
+
+    private CancellationTokenSource inactivityCts;
 
     private void Awake()
     {
@@ -41,15 +45,16 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {   
+    {
         Cursor.visible = false;
         lastMousePosition = Input.mousePosition;
 
         if (JsonLoader.Instance.settings != null)
         {
             inactivityThreshold = JsonLoader.Instance.settings.inactivityTime;
-            mainCamera.targetDisplay = JsonLoader.Instance.settings.canvas1TargetMonitorIndex;
-            subCamera.targetDisplay = JsonLoader.Instance.settings.canvas2TargetMonitorIndex;
+
+            if (mainCamera) mainCamera.targetDisplay = JsonLoader.Instance.settings.canvas1TargetMonitorIndex;
+            if (subCamera) subCamera.targetDisplay = JsonLoader.Instance.settings.canvas2TargetMonitorIndex;
         }
     }
 
@@ -69,14 +74,22 @@ public class GameManager : MonoBehaviour
         {
             Cursor.visible = !Cursor.visible;
         }
-        
+
         if (TitlePage && !TitlePage.activeInHierarchy)
         {
             inactivityTimer += Time.deltaTime;
             if (inactivityTimer >= inactivityThreshold)
             {
                 inactivityTimer = 0f;
-                _ = ShowTitlePageOnly();
+                // 이전 전환 작업 취소/정리
+                inactivityCts?.Cancel();
+                inactivityCts?.Dispose();
+
+                // 파괴 시 자동 취소되도록 링크
+                inactivityCts = CancellationTokenSource.CreateLinkedTokenSource(this.GetCancellationTokenOnDestroy());
+
+                // 페이드 아웃 포함 타이틀 복귀 (fire-and-forget)
+                _ = ShowTitlePageOnly(inactivityCts.Token);
             }
         }
 
@@ -87,25 +100,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public async Task ShowTitlePageOnly(bool isFadeOut = true)
+    public async Task ShowTitlePageOnly(CancellationToken token, bool isFadeOut = true)
     {
         try
-        {   
-            if (isFadeOut) await FadeManager.Instance.FadeOutAsync(JsonLoader.Instance.settings.fadeTime);
-
+        {
+            if (isFadeOut) await FadeManager.Instance.FadeOutAsync(JsonLoader.Instance.settings.fadeTime, false, token);
+            if (token.IsCancellationRequested) return;
+            
             if (GamePage.Instance)
             {
-                await GamePage.Instance.ZoomOutTarget();
-                GamePage.Instance.ResetToFirstStage();  
-            }
+                await GamePage.Instance.ZoomOutTarget(token);
+                if (token.IsCancellationRequested) return;
                 
+                GamePage.Instance.ResetToFirstStage();
+            }
+
             foreach (GameObject page in UIManager.Instance.pages)
-            {
+            {   
+                if (token.IsCancellationRequested) return;
                 page.SetActive(false);
             }
 
-            TitlePage.SetActive(true);
-            await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
+            if (TitlePage)
+            {
+                TitlePage.SetActive(true);
+            }
+                
+            //await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime, false, token);
+        }
+        catch (OperationCanceledException)
+        {
+            // 정상 취소
         }
         catch (Exception e)
         {
