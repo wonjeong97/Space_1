@@ -39,7 +39,7 @@ public class BaseObject : MonoBehaviour
     }
 
     /// <summary> 페이지에서 조준이 확정되었을 때 호출됨 </summary>
-    public virtual void OnRayConfirmed()
+    public void OnRayConfirmed()
     {
         PlayVideo();
         gameObject.SetActive(false);

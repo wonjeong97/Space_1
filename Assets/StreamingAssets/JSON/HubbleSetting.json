@@ -125,42 +125,42 @@
 	  "name": "Hubble Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1930, "y": 1090 },
-	  "fileName": "Video/100.mp4",
+	  "fileName": "Video/1_Hubble.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Moon Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1930, "y": 1090 },
-	  "fileName": "Video/101.mp4",
+	  "fileName": "Video/2_Moon.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Satellite Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1930, "y": 1090 },
-	  "fileName": "Video/102.mp4",
+	  "fileName": "Video/3_Satellite.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Mars Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1930, "y": 1090 },
-	  "fileName": "Video/103.mp4",
+	  "fileName": "Video/4_Mars.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Rocket Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1930, "y": 1090 },
-	  "fileName": "Video/104.mp4",
+	  "fileName": "Video/5_Rocket.mp4",
 	  "volume": 0.8
 	},
 	{
 	  "name": "Final Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1920, "y": 1080 },
-	  "fileName": "Video/105.mp4",
+	  "fileName": "Video/6_End.mp4",
 	  "volume": 0.8
 	}
   ],

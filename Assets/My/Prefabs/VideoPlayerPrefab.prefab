@@ -176,8 +176,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maskingImage: {fileID: 4976345293411400030}
+  targetRaw: {fileID: 7900672124908138788}
+  videoPlayer: {fileID: 1825818098911856252}
   scaleDuration: 0.5
   fadeDuration: 0.5
+  waitUntilPrepared: 1
+  bakeFirstFrameOnDisable: 1
 --- !u!1 &5913762057284455034
 GameObject:
   m_ObjectHideFlags: 0
