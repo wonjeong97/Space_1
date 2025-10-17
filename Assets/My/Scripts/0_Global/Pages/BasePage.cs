@@ -311,7 +311,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             }
 
             await CreateUI(token);
-            await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
+            await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime, external: token);
         }
         catch (OperationCanceledException)
         {

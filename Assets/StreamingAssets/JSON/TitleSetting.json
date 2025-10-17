@@ -1,10 +1,9 @@
 {
   "mainBackground": {
-	"name": "Main Background",
+	"name": "Image_BG",
 	"position": { "x": 960, "y": 540 },
 	"size": { "x": 1920, "y": 1080 },
-	"fileName": "Video/SpaceBackground.mp4",
-	"volume": 0
+	"sourceImage": "Image/Title/1_BG.png"
   }, 
   "titleImage": {
 	"name": "Image_우리가 우주로 가는 이유",
@@ -15,7 +14,7 @@
   "titleGuideImage":{
 	"name": "Image_트랙볼 마우스를 누르면 시작합니다",
 	"position": { "x": 960, "y": 945 },
-	"size": { "x": 1562, "y": 218 },
+	"size": { "x": 800, "y": 120 },
 	"sourceImage": "Image/Title/1_Guide.png"
   },		  
   "subBackground": {

@@ -58,6 +58,6 @@ public class UIBlink : MonoBehaviour
     private void SetAlpha01(float a01)
     {        
 		Color c = image.color;
-		image.color = new Color(c.a, c.g, c.b, a01);        
+		image.color = new Color(c.r, c.g, c.b, a01);        
     }
 }

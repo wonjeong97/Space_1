@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public class TitleSetting
 {
-    public VideoSetting mainBackground;
+    public ImageSetting mainBackground;
 
     public ImageSetting titleImage;
     public ImageSetting titleGuideImage;
@@ -23,11 +23,13 @@ public class TitlePage : BasePage<TitleSetting>
 
     private GameObject tutorialPage;
 
+    private GameObject titleBG;
     private GameObject titleImage;
     private GameObject titleGuideImage;
 
     protected override async UniTask BuildContentAsync(CancellationToken token)
-    {
+    {   
+        titleBG = await UICreator.Instance.CreateSingleImageAsync(setting.mainBackground, mainCanvasObj, token);
         titleImage = await UICreator.Instance.CreateSingleImageAsync(setting.titleImage, mainCanvasObj, token);
         titleGuideImage = await UICreator.Instance.CreateSingleImageAsync(setting.titleGuideImage, mainCanvasObj, token);
         titleGuideImage.AddComponent<UIBlink>();
