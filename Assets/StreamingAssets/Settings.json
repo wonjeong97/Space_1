@@ -11,11 +11,10 @@
 	"font1": "Fonts/TMPro/DungGeunMo SDF.asset",
 	"font2": "Fonts/TMPro/NanumGothic-Regular SDF.asset"
   },
-  "sounds": [
-	{ "key": "click1", "clipPath": "click1.wav", "volume": 1.0 },
-	{ "key": "click2", "clipPath": "click2.wav", "volume": 0.5 }
-  ],
-  "mouseSensitivity" : 0.12,
+  "foundSound": { "key": "found", "clipPath": "Sound/발견할 때.mp3", "volume": 1.0 },
+  "cancelSound": { "key": "cancel", "clipPath": "Sound/취소할 때.mp3", "volume": 1.0 },
+  "zoomSound": { "key": "zoomSound", "clipPath": "Sound/확대할 때.mp3", "volume": 1.0 },
+  "mouseSensitivity": 0.12,
   "mouseSmoothing": 5.0,
   "Up": 70.0,
   "Down": -30.0,

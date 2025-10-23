@@ -29,7 +29,6 @@ public class TutorialSetting
 
 public class TutorialPage : BasePage<TutorialSetting>
 {
-    private bool inputReady;
     protected override string JsonPath => "JSON/TutorialSetting.json";
 
     private GameObject hubblePage;
@@ -58,10 +57,9 @@ public class TutorialPage : BasePage<TutorialSetting>
         base.OnEnable();
         if (imageTutorial1 && imageTutorial2 && imageAssistance1 && imageAssistance2)
         {
-            inputReady = false;
             crosshair1.transform.SetParent(imageTutorial1.transform);
             
-            _ = TutorialSequenceAsync(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2, cancelToken.Token);
+            TutorialSequenceAsync(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2, cancelToken.Token).Forget();
         }
     }
 
@@ -98,12 +96,12 @@ public class TutorialPage : BasePage<TutorialSetting>
 
         isCreated = true;
         
-        _ = TutorialSequenceAsync(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2, token);
+        TutorialSequenceAsync(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2, token).Forget();
     }
 
     private async UniTask TutorialSequenceAsync(GameObject tuto1, GameObject tuto2, GameObject assist1, GameObject assist2, CancellationToken token)
     {   
-        _ = CrosshairMove(crosshairRT, crosshairRT.anchoredPosition, star2RT.anchoredPosition, 2);
+        CrosshairMove(crosshairRT, crosshairRT.anchoredPosition, star2RT.anchoredPosition, 2).Forget();
         int waitMs = Mathf.RoundToInt(setting.tutorialDisplayTime * 1000f);
         await UniTask.Delay(waitMs, DelayType.DeltaTime, PlayerLoopTiming.Update, token);
         
@@ -121,11 +119,10 @@ public class TutorialPage : BasePage<TutorialSetting>
             crosshair.CrosshairTrigger("Trigger");
         }
 
-        _ = SampleVideoAnim(sample, 1f);
+        SampleVideoAnim(sample, 1f).Forget();
         
         await UniTask.Delay(TimeSpan.FromSeconds(3), DelayType.DeltaTime, PlayerLoopTiming.Update, token);
         await LoadGamePageAsync(token);
-        inputReady = true;
     }
 
     private async UniTask LoadGamePageAsync(CancellationToken token)
@@ -171,7 +168,8 @@ public class TutorialPage : BasePage<TutorialSetting>
         
         rt.anchoredPosition = end;
         if (crosshair1.TryGetComponent(out TutorialCrosshair crosshair))
-        {
+        {   
+            SoundManager.Instance?.PlayFound().Forget();
             crosshair.CrosshairTrigger("Trigger");
         }
     }

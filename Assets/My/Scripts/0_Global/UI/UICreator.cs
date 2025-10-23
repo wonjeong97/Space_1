@@ -436,7 +436,7 @@ public class UICreator : MonoBehaviour
         {
             string soundKey = setting.buttonSound;
             if (!string.IsNullOrEmpty(soundKey))
-                button.onClick.AddListener(() => { AudioManager.Instance?.Play(soundKey); });
+                button.onClick.AddListener(() => { SoundManager.Instance?.PlayByKey(soundKey); });
         }
 
         return (go, addImgGo);

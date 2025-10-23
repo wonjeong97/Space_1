@@ -105,13 +105,13 @@ public class GamePage : BasePage<GameSetting>
     {
         // === 서브 디스플레이 버튼 생성 ===
         (titleButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.titleButton, subCanvasObj, token);
-        if (titleButton.TryGetComponent(out Button button1)) button1.onClick.AddListener(() => _ = HandleTitleButtonAsync(cancelToken.Token));
+        if (titleButton.TryGetComponent(out Button button1)) button1.onClick.AddListener(() => HandleTitleButtonAsync(cancelToken.Token).Forget());
 
         playImage = await UICreator.Instance.CreateSingleImageAsync(setting.playImage, subCanvasObj, token);
         playImage.SetActive(false);
 
         (homeButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.homeButton, playImage, token);
-        if (homeButton.TryGetComponent(out Button button2)) button2.onClick.AddListener(() => _ = HandleTitleButtonAsync(cancelToken.Token));
+        if (homeButton.TryGetComponent(out Button button2)) button2.onClick.AddListener(() => HandleTitleButtonAsync(cancelToken.Token).Forget());
 
         (playButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.playButton, playImage, token);
         if (playButton.TryGetComponent(out Button button3)) button3.onClick.AddListener(HandlePlayButton);
@@ -120,7 +120,7 @@ public class GamePage : BasePage<GameSetting>
         if (pauseButton.TryGetComponent(out Button button4)) button4.onClick.AddListener(HandlePauseButton);
 
         (skipButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.skipButton, playImage, token);
-        if (skipButton.TryGetComponent(out Button button5)) button5.onClick.AddListener(() => _ = HandleSkipButton());
+        if (skipButton.TryGetComponent(out Button button5)) button5.onClick.AddListener(() => HandleSkipButton().Forget());
 
         // === 크로스헤어 생성 ===
         GameObject crosshair = await UICreator.Instance.CreateSingleImageAsync(setting.crosshairImage, mainCanvasObj, token);
@@ -204,7 +204,7 @@ public class GamePage : BasePage<GameSetting>
     private async UniTask HandleSkipButton()
     {
         if (!isPlayingVideo) return;
-
+        SoundManager.Instance?.PlayCancel();
         // Final은 메인 디스플레이 페이드 로직 사용
         if (currentStage == StageEntry.Final)
         {

@@ -218,7 +218,9 @@ public class Settings
     public float fadeTime;
     public CloseSetting closeSetting;
     public FontMaps fontMap;
-    public SoundSetting[] sounds;
+    public SoundSetting foundSound;
+    public SoundSetting cancelSound;
+    public SoundSetting zoomSound;
 
     public float mouseSensitivity;
     public float mouseSmoothing;

@@ -146,6 +146,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
                         currentTarget?.OnRayExit();
                         currentTarget = obj;
                         currentTarget.OnRayEnter();
+                        SoundManager.Instance?.PlayFound();
                     }
                 }
                 else
@@ -216,6 +217,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             }
 
             // 줌 인
+            SoundManager.Instance?.PlayZoom();
             await ZoomInTarget(token);
             token.ThrowIfCancellationRequested();
 
