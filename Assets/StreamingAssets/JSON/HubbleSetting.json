@@ -1,4 +1,9 @@
 {
+  "servoHubble": "left 30",
+  "servoMoon": "Right 60",
+  "servoSatellite": "left 20",
+  "servoMars": "Right 50",
+  "servoRocket": "left 100",  
   "backgroundImage": {
 	"name": "Game1_Background",
 	"position": { "x": 960, "y": 520 },

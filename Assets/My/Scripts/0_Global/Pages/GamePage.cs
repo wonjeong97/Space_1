@@ -11,6 +11,12 @@ using UnityEngine.Video;
 [Serializable]
 public class GameSetting
 {
+    public string servoHubble;
+    public string servoMoon;
+    public string servoSatellite;
+    public string servoMars;
+    public string servoRocket;
+    
     public ImageSetting backgroundImage;
 
     public ButtonSetting titleButton;

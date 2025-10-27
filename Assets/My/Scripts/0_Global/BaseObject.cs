@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BaseObject : MonoBehaviour
 {
+    protected string servoAngle;
+    
     public virtual void OnRayEnter()
     {
         if (Crosshair.Instance)

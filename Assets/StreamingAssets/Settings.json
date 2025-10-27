@@ -1,4 +1,7 @@
 {
+  "comPort": "COM6",
+  "baudRate": 9600,
+  
   "inactivityTime": 300.0,
   "fadeTime": 0.5,
   "closeSetting": {

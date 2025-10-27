@@ -10,6 +10,7 @@ using UnityEngine.Video;
 public abstract class BasePage<T> : MonoBehaviour where T : class
 {
     [NonSerialized] protected T setting; // 페이지별 설정 데이터
+    public T Setting { get => setting; set => setting = value; }
     protected Settings jsonSetting;
 
     protected abstract string JsonPath { get; }
@@ -341,7 +342,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             subCanvasObj.TryGetComponent(out CanvasScaler canvasScaler))
         {
             canvas2.targetDisplay = jsonSetting.canvas2TargetMonitorIndex;
-            canvasScaler.referenceResolution = new Vector2(1920, 540);
+            //canvasScaler.referenceResolution = new Vector2(1920, 540);
         }
 
         VideoSetting mainBackground = GetFieldOrProperty<VideoSetting>(setting, "mainBackground");

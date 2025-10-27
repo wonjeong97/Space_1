@@ -8,15 +8,14 @@ public class RocketObject : BaseObject
         GetComponent<Renderer>().material = GameManager.Instance.rocketMaterial;
     }
 
+    private void Start()
+    {
+        servoAngle = GamePage.Instance?.Setting.servoRocket;
+    }
+    
     protected override void PlayVideo()
     {
-        if (GamePage.Instance)
-        {
-            GamePage.Instance.PlayVideoByIndex(4);
-        }
-        else
-        {
-            Debug.LogError("[HubbleObject] No valid page instance found to play video.");
-        }
+        ArduinoManager.Instance?.ExcuteCommand(servoAngle);
+        GamePage.Instance?.PlayVideoByIndex(4);
     }
 }
