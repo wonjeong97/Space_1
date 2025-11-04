@@ -8,16 +8,22 @@
 	"volume": 0
   },
   "tutorial1": {
-	"name": "Image_트랙볼을 움직여 반짝이는 물체를 찾아보세요",
+	"name": "Image_이용 안내",
 	"position": { "x": 960, "y": 540 },
 	"size": { "x": 1920, "y": 1080 },
 	"sourceImage": "Image/Tutorial/1_Tutorial.png"
   },
   "tutorial2": {
-	"name": "Image_트랙볼을 움직여 반짝이는 물체를 클릭해서 관측해보세요",
+	"name": "Image_트랙볼을 움직여 반짝이는 물체를 찾아보세요",
 	"position": { "x": 960, "y": 540 },
 	"size": { "x": 1920, "y": 1080 },
 	"sourceImage": "Image/Tutorial/2_Tutorial.png"
+  },
+  "tutorial3": {
+	"name": "Image_트랙볼을 움직여 반짝이는 물체를 클릭해서 관측해보세요",
+	"position": { "x": 960, "y": 540 },
+	"size": { "x": 1920, "y": 1080 },
+	"sourceImage": "Image/Tutorial/3_Tutorial.png"
   },
   "subBackground": {
 	"name": "Sub Background",
@@ -57,6 +63,12 @@
 	"name": "crosshair1",
 	"position": { "x": 720, "y": 875 },
 	"size": { "x": 200, "y": 200 }
+  },
+  "body": {
+	"name": "함체 설명",
+	"position": { "x": 960, "y": 700 },
+	"size": { "x": 1420, "y": 700 },
+	"sourceImage": "Image/Tutorial/1_Body.png"
   },
   "sample": {
 	"name": "Sample",

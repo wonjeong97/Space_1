@@ -13,6 +13,7 @@ public class TutorialSetting
     public VideoSetting mainBackground;
     public ImageSetting tutorial1;
     public ImageSetting tutorial2;
+    public ImageSetting tutorial3;
 
     public VideoSetting subBackground;
     public ImageSetting assistance2;
@@ -23,6 +24,7 @@ public class TutorialSetting
     public ImageSetting star3;
     public ImageSetting crosshair1;
 
+    public ImageSetting body;
     public ImageSetting sample;
     public ImageSetting frame;
 }
@@ -35,9 +37,11 @@ public class TutorialPage : BasePage<TutorialSetting>
 
     private GameObject imageTutorial1;
     private GameObject imageTutorial2;
+    private GameObject imageTutorial3;
 
     private GameObject imageAssistance1;
     private GameObject imageAssistance2;
+    private GameObject imageAssistance3;
 
     private GameObject star1;
     private GameObject star2;
@@ -47,69 +51,81 @@ public class TutorialPage : BasePage<TutorialSetting>
     private RectTransform crosshairRT;
     private RectTransform star2RT;
 
+    private GameObject body;
     private GameObject sample;
     private GameObject frame;
-
-    
 
     protected override void OnEnable()
     {   
         base.OnEnable();
-        if (imageTutorial1 && imageTutorial2 && imageAssistance1 && imageAssistance2)
+        if (imageTutorial2 && imageTutorial3 && imageAssistance2 && imageAssistance3)
         {
-            crosshair1.transform.SetParent(imageTutorial1.transform);
+            crosshair1.transform.SetParent(imageTutorial2.transform);
             
-            TutorialSequenceAsync(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2, cancelToken.Token).Forget();
+            TutorialSequenceAsync(imageTutorial1, imageTutorial2, imageTutorial3,
+                                  imageAssistance2, imageAssistance3, cancelToken.Token).Forget();
         }
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-
+        
         imageTutorial1.SetActive(true);
         imageTutorial2.SetActive(false);
+        imageTutorial3.SetActive(false);
     }
 
     protected override async UniTask BuildContentAsync(CancellationToken token)
     {
         imageTutorial1 = await UICreator.Instance.CreateSingleImageAsync(setting.tutorial1, mainCanvasObj, token);
         imageTutorial2 = await UICreator.Instance.CreateSingleImageAsync(setting.tutorial2, mainCanvasObj, token);
+        imageTutorial3 = await UICreator.Instance.CreateSingleImageAsync(setting.tutorial3, mainCanvasObj, token);
         imageTutorial2.SetActive(false);
+        imageTutorial3.SetActive(false);
 
-        imageAssistance1 = await UICreator.Instance.CreateSingleImageAsync(setting.assistance2, subCanvasObj, token);
-        imageAssistance2 = await UICreator.Instance.CreateSingleImageAsync(setting.assistance3, subCanvasObj, token);
-        imageAssistance2.SetActive(false);
+        imageAssistance2 = await UICreator.Instance.CreateSingleImageAsync(setting.assistance2, subCanvasObj, token);
+        imageAssistance3 = await UICreator.Instance.CreateSingleImageAsync(setting.assistance3, subCanvasObj, token);
+        imageAssistance3.SetActive(false);
 
-        star1 = await UICreator.Instance.CreateSingleStarAsync(setting.star1, imageTutorial1, token);
-        star2 = await UICreator.Instance.CreateSingleStarAsync(setting.star2, imageTutorial1, token);
-        star3 = await UICreator.Instance.CreateSingleStarAsync(setting.star3, imageTutorial2, token);
-        crosshair1 = await UICreator.Instance.CreateSingleImageAsync(setting.crosshair1, imageTutorial1,  token);    
+        star1 = await UICreator.Instance.CreateSingleStarAsync(setting.star1, imageTutorial2, token);
+        star2 = await UICreator.Instance.CreateSingleStarAsync(setting.star2, imageTutorial2, token);
+        star3 = await UICreator.Instance.CreateSingleStarAsync(setting.star3, imageTutorial3, token);
+        crosshair1 = await UICreator.Instance.CreateSingleImageAsync(setting.crosshair1, imageTutorial2,  token);    
         crosshair1.AddComponent<TutorialCrosshair>();
         
         crosshair1.TryGetComponent(out crosshairRT);
         star2.TryGetComponent(out star2RT);
         
-        sample = await UICreator.Instance.CreateSingleImageAsync(setting.sample, imageTutorial2, token);
+        body = await UICreator.Instance.CreateSingleImageAsync(setting.body, imageTutorial1, token);
+        sample = await UICreator.Instance.CreateSingleImageAsync(setting.sample, imageTutorial3, token);
         frame = await UICreator.Instance.CreateSingleImageAsync(setting.frame, sample, token);
         sample.transform.localScale = new Vector3(1, 0, 1);
 
         isCreated = true;
         
-        TutorialSequenceAsync(imageTutorial1, imageTutorial2, imageAssistance1, imageAssistance2, token).Forget();
+        TutorialSequenceAsync(imageTutorial1, imageTutorial2, imageTutorial3,
+                              imageAssistance2, imageAssistance3, token).Forget();
     }
 
-    private async UniTask TutorialSequenceAsync(GameObject tuto1, GameObject tuto2, GameObject assist1, GameObject assist2, CancellationToken token)
+    private async UniTask TutorialSequenceAsync(GameObject tutorial1, GameObject tutorial2, GameObject tutorial3,
+                                                GameObject assist1, GameObject assist2, CancellationToken token)
     {   
-        CrosshairMove(crosshairRT, crosshairRT.anchoredPosition, star2RT.anchoredPosition, 2).Forget();
         int waitMs = Mathf.RoundToInt(setting.tutorialDisplayTime * 1000f);
+        tutorial1.SetActive(true);
         await UniTask.Delay(waitMs, DelayType.DeltaTime, PlayerLoopTiming.Update, token);
         
-        crosshair1.transform.SetParent(tuto2.transform);
+        tutorial1.SetActive(false);
+        tutorial2.SetActive(true);
+        CrosshairMove(crosshairRT, crosshairRT.anchoredPosition, star2RT.anchoredPosition, 2).Forget();
+        
+        await UniTask.Delay(waitMs, DelayType.DeltaTime, PlayerLoopTiming.Update, token);
+        
+        crosshair1.transform.SetParent(tutorial3.transform);
         crosshair1.transform.position = star3.transform.position;
         
-        tuto1.SetActive(false);
-        tuto2.SetActive(true);
+        tutorial2.SetActive(false);
+        tutorial3.SetActive(true);
 
         assist1.SetActive(false);
         assist2.SetActive(true);
