@@ -203,17 +203,33 @@ public class GamePage : BasePage<GameSetting>
     }
 
     private async UniTask HandleTitleButtonAsync(CancellationToken token)
-    {
+    {   
+        SoundManager.Instance?.ResumeBgm();
         await GameManager.Instance.ShowTitlePageOnly(token, true);
     }
 
     private async UniTask HandleSkipButton()
     {
         if (!isPlayingVideo) return;
+
         SoundManager.Instance?.PlayCancel();
+
         // Final은 메인 디스플레이 페이드 로직 사용
         if (currentStage == StageEntry.Final)
         {
+            if (videoPlayer) videoPlayer.Stop();
+            if (pageVideo)
+            {
+                pageVideo.SetActive(false);
+                pageVideo = null;
+            }
+
+            videoPlayer = null;
+            isPlayingVideo = false;
+
+            // 마지막 영상 스킵 시에도 BGM 재개
+            SoundManager.Instance?.ResumeBgm();
+
             OnFinalVideoEnded();
             return;
         }
@@ -223,7 +239,7 @@ public class GamePage : BasePage<GameSetting>
         if (pageVideo) videoIndex = videoObjectList.IndexOf(pageVideo);
         else if (videoPlayer) videoIndex = videoObjectList.IndexOf(videoPlayer.gameObject);
 
-        // 정지 및 페이드아웃 후 비활성화
+        // 정지 및 비활성화
         if (videoPlayer) videoPlayer.Stop();
         if (pageVideo)
         {
@@ -233,6 +249,9 @@ public class GamePage : BasePage<GameSetting>
 
         videoPlayer = null;
         isPlayingVideo = false;
+
+        // 스킵 후 BGM 재개
+        SoundManager.Instance?.ResumeBgm();
 
         // 아이콘 컬러 복원(스킵도 완료로 간주)
         GameObject fromGo = UIManager.Instance.contentsImagesOff[videoIndex];
@@ -365,14 +384,16 @@ public class GamePage : BasePage<GameSetting>
     {
         try
         {
+            // 어떤 스테이지든 영상이 끝나면 먼저 BGM 재개
+            isPlayingVideo = false;
+            SoundManager.Instance?.ResumeBgm();
+
             if (currentStage == StageEntry.Final)
             {
                 OnFinalVideoEnded();
                 return;
             }
 
-            isPlayingVideo = false;
-            
             // 현재 비디오 오브젝트 비활성화
             if (pageVideo)
             {
@@ -393,10 +414,10 @@ public class GamePage : BasePage<GameSetting>
                 return;
             }
 
-            NextStage(); // 다음 스테이지로 갱신
-            ApplyStageActivation(currentStage); // 스테이지 별 타깃 오브젝트 갱신
-            UpdateStageUI(currentStage); // 미션, 서브 텍스트 업데이트
-            UpdateVideoUIVisible(false); // 재생/밈춤, 건너뛰기 버튼 숨김
+            NextStage();                         // 다음 스테이지로 갱신
+            ApplyStageActivation(currentStage);  // 스테이지 별 타깃 오브젝트 갱신
+            UpdateStageUI(currentStage);         // 미션, 서브 텍스트 업데이트
+            UpdateVideoUIVisible(false);         // 재생/멈춤, 건너뛰기 버튼 숨김
             await CrossFadeIcon(fromGo, toGo, 1);
         }
         catch (Exception e)
@@ -409,7 +430,7 @@ public class GamePage : BasePage<GameSetting>
     private void OnFinalVideoEnded()
     {
         // 메인 디스플레이 페이드아웃 + Sub7 + 5초 후 타이틀 복귀
-        _ = OutroAsync(this.GetCancellationTokenOnDestroy());
+        OutroAsync(this.GetCancellationTokenOnDestroy()).Forget();
     }
 
     #endregion

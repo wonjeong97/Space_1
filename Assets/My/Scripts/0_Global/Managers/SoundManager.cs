@@ -6,7 +6,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
-/// <summary> 프로젝트 전역 효과음 재생 매니저 </summary>
+/// <summary> 프로젝트 전역 효과음/BGM 재생 매니저 </summary>
 public sealed class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
@@ -14,6 +14,9 @@ public sealed class SoundManager : MonoBehaviour
     [Header("AudioSource")]
     [Tooltip("효과음 재생에 사용할 오디오 소스. 지정하지 않으면 자동 생성.")]
     [SerializeField] private AudioSource oneShotSource;
+
+    [Tooltip("BGM 재생에 사용할 오디오 소스. 지정하지 않으면 자동 생성.")]
+    [SerializeField] private AudioSource bgmSource;
 
     private readonly Dictionary<string, AudioClip> clipCache =
         new Dictionary<string, AudioClip>(StringComparer.OrdinalIgnoreCase);
@@ -33,6 +36,7 @@ public sealed class SoundManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        // 효과음용 오디오 소스
         if (oneShotSource == null)
         {
             oneShotSource = gameObject.AddComponent<AudioSource>();
@@ -41,13 +45,23 @@ public sealed class SoundManager : MonoBehaviour
             oneShotSource.spatialBlend = 0f; // 2D
         }
 
-        // Setting.json의 개별 사운드 필드 등록
-        Settings s = JsonLoader.Instance?.settings;
-        if (s != null)
+        // BGM용 오디오 소스
+        if (bgmSource == null)
         {
-            AddSoundIfValid(s.foundSound);
-            AddSoundIfValid(s.cancelSound);
-            AddSoundIfValid(s.zoomSound);
+            bgmSource = gameObject.AddComponent<AudioSource>();
+            bgmSource.playOnAwake = false;
+            bgmSource.loop = true;          // 기본적으로 BGM은 루프
+            bgmSource.spatialBlend = 0f;    // 2D
+        }
+
+        // Setting.json의 sounds 배열 등록
+        Settings s = JsonLoader.Instance?.settings;
+        if (s != null && s.sounds != null)
+        {
+            foreach (SoundSetting ss in s.sounds)
+            {
+                AddSoundIfValid(ss);
+            }
         }
 
         // 미리 로드
@@ -59,17 +73,25 @@ public sealed class SoundManager : MonoBehaviour
     {
         if (loadCts != null)
         {
-            try { loadCts.Cancel(); } catch { }
+            try
+            {
+                loadCts.Cancel();
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning($"[SoundManager] OnDestroy-> loadCts.Cancel 예외: {e.Message}");
+            }
+
             loadCts.Dispose();
             loadCts = null;
         }
     }
 
     // ------------------------------------------------------------
-    // 퍼블릭 API
+    // 퍼블릭 API (효과음)
     // ------------------------------------------------------------
 
-    /// <summary> 설정에 등록된 key로 사운드 재생 </summary>
+    /// <summary> 설정에 등록된 key로 사운드 재생 (효과음용) </summary>
     public async UniTaskVoid PlayByKey(string key)
     {
         await UniTask.SwitchToMainThread();
@@ -86,7 +108,7 @@ public sealed class SoundManager : MonoBehaviour
         if (clip) oneShotSource.PlayOneShot(clip, vol);
     }
 
-    /// <summary> 직접 경로 지정으로 사운드 재생 </summary>
+    /// <summary> 직접 경로 지정으로 사운드 재생 (효과음용) </summary>
     public async UniTaskVoid PlayByPath(string relativePath, float volume = 1f)
     {
         await UniTask.SwitchToMainThread();
@@ -97,16 +119,92 @@ public sealed class SoundManager : MonoBehaviour
         if (clip) oneShotSource.PlayOneShot(clip, vol);
     }
 
-    // 편의 함수
-    public UniTaskVoid PlayFound()  => PlayByPath("Sound/발견할 때.mp3");
-    public UniTaskVoid PlayCancel() => PlayByPath("Sound/취소할 때.mp3");
-    public UniTaskVoid PlayZoom()   => PlayByPath("Sound/확대할 때.mp3");
+    // 편의 함수 (Settings.sounds의 key 기준)
+    public UniTaskVoid PlayFound()  => PlayByKey("found");
+    public UniTaskVoid PlayCancel() => PlayByKey("cancel");
+    public UniTaskVoid PlayZoom()   => PlayByKey("zoomSound");
+    public UniTaskVoid PlayBGM()    => PlayBgmByKey("BGM");
+
+    // ------------------------------------------------------------
+    // 퍼블릭 API (BGM)
+    // ------------------------------------------------------------
+
+    /// <summary>
+    /// BGM 전용 오디오 소스로 재생.
+    /// - 기존 BGM을 멈추고 새 클립으로 교체 후 재생
+    /// - relativePath는 StreamingAssets 기준 경로
+    /// </summary>
+    public async UniTaskVoid PlayBgmByPath(string relativePath, float volume = 1f, bool loop = true)
+    {
+        await UniTask.SwitchToMainThread();
+
+        if (string.IsNullOrEmpty(relativePath)) return;
+        if (bgmSource == null) return;
+
+        float vol = Mathf.Clamp01(volume <= 0f ? 1f : volume);
+        AudioClip clip = await GetOrLoadClipAsync(relativePath, this.GetCancellationTokenOnDestroy());
+        if (clip == null) return;
+
+        // 같은 클립이 이미 재생 중이면 볼륨/루프만 갱신
+        if (bgmSource.clip == clip && bgmSource.isPlaying)
+        {
+            bgmSource.volume = vol;
+            bgmSource.loop = loop;
+            return;
+        }
+
+        bgmSource.Stop();
+        bgmSource.clip = clip;
+        bgmSource.volume = vol;
+        bgmSource.loop = loop;
+        bgmSource.Play();
+    }
+
+    /// <summary> Setting.json에 등록된 key로 BGM 재생 </summary>
+    public async UniTaskVoid PlayBgmByKey(string key, bool loop = true)
+    {
+        await UniTask.SwitchToMainThread();
+        if (string.IsNullOrEmpty(key)) return;
+
+        if (!soundMap.TryGetValue(key, out SoundSetting ss))
+        {
+            Debug.LogWarning($"[SoundManager] BGM 미등록 키: {key}");
+            return;
+        }
+
+        float vol = Mathf.Clamp01(ss.volume <= 0f ? 1f : ss.volume);
+        PlayBgmByPath(ss.clipPath, vol, loop).Forget();
+    }
+
+    public void PauseBgm()
+    {
+        if (bgmSource == null) return;
+        if (bgmSource.isPlaying) bgmSource.Pause();
+    }
+
+    public void ResumeBgm()
+    {
+        if (bgmSource == null) return;
+        if (bgmSource.clip != null && !bgmSource.isPlaying) bgmSource.Play();
+    }
+
+    public void StopBgm()
+    {
+        if (bgmSource == null) return;
+        bgmSource.Stop();
+    }
+
+    public void ClearBgm()
+    {
+        if (bgmSource == null) return;
+        bgmSource.Stop();
+        bgmSource.clip = null;
+    }
 
     // ------------------------------------------------------------
     // 내부 유틸
     // ------------------------------------------------------------
 
-    /// <summary> 유효한 사운드 설정만 맵에 추가 </summary>
     private void AddSoundIfValid(SoundSetting ss)
     {
         if (ss == null || string.IsNullOrEmpty(ss.key) || string.IsNullOrEmpty(ss.clipPath))
@@ -115,7 +213,6 @@ public sealed class SoundManager : MonoBehaviour
         soundMap[ss.key] = ss;
     }
 
-    /// <summary> 모든 등록 사운드 미리 로드 </summary>
     private async UniTask PreloadAllAsync(CancellationToken token)
     {
         await UniTask.SwitchToMainThread();
@@ -126,7 +223,10 @@ public sealed class SoundManager : MonoBehaviour
             {
                 await GetOrLoadClipAsync(s.clipPath, token);
             }
-            catch (OperationCanceledException) { return; }
+            catch (OperationCanceledException)
+            {
+                return;
+            }
             catch (Exception e)
             {
                 Debug.LogWarning($"[SoundManager] 프리로드 실패: {s.key} -> {e.Message}");
@@ -134,7 +234,6 @@ public sealed class SoundManager : MonoBehaviour
         }
     }
 
-    /// <summary> 캐시 우선, 없으면 로드 </summary>
     private async UniTask<AudioClip> GetOrLoadClipAsync(string relativePath, CancellationToken token)
     {
         if (string.IsNullOrEmpty(relativePath)) return null;
@@ -150,7 +249,6 @@ public sealed class SoundManager : MonoBehaviour
         return clip;
     }
 
-    /// <summary> 실제 파일 로드 </summary>
     private async UniTask<AudioClip> LoadClipAsync(string relativePath, CancellationToken token)
     {
         try
@@ -171,11 +269,7 @@ public sealed class SoundManager : MonoBehaviour
             {
                 await req.SendWebRequest().ToUniTask(cancellationToken: token);
 
-#if UNITY_2020_2_OR_NEWER
                 if (req.result != UnityWebRequest.Result.Success)
-#else
-                if (req.isNetworkError || req.isHttpError)
-#endif
                 {
                     Debug.LogError($"[SoundManager] 로드 실패: {fullPath} -> {req.error}");
                     return null;
@@ -188,8 +282,15 @@ public sealed class SoundManager : MonoBehaviour
                 return clip;
             }
         }
-        catch (OperationCanceledException) { return null; }
-        catch (Exception e) { Debug.LogError(e); return null; }
+        catch (OperationCanceledException)
+        {
+            return null;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+            return null;
+        }
     }
 
     private static AudioType GuessAudioTypeByExtension(string path)

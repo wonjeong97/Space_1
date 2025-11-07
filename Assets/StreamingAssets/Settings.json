@@ -1,7 +1,6 @@
 {
   "comPort": "COM6",
-  "baudRate": 9600,
-  
+  "baudRate": 9600,  
   "inactivityTime": 300.0,
   "fadeTime": 0.5,
   "closeSetting": {
@@ -14,9 +13,12 @@
 	"font1": "Fonts/TMPro/DungGeunMo SDF.asset",
 	"font2": "Fonts/TMPro/NanumGothic-Regular SDF.asset"
   },
-  "foundSound": { "key": "found", "clipPath": "Sound/발견할 때.mp3", "volume": 1.0 },
-  "cancelSound": { "key": "cancel", "clipPath": "Sound/취소할 때.mp3", "volume": 1.0 },
-  "zoomSound": { "key": "zoomSound", "clipPath": "Sound/확대할 때.mp3", "volume": 1.0 },
+  "sounds":[
+	{ "key": "found", "clipPath": "Sound/발견할 때.mp3", "volume": 1.0 },
+	{ "key": "cancel", "clipPath": "Sound/취소할 때.mp3", "volume": 1.0 },
+	{ "key": "zoomSound", "clipPath": "Sound/확대할 때.mp3", "volume": 1.0 },
+	{ "key": "BGM", "clipPath": "Sound/01-a-new-day.wav", "volume": 1.0 }
+  ],
   "mouseSensitivity": 0.12,
   "mouseSmoothing": 5.0,
   "Up": 70.0,

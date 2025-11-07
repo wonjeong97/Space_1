@@ -97,7 +97,8 @@ public class TutorialPage : BasePage<TutorialSetting>
         crosshair1.TryGetComponent(out crosshairRT);
         star2.TryGetComponent(out star2RT);
         
-        body = await UICreator.Instance.CreateSingleImageAsync(setting.body, imageTutorial1, token);
+        // 튜토리얼 1번 이미지 일체화 되면서 잠시 주석처리
+        //body = await UICreator.Instance.CreateSingleImageAsync(setting.body, imageTutorial1, token);
         sample = await UICreator.Instance.CreateSingleImageAsync(setting.sample, imageTutorial3, token);
         frame = await UICreator.Instance.CreateSingleImageAsync(setting.frame, sample, token);
         sample.transform.localScale = new Vector3(1, 0, 1);

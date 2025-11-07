@@ -39,8 +39,8 @@ public class TitlePage : BasePage<TitleSetting>
         inputReady = true;
         isCreated = true;
 
+        SoundManager.Instance?.PlayBGM();
         GameManager.Instance.TitlePage = gameObject;
-        
     }
 
     protected async void Update()
