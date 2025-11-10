@@ -101,7 +101,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
         jsonSetting ??= JsonLoader.Instance.settings;
 
         InitPage();
-        _ = StartAsync(cancelToken.Token);
+        StartAsync(cancelToken.Token).Forget();
     }
 
     private void Update()

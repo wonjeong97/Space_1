@@ -4,6 +4,7 @@
   "servoSatellite": "left 20",
   "servoMars": "Right 50",
   "servoRocket": "left 100",  
+  "videoFadeTime": 1.0,
   "backgroundImage": {
 	"name": "Game1_Background",
 	"position": { "x": 960, "y": 520 },

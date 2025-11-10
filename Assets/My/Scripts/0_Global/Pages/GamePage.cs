@@ -16,6 +16,8 @@ public class GameSetting
     public string servoSatellite;
     public string servoMars;
     public string servoRocket;
+
+    public float videoFadeTime;
     
     public ImageSetting backgroundImage;
 
@@ -80,8 +82,7 @@ public class GamePage : BasePage<GameSetting>
     private const int Sub6Index = 5;
     private const int Sub7Index = 6;
     private const float FinalMainFadeDuration = 2.5f; // 메인 디스플레이 페이드아웃 시간
-
-    private const float VideoFadeDuration = 0.5f;
+    private float videoFadeTime;
     public GameObject MainCanvasObj => mainCanvasObj;
 
     #region Unity Life-cycle
@@ -105,10 +106,20 @@ public class GamePage : BasePage<GameSetting>
         UpdateVideoUIVisible(false); // 비디오 미재생 시 버튼 숨김
     }
 
+    protected override void Start()
+    {
+        base.Start();
+
+        if (setting != null)
+        {
+            videoFadeTime = setting.videoFadeTime;
+        }
+    }
+
     #endregion
 
     protected override async UniTask BuildContentAsync(CancellationToken token)
-    {
+    {   
         // === 서브 디스플레이 버튼 생성 ===
         (titleButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.titleButton, subCanvasObj, token);
         if (titleButton.TryGetComponent(out Button button1)) button1.onClick.AddListener(() => HandleTitleButtonAsync(cancelToken.Token).Forget());
@@ -259,8 +270,9 @@ public class GamePage : BasePage<GameSetting>
 
         if (currentStage == StageEntry.Rocket)
         {
-            // 로켓 스킵 → Final 즉시 시작
-            StartFinalStage();
+            // 로켓 스킵 → Final 전환 시에도 페이드 연출 적용
+            CancellationToken token = this.GetCancellationTokenOnDestroy();
+            await StartFinalStageWithFadeAsync(fromGo, toGo, token);
             return;
         }
 
@@ -269,7 +281,7 @@ public class GamePage : BasePage<GameSetting>
         NextStage();
         ApplyStageActivation(currentStage);
         UpdateStageUI(currentStage);
-        await CrossFadeIcon(fromGo, toGo, 1);
+        CrossFadeIcon(fromGo, toGo, 1).Forget();
     }
 
     #endregion
@@ -398,7 +410,10 @@ public class GamePage : BasePage<GameSetting>
             if (pageVideo)
             {
                 if (videoPlayer) videoPlayer.Stop();
-                pageVideo.SetActive(false);
+                if (currentStage != StageEntry.Rocket)
+                {
+                    pageVideo.SetActive(false);                    
+                }
                 pageVideo = null;
                 videoPlayer = null;
             }
@@ -410,7 +425,8 @@ public class GamePage : BasePage<GameSetting>
 
             if (currentStage == StageEntry.Rocket)
             {
-                StartFinalStage();
+                CancellationToken token = this.GetCancellationTokenOnDestroy();
+                await StartFinalStageWithFadeAsync(fromGo, toGo, token);
                 return;
             }
 
@@ -418,7 +434,7 @@ public class GamePage : BasePage<GameSetting>
             ApplyStageActivation(currentStage);  // 스테이지 별 타깃 오브젝트 갱신
             UpdateStageUI(currentStage);         // 미션, 서브 텍스트 업데이트
             UpdateVideoUIVisible(false);         // 재생/멈춤, 건너뛰기 버튼 숨김
-            await CrossFadeIcon(fromGo, toGo, 1);
+            CrossFadeIcon(fromGo, toGo, 1).Forget();
         }
         catch (Exception e)
         {
@@ -434,7 +450,28 @@ public class GamePage : BasePage<GameSetting>
     }
 
     #endregion
+    
+    /// <summary> Rocket 단계 종료 후 Final 단계로 넘어갈 때: 2초 fade-out → Final 세팅 → 2초 fade-in </summary>
+    private async UniTask StartFinalStageWithFadeAsync(GameObject fromGo, GameObject toGo, CancellationToken token)
+    {   
+        ArduinoManager.Instance?.ExcuteCommand("home");
+        
+        // 1) Rocket 아이콘 Off -> On 크로스페이드 (다른 스테이지와 동일한 연출)
+        if (fromGo != null && toGo != null)
+        {
+            CrossFadeIcon(fromGo, toGo, 1f).Forget();
+        }
 
+        // 2) 메인 디스플레이 페이드아웃 (2초)
+        await FadeManager.Instance.FadeOutMainAsync(videoFadeTime, false, token);
+
+        // 3) 실제 Final 스테이지 시작
+        StartFinalStage();
+
+        // 4) 메인 디스플레이 페이드인 (2초)
+        await FadeManager.Instance.FadeInAsync(videoFadeTime, false, token);
+    }
+    
     /// <summary> 마지막 스테이지를 시작함 </summary>
     private void StartFinalStage()
     {

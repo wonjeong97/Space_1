@@ -15,6 +15,7 @@ public class ArduinoManager : MonoBehaviour
     private int baudRate;
 
     // 서보 각도 제한
+    // Max는 180이 최대. 360으로 늘려도 더 안돌아감
     private const int ServoMinDeg = 0;
     private const int ServoMaxDeg = 180;
 
@@ -48,6 +49,10 @@ public class ArduinoManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             ExcuteCommand("right 30");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ExcuteCommand("home");
         }
     }
 

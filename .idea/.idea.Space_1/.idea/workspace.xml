@@ -6,19 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/BaseObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/BaseObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/JsonLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/JsonLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Managers/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Prefabs/GameObjectPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Prefabs/GameObjectPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Managers/ArduinoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Managers/ArduinoManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Pages/BasePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Pages/BasePage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Pages/GamePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Pages/GamePage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Pages/TitlePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Pages/TitlePage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Pages/TutorialPage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Pages/TutorialPage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Audio.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/1_Tutorial.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/1_Tutorial.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/1_Tutorial.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/1_Tutorial.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/2_Tutorial.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/2_Tutorial.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/2_Tutorial.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/2_Tutorial.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/1_Hubble.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/1_Hubble.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/2_Moon.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/2_Moon.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/3_Satellite.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/3_Satellite.mp4" afterDir="false" />
@@ -188,6 +180,8 @@
       <workItem from="1762388862520" duration="2492000" />
       <workItem from="1762391638980" duration="454000" />
       <workItem from="1762503400045" duration="365000" />
+      <workItem from="1762737770332" duration="7452000" />
+      <workItem from="1762764823193" duration="954000" />
     </task>
     <servers />
   </component>
