@@ -1,0 +1,282 @@
+{
+  "servoHubble": "left 30",
+  "servoMoon": "Right 60",
+  "servoSatellite": "left 20",
+  "servoMars": "Right 50",
+  "servoRocket": "left 100",  
+  "videoFadeTime": 1.0,
+  "backgroundImage": {
+	"name": "Game1_Background",
+	"position": { "x": 960, "y": 520 },
+	"size": { "x": 1920, "y": 1080 },
+	"sourceImage": "Image/GameImage/1_Image.jpg"
+  },
+  "titleButton": {
+	"name": "Button_처음으로",
+	"position": { "x": 960, "y": 320 },
+	"size": { "x": 900, "y": 180 },
+	"buttonBackgroundImage": {
+	  "sourceImage": "Image/Button/1_Home.png"
+	}
+  },
+  "playImage": {
+	"name": "Image_Play",
+	"position": { "x": 960, "y": 320 },
+	"size": { "x": 900, "y": 180 },
+	"sourceImage": "Image/Button/1_Playing.png"
+  },
+  "homeButton": {
+	"name": "Button_Home",
+	"position": { "x": 210, "y": 92 },
+	"size": { "x": 80, "y": 80 }	,
+	"buttonBackgroundImage": {
+	 	"color": {"a" : 0}
+	}
+  },
+  "playButton": {
+	"name": "Button_VideoPlay",
+	"position": { "x": 375, "y": 92 },
+	"size": { "x": 80, "y": 80 },
+	"buttonBackgroundImage": {
+	  "color": {"a" : 0}
+	}
+  },
+  "pauseButton": {
+	"name": "Button_VideoPause",
+	"position": { "x": 538, "y": 92 },
+	"size": { "x": 80, "y": 80 },
+	"buttonBackgroundImage": {
+	  "color": {"a" : 0}
+	}
+  },
+  "skipButton": {
+	"name": "Button_VideoSkip",
+	"position": { "x": 704, "y": 92 },
+	"size": { "x": 80, "y": 80 },
+	"buttonBackgroundImage": {
+	  "color": {"a" : 0}
+	}
+  },
+  "crosshairImage": {
+	"name": "Crosshair",
+	"position": { "x": 960, "y": 520 },
+	"size": { "x": 225, "y": 225 }
+  },
+  "contentsImagesOff": [
+	{
+	  "name": "Image_Hubble_Off",
+	  "position": { "x": 553, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Hubble_Off.png"
+	},
+	{
+	  "name": "Image_Moon_Off",
+	  "position": { "x": 761, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Moon_Off.png"
+	},
+	{
+	  "name": "Image_Satellite_Off",
+	  "position": { "x": 960, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Satellite_Off.png"
+	},
+	{
+	  "name": "Image_Mars_Off",
+	  "position": { "x": 1159, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Mars_Off.png"
+	},
+	{
+	  "name": "Image_Rocket_Off",
+	  "position": { "x": 1373, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Rocket_Off.png"
+	}
+  ],
+  "contentsImagesOn": [
+	{
+	  "name": "Image_Hubble_On",
+	  "position": { "x": 553, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Hubble_On.png"
+	},
+	{
+	  "name": "Image_Moon_On",
+	  "position": { "x": 761, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Moon_On.png"
+	},
+	{
+	  "name": "Image_Satellite_On",
+	  "position": { "x": 960, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Satellite_On.png"
+	},
+	{
+	  "name": "Image_Mars_On",
+	  "position": { "x": 1159, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Mars_On.png"
+	},
+	{
+	  "name": "Image_Rocket_On",
+	  "position": { "x": 1373, "y": 75 },
+	  "size": { "x": 256, "y": 150 },
+	  "sourceImage": "Image/Game/Rocket_On.png"
+	}
+  ],
+  "videos": [
+	{
+	  "name": "Hubble Video",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1930, "y": 1090 },
+	  "fileName": "Video/1_Hubble.mp4",
+	  "volume": 0.8
+	},
+	{
+	  "name": "Moon Video",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1930, "y": 1090 },
+	  "fileName": "Video/2_Moon.mp4",
+	  "volume": 0.8
+	},
+	{
+	  "name": "Satellite Video",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1930, "y": 1090 },
+	  "fileName": "Video/3_Satellite.mp4",
+	  "volume": 0.8
+	},
+	{
+	  "name": "Mars Video",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1930, "y": 1090 },
+	  "fileName": "Video/4_Mars.mp4",
+	  "volume": 0.8
+	},
+	{
+	  "name": "Rocket Video",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1930, "y": 1090 },
+	  "fileName": "Video/5_Rocket.mp4",
+	  "volume": 0.8
+	},
+	{
+	  "name": "Final Video",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "fileName": "Video/6_End.mp4",
+	  "volume": 0.8
+	}
+  ],
+  "objects": [
+	{
+	  "name": "Hubble Object",
+	  "position": { "x": 500, "y": 500, "z": 0 },
+	  "size": { "x": 100, "y": 100, "z": 100 }
+	},
+	{
+	  "name": "Moon Object",
+	  "position": { "x": 500, "y": 500, "z": 500 },
+	  "size": { "x": 100, "y": 100, "z": 100 }
+	},
+	{
+	  "name": "Satellite Object",
+	  "position": { "x": 0, "y": 500, "z": 500 },
+	  "size": { "x": 100, "y": 100, "z": 100 }
+	},
+	{
+	  "name": "Mars Object",
+	  "position": { "x": -500, "y": 500, "z": 0 },
+	  "size": { "x": 100, "y": 100, "z": 100 }
+	},
+	{
+	  "name": "Rocket Object",
+	  "position": { "x": 0, "y": 500, "z": -500 },
+	  "size": { "x": 100, "y": 100, "z": 100 }
+	}
+  ],
+  "missionImages": [
+	{
+	  "name": "Image_HubbleGuide",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "sourceImage": "Image/Game/1_Observe.png"
+	},
+	{
+	  "name": "Image_MoonGuide",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "sourceImage": "Image/Game/2_Observe.png"
+	},
+	{
+	  "name": "Image_SatelliteGuide",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "sourceImage": "Image/Game/3_Observe.png"
+	},
+	{
+	  "name": "Image_MarsGuide",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "sourceImage": "Image/Game/4_Observe.png"
+	},
+	{
+	  "name": "Image_RocketGuide",
+	  "position": { "x": 960, "y": 540 },
+	  "size": { "x": 1920, "y": 1080 },
+	  "sourceImage": "Image/Game/5_Observe.png"
+	}
+  ],
+  "missionSubImages": [
+	{
+	  "name": "Image_트랙볼을 조작하여 허블망원경을 찾아보세요",
+	  "position": { "x": 960, "y": 270 },
+	  "size": { "x": 1920, "y": 540 },
+	  "sourceImage": "Image/Game/4_Assistance.png"
+	},
+	{
+	  "name": "Image_트랙볼을 조작하여 달을 찾아보세요",
+	  "position": { "x": 960, "y": 270 },
+	  "size": { "x": 1920, "y": 540 },
+	  "sourceImage": "Image/Game/5_Assistance.png"
+	},
+	{
+	  "name": "Image_트랙볼을 조작하여 인공위성을 찾아보세요",
+	  "position": { "x": 960, "y": 270 },
+	  "size": { "x": 1920, "y": 540 },
+	  "sourceImage": "Image/Game/6_Assistance.png"
+	},
+	{
+	  "name": "Image_트랙볼을 조작하여 화성을 찾아보세요",
+	  "position": { "x": 960, "y": 270 },
+	  "size": { "x": 1920, "y": 540 },
+	  "sourceImage": "Image/Game/7_Assistance.png"
+	},
+	{
+	  "name": "Image_트랙볼을 조작하여 우주발사체을 찾아보세요",
+	  "position": { "x": 960, "y": 270 },
+	  "size": { "x": 1920, "y": 540 },
+	  "sourceImage": "Image/Game/8_Assistance.png"
+	},
+	{
+	  "name": "Image_지금까지 우주로 가는 이유 5가지를 알아보았습니다",
+	  "position": { "x": 960, "y": 270 },
+	  "size": { "x": 1920, "y": 540 },
+	  "sourceImage": "Image/Game/9_Assistance.png"
+	},
+	{
+	  "name": "Image_전시체험을 종료합니다",
+	  "position": { "x": 960, "y": 270 },
+	  "size": { "x": 1920, "y": 540 },
+	  "sourceImage": "Image/Game/10_Assistance.png"
+	}
+  ],
+  "playVideoImage": {
+	"name": "Image_영상 화면이 닫히면",
+	"position": { "x": 960, "y": 270 },
+	"size": { "x": 1920, "y": 540 },
+	"sourceImage": "Image/Game/11_Assistance.png"
+  }
+}

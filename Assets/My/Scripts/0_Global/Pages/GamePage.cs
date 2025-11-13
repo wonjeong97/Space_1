@@ -261,9 +261,6 @@ public class GamePage : BasePage<GameSetting>
         videoPlayer = null;
         isPlayingVideo = false;
 
-        // 스킵 후 BGM 재개
-        SoundManager.Instance?.ResumeBgm();
-
         // 아이콘 컬러 복원(스킵도 완료로 간주)
         GameObject fromGo = UIManager.Instance.contentsImagesOff[videoIndex];
         GameObject toGo = UIManager.Instance.contentsImagesOn[videoIndex];
@@ -275,6 +272,9 @@ public class GamePage : BasePage<GameSetting>
             await StartFinalStageWithFadeAsync(fromGo, toGo, token);
             return;
         }
+        
+        // 스킵 후 BGM 재생
+        if (currentStage != StageEntry.Rocket) SoundManager.Instance?.ResumeBgm();
 
         // 일반 단계 스킵 → 다음 스테이지
         UpdateVideoUIVisible(false);
@@ -396,10 +396,8 @@ public class GamePage : BasePage<GameSetting>
     {
         try
         {
-            // 어떤 스테이지든 영상이 끝나면 먼저 BGM 재개
             isPlayingVideo = false;
-            SoundManager.Instance?.ResumeBgm();
-
+            
             if (currentStage == StageEntry.Final)
             {
                 OnFinalVideoEnded();
@@ -429,7 +427,10 @@ public class GamePage : BasePage<GameSetting>
                 await StartFinalStageWithFadeAsync(fromGo, toGo, token);
                 return;
             }
-
+            
+            // 우주 발사체 영상이 끝나면 엔딩 비디오로 넘어가기 때문에 BGM이 재생되면 안됨
+            if (currentStage != StageEntry.Rocket) SoundManager.Instance?.ResumeBgm();
+            
             NextStage();                         // 다음 스테이지로 갱신
             ApplyStageActivation(currentStage);  // 스테이지 별 타깃 오브젝트 갱신
             UpdateStageUI(currentStage);         // 미션, 서브 텍스트 업데이트
@@ -438,7 +439,7 @@ public class GamePage : BasePage<GameSetting>
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+           Debug.LogError($"[GamePage] OnVideoEnded => Exception: {e}");
         }
     }
 
@@ -496,6 +497,7 @@ public class GamePage : BasePage<GameSetting>
     /// <summary> 마지막 비디오가 끝난 후 메인 디스플레이 페이드아웃 및 Sub 7 Text 표시 </summary>
     private async UniTask OutroAsync(CancellationToken token)
     {
+        SoundManager.Instance?.ResumeBgm();
         // Sub 7 Text 표시
         SetActiveObject(missionSubGuides[Sub6Index], false);
         SetActiveObject(missionSubGuides[Sub7Index], true);

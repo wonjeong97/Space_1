@@ -75,6 +75,11 @@ mono_crash.*
 *.app
 *.zip
 
+*.exr
+*.mp4
+*.mp3
+*.resS
+
 # Crashlytics generated file
 crashlytics-build.properties
 
@@ -100,5 +105,3 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
-*.exr
-*.mp4

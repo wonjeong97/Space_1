@@ -19,15 +19,15 @@
   },		  
   "subBackground": {
 	"name": "Sub Background",
-	"position": { "x": 960, "y": 270 },
-	"size": { "x": 1920, "y": 540 },
+	"position": { "x": 1280, "y": 360 },
+	"size": { "x": 2560, "y": 720 },
 	"fileName": "Video/SpaceBackground.mp4",
 	"volume": 0
   },
   "assistance": {
 	"name": "Image_우주로 가는 이유는 무엇일까요",
-	"position": { "x": 960, "y": 270 },
-	"size": { "x": 1920, "y": 540 },	
+	"position": { "x": 1280, "y": 360 },
+	"size": { "x": 2560, "y": 720 },	
 	"sourceImage": "Image/Title/1_Assistance.png"
   }
 }

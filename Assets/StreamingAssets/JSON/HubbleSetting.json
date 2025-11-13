@@ -5,54 +5,54 @@
   "servoMars": "Right 50",
   "servoRocket": "left 100",  
   "videoFadeTime": 1.0,
-  "backgroundImage": {
+  "__backgroundImage": {
 	"name": "Game1_Background",
-	"position": { "x": 960, "y": 520 },
+	"position": { "x": 960, "y": 540 },
 	"size": { "x": 1920, "y": 1080 },
 	"sourceImage": "Image/GameImage/1_Image.jpg"
   },
   "titleButton": {
 	"name": "Button_처음으로",
-	"position": { "x": 960, "y": 320 },
-	"size": { "x": 900, "y": 180 },
+	"position": { "x": 1280, "y": 450 },
+	"size": { "x": 1000, "y": 210 },
 	"buttonBackgroundImage": {
 	  "sourceImage": "Image/Button/1_Home.png"
 	}
   },
   "playImage": {
 	"name": "Image_Play",
-	"position": { "x": 960, "y": 320 },
-	"size": { "x": 900, "y": 180 },
+	"position": { "x": 1280, "y": 450 },
+	"size": { "x": 1280, "y": 230 },
 	"sourceImage": "Image/Button/1_Playing.png"
   },
   "homeButton": {
 	"name": "Button_Home",
-	"position": { "x": 210, "y": 92 },
-	"size": { "x": 80, "y": 80 }	,
+	"position": { "x": 300, "y": 120 },
+	"size": { "x": 100, "y": 100 },
 	"buttonBackgroundImage": {
 	 	"color": {"a" : 0}
 	}
   },
   "playButton": {
 	"name": "Button_VideoPlay",
-	"position": { "x": 375, "y": 92 },
-	"size": { "x": 80, "y": 80 },
+	"position": { "x": 530, "y": 120 },
+	"size": { "x": 100, "y": 100 },
 	"buttonBackgroundImage": {
 	  "color": {"a" : 0}
 	}
   },
   "pauseButton": {
 	"name": "Button_VideoPause",
-	"position": { "x": 538, "y": 92 },
-	"size": { "x": 80, "y": 80 },
+	"position": { "x": 770, "y": 120 },
+	"size": { "x": 100, "y": 100 },
 	"buttonBackgroundImage": {
 	  "color": {"a" : 0}
 	}
   },
   "skipButton": {
 	"name": "Button_VideoSkip",
-	"position": { "x": 704, "y": 92 },
-	"size": { "x": 80, "y": 80 },
+	"position": { "x": 1000, "y": 120 },
+	"size": { "x": 100, "y": 100 },
 	"buttonBackgroundImage": {
 	  "color": {"a" : 0}
 	}
@@ -232,51 +232,51 @@
   "missionSubImages": [
 	{
 	  "name": "Image_트랙볼을 조작하여 허블망원경을 찾아보세요",
-	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 540 },
+	  "position": { "x": 1280, "y": 360 },
+	  "size": { "x": 2560, "y": 720 },
 	  "sourceImage": "Image/Game/4_Assistance.png"
 	},
 	{
 	  "name": "Image_트랙볼을 조작하여 달을 찾아보세요",
-	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 540 },
+	  "position": { "x": 1280, "y": 360 },
+	  "size": { "x": 2560, "y": 720 },
 	  "sourceImage": "Image/Game/5_Assistance.png"
 	},
 	{
 	  "name": "Image_트랙볼을 조작하여 인공위성을 찾아보세요",
-	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 540 },
+	  "position": { "x": 1280, "y": 360 },
+	  "size": { "x": 2560, "y": 720 },
 	  "sourceImage": "Image/Game/6_Assistance.png"
 	},
 	{
 	  "name": "Image_트랙볼을 조작하여 화성을 찾아보세요",
-	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 540 },
+	  "position": { "x": 1280, "y": 360 },
+	  "size": { "x": 2560, "y": 720 },
 	  "sourceImage": "Image/Game/7_Assistance.png"
 	},
 	{
 	  "name": "Image_트랙볼을 조작하여 우주발사체을 찾아보세요",
-	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 540 },
+	  "position": { "x": 1280, "y": 360 },
+	  "size": { "x": 2560, "y": 720 },
 	  "sourceImage": "Image/Game/8_Assistance.png"
 	},
 	{
 	  "name": "Image_지금까지 우주로 가는 이유 5가지를 알아보았습니다",
-	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 540 },
+	  "position": { "x": 1280, "y": 360 },
+	  "size": { "x": 2560, "y": 720 },
 	  "sourceImage": "Image/Game/9_Assistance.png"
 	},
 	{
 	  "name": "Image_전시체험을 종료합니다",
-	  "position": { "x": 960, "y": 270 },
-	  "size": { "x": 1920, "y": 540 },
+	  "position": { "x": 1280, "y": 360 },
+	  "size": { "x": 2560, "y": 720 },
 	  "sourceImage": "Image/Game/10_Assistance.png"
 	}
   ],
   "playVideoImage": {
 	"name": "Image_영상 화면이 닫히면",
-	"position": { "x": 960, "y": 270 },
-	"size": { "x": 1920, "y": 540 },
+	"position": { "x": 1280, "y": 360 },
+	"size": { "x": 2560, "y": 720 },
 	"sourceImage": "Image/Game/11_Assistance.png"
   }
 }

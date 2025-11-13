@@ -342,7 +342,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
             subCanvasObj.TryGetComponent(out CanvasScaler canvasScaler))
         {
             canvas2.targetDisplay = jsonSetting.canvas2TargetMonitorIndex;
-            //canvasScaler.referenceResolution = new Vector2(1920, 540);
+            canvasScaler.referenceResolution = new Vector2(2560, 720);
         }
 
         VideoSetting mainBackground = GetFieldOrProperty<VideoSetting>(setting, "mainBackground");
