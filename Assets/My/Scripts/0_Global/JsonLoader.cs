@@ -91,6 +91,7 @@ public class ImageSetting
     public Vector2 position;
     public Vector2 size;
     public Vector3 rotation;
+    public Vector3 scale = Vector3.one;
     public string sourceImage;
     public Color color = Color.white;
     public UIImageType type = UIImageType.Simple;
@@ -127,6 +128,7 @@ public class VideoSetting
     public Vector2 size;
     public string fileName;
     public float volume;
+    public string subtitle;
 }
 
 [Serializable]
@@ -238,6 +240,11 @@ public class Settings
     
     public int canvas1TargetMonitorIndex;
     public int canvas2TargetMonitorIndex;
+
+    public bool subtitleOn;
+    public float subtitleFadeTime;
+    public TextSetting subtitle1Set;
+    public TextSetting subtitle2Set;
 }
 
 #endregion

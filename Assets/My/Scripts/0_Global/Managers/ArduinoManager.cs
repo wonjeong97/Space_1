@@ -15,14 +15,16 @@ public class ArduinoManager : MonoBehaviour
     private int baudRate;
 
     // 서보 각도 제한
-    // Max는 180이 최대. 360으로 늘려도 더 안돌아감
     private const int ServoMinDeg = 0;
     private const int ServoMaxDeg = 180;
+
+    // 상대 회전 기본 시간(초) - 시간 미지정 시 사용
+    private const float DefaultMoveSeconds = 2.0f;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
-        else if  (Instance != this) Destroy(gameObject);
+        else if (Instance != this) Destroy(gameObject);
     }
 
     private void Start()
@@ -34,21 +36,30 @@ public class ArduinoManager : MonoBehaviour
     private void OnDestroy()
     {
         if (port == null) return;
-        try { if (port.IsOpen) port.Close(); } catch { }
+
+        try
+        {
+            if (port.IsOpen) port.Close();
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning($"[ArduinoManager] OnDestroy-> Close failed: {e}");
+        }
+
         port = null;
     }
 
     private void Update()
     {
-        // 1번 키 -> 좌로 30도 이동
+        // 1번 키 -> 좌로 30도, 2초 동안 이동 예시
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ExcuteCommand("left 30");
+            ExcuteCommand("left 30 2");
         }
-        // 2번 키 -> 우로 30도 이동
+        // 2번 키 -> 우로 30도, 2초 동안 이동 예시
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ExcuteCommand("right 30");
+            ExcuteCommand("right 30 2");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -56,6 +67,7 @@ public class ArduinoManager : MonoBehaviour
         }
     }
 
+    // 포트를 여는 함수
     private void OpenPort()
     {
         if (port != null && port.IsOpen) return;
@@ -64,47 +76,101 @@ public class ArduinoManager : MonoBehaviour
         portName = settings.comPort;
         baudRate = settings.baudRate;
         
-        port = new SerialPort(portName, baudRate);
-        port.NewLine = "\n";
-        port.ReadTimeout = 50;
-        port.WriteTimeout = 50;
-        port.DtrEnable = true;
-        port.RtsEnable = true;
+        port = new SerialPort(portName, baudRate)
+        {
+            NewLine = "\n",
+            ReadTimeout = 50,
+            WriteTimeout = 50,
+            DtrEnable = true,
+            RtsEnable = true
+        };
 
         try
         {
             port.Open();
             Thread.Sleep(2000); // 보드 리셋 대기
-            Debug.Log($"[ArduinoManager] Serial opened COM: {portName}, baud: {baudRate}");
+            Debug.Log($"[ArduinoManager] OpenPort-> Serial opened COM: {portName}, baud: {baudRate}");
         }
         catch (Exception e)
         {
-            Debug.LogError($"[ArduinoManager] Serial open failed: {e}]");
+            Debug.LogError($"[ArduinoManager] OpenPort-> Serial open failed: {e}");
         }
     }
 
-    // 함수: 포트 보장 -> 필요 시 재시도
+    // 포트 보장 -> 필요 시 재시도
     private void EnsurePort()
     {
         if (port == null || !port.IsOpen) OpenPort();
     }
 
-    // 함수: 한 줄 전송
+    // 한 줄 전송
     private void SendLine(string line)
     {
         EnsurePort();
         if (port == null || !port.IsOpen) return;
+
         try
         {
             port.WriteLine(line);
         }
         catch (Exception e)
         {
-            Debug.LogWarning($"[ArduinoManager] WriteLine failed: {e}");
+            Debug.LogWarning($"[ArduinoManager] SendLine-> WriteLine failed: {e}");
         }
     }
 
-    // 함수: "left/right N", "set N", "home" 등 명령 파싱 -> 아두이노 프로토콜로 전송
+    // "left/right/좌/우 값 [시간]" 형식 파싱
+    // 예: "left 30 2.3", "우 45", "right -10 1.5"
+    private bool TryParseDirAmountTime(string s, out bool isLeft, out int value, out float seconds)
+    {
+        isLeft = false;
+        value = 0;
+        seconds = DefaultMoveSeconds;
+
+        // 그룹1: 방향, 그룹2: 정수, 그룹3: 선택적 시간(실수)
+        Regex rx = new Regex(
+            @"^\s*(left|right|좌|우)\s+([-+]?\d+)(?:\s+([0-9]*\.?[0-9]+))?\s*$",
+            RegexOptions.IgnoreCase
+        );
+
+        Match m = rx.Match(s);
+        if (!m.Success) return false;
+
+        string dir = m.Groups[1].Value;
+        string num = m.Groups[2].Value;
+        string secStr = m.Groups[3].Value;
+
+        isLeft = dir.Equals("left", StringComparison.OrdinalIgnoreCase) || dir == "좌";
+
+        bool ok = int.TryParse(num, NumberStyles.Integer, CultureInfo.InvariantCulture, out value);
+        if (!ok) return false;
+
+        if (!string.IsNullOrEmpty(secStr))
+        {
+            float parsedSeconds;
+            if (float.TryParse(secStr, NumberStyles.Float, CultureInfo.InvariantCulture, out parsedSeconds))
+            {
+                if (parsedSeconds > 0.0f)
+                {
+                    seconds = parsedSeconds;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    // 문자열 내 첫 정수 추출 (예: "set 120")
+    private bool TryParseFirstInt(string s, out int value)
+    {
+        value = 0;
+        Regex rx = new Regex(@"[-+]?\d+");
+        Match m = rx.Match(s);
+        if (!m.Success) return false;
+        return int.TryParse(m.Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out value);
+    }
+
+    // "left/right N [sec]", "set N", "home" 등 명령 파싱 -> 아두이노 프로토콜로 전송
     public void ExcuteCommand(string command)
     {
         if (string.IsNullOrWhiteSpace(command)) return;
@@ -119,7 +185,7 @@ public class ArduinoManager : MonoBehaviour
             return;
         }
 
-        // 2) 절대 설정: "set 120" / "설정 120"
+        // 2) 절대 설정: "set 120" / "설정 120"  (즉시 지정, 시간 개념 없음)
         if (s.StartsWith("set", StringComparison.OrdinalIgnoreCase) ||
             s.StartsWith("설정", StringComparison.Ordinal))
         {
@@ -131,52 +197,27 @@ public class ArduinoManager : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"[ArduinoManager] set: integer not found in '{s}'");
+                Debug.LogWarning($"[ArduinoManager] ExcuteCommand-> set: integer not found in '{s}'");
             }
             return;
         }
 
-        // 3) 상대 회전: "left 90" / "right 30" (한국어도 허용: "좌 90", "우 30")
+        // 3) 상대 회전: "left 90 2.3" / "right 30 1.5" / "좌 20 3"
         bool isLeft;
         int amount;
-        if (TryParseDirAndInt(s, out isLeft, out amount))
+        float seconds;
+        if (TryParseDirAmountTime(s, out isLeft, out amount, out seconds))
         {
             int signed = isLeft ? -Mathf.Abs(amount) : Mathf.Abs(amount);
-            SendLine($"ADD {-signed}");
+            float clampedSeconds = Mathf.Max(0.1f, seconds); // 최소 0.1초
+            int durationMs = Mathf.RoundToInt(clampedSeconds * 1000f);
+
+            // 프로토콜: ADD <deltaDeg> <durationMs>
+            SendLine($"ADD {signed} {durationMs}");
             return;
         }
 
         // 4) 알 수 없는 명령
-        Debug.LogWarning($"[ArduinoManager] Unknown command: '{s}'");
-    }
-
-    // 함수: "left/right/좌/우" + 정수 추출
-    private bool TryParseDirAndInt(string s, out bool isLeft, out int value)
-    {
-        isLeft = false;
-        value = 0;
-
-        // ^\s*(left|right|좌|우)\s*([-+]?\d+)\s*$
-        Regex rx = new Regex(@"^\s*(left|right|좌|우)\s*([-+]?\d+)\s*$", RegexOptions.IgnoreCase);
-        Match m = rx.Match(s);
-        if (!m.Success) return false;
-
-        string dir = m.Groups[1].Value;
-        string num = m.Groups[2].Value;
-
-        isLeft = dir.Equals("left", StringComparison.OrdinalIgnoreCase) || dir == "좌";
-
-        bool ok = int.TryParse(num, NumberStyles.Integer, CultureInfo.InvariantCulture, out value);
-        return ok;
-    }
-
-    // 함수: 문자열 내 첫 정수 추출 (예: "set 120")
-    private bool TryParseFirstInt(string s, out int value)
-    {
-        value = 0;
-        Regex rx = new Regex(@"[-+]?\d+");
-        Match m = rx.Match(s);
-        if (!m.Success) return false;
-        return int.TryParse(m.Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out value);
+        Debug.LogWarning($"[ArduinoManager] ExcuteCommand-> Unknown command: '{s}'");
     }
 }

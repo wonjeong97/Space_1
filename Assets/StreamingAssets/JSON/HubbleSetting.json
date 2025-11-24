@@ -65,64 +65,74 @@
   "contentsImagesOff": [
 	{
 	  "name": "Image_Hubble_Off",
-	  "position": { "x": 553, "y": 75 },
-	  "size": { "x": 256, "y": 150 },
+	  "position": { "x": 567.5, "y": 67.5 },
+	  "size": { "x": 602, "y": 290 },
+	  "scale": {"x": 0.5, "y": 0.5, "z": 0.5},
 	  "sourceImage": "Image/Game/Hubble_Off.png"
 	},
 	{
 	  "name": "Image_Moon_Off",
-	  "position": { "x": 761, "y": 75 },
-	  "size": { "x": 256, "y": 150 },
+	  "position": { "x": 785, "y": 67.5 },
+	  "size": { "x": 487, "y": 290 },
+	  "scale": {"x": 0.5, "y": 0.5, "z": 0.5},
 	  "sourceImage": "Image/Game/Moon_Off.png"
 	},
 	{
 	  "name": "Image_Satellite_Off",
-	  "position": { "x": 960, "y": 75 },
-	  "size": { "x": 256, "y": 150 },
+	  "position": { "x": 980, "y": 67.5 },
+	  "size": { "x": 491, "y": 290 },
+	  "scale": {"x": 0.5, "y": 0.5, "z": 0.5},
 	  "sourceImage": "Image/Game/Satellite_Off.png"
 	},
 	{
 	  "name": "Image_Mars_Off",
-	  "position": { "x": 1159, "y": 75 },
-	  "size": { "x": 256, "y": 150 },
+	  "position": { "x": 1175, "y": 67.5 },
+	  "size": { "x": 491, "y": 290 },
+	  "scale": {"x": 0.5, "y": 0.5, "z": 0.5},
 	  "sourceImage": "Image/Game/Mars_Off.png"
 	},
 	{
 	  "name": "Image_Rocket_Off",
-	  "position": { "x": 1373, "y": 75 },
-	  "size": { "x": 256, "y": 150 },
+	  "position": { "x": 1380, "y": 67.5 },
+	  "size": { "x": 506, "y": 290 },
+	  "scale": {"x": 0.5, "y": 0.5, "z": 0.5},
 	  "sourceImage": "Image/Game/Rocket_Off.png"
 	}
   ],
   "contentsImagesOn": [
 	{
 	  "name": "Image_Hubble_On",
-	  "position": { "x": 553, "y": 75 },
-	  "size": { "x": 256, "y": 150 },
+	  "position": { "x": 567.5, "y": 67.5 },
+	  "size": { "x": 602, "y": 290 },
+	  "scale": {"x": 0.5, "y": 0.5, "z": 0.5},
 	  "sourceImage": "Image/Game/Hubble_On.png"
 	},
 	{
 	  "name": "Image_Moon_On",
-	  "position": { "x": 761, "y": 75 },
-	  "size": { "x": 256, "y": 150 },
+	  "position": { "x": 785, "y": 67.5 },
+	  "size": { "x": 487, "y": 290 },
+	  "scale": {"x": 0.5, "y": 0.5, "z": 0.5},
 	  "sourceImage": "Image/Game/Moon_On.png"
 	},
 	{
 	  "name": "Image_Satellite_On",
-	  "position": { "x": 960, "y": 75 },
-	  "size": { "x": 256, "y": 150 },
+	  "position": { "x": 980, "y": 67.5 },
+	  "size": { "x": 491, "y": 290 },
+	  "scale": {"x": 0.5, "y": 0.5, "z": 0.5},
 	  "sourceImage": "Image/Game/Satellite_On.png"
 	},
 	{
 	  "name": "Image_Mars_On",
-	  "position": { "x": 1159, "y": 75 },
-	  "size": { "x": 256, "y": 150 },
+	  "position": { "x": 1175, "y": 67.5 },
+	  "size": { "x": 491, "y": 290 },
+	  "scale": {"x": 0.5, "y": 0.5, "z": 0.5},
 	  "sourceImage": "Image/Game/Mars_On.png"
 	},
 	{
 	  "name": "Image_Rocket_On",
-	  "position": { "x": 1373, "y": 75 },
-	  "size": { "x": 256, "y": 150 },
+	  "position": { "x": 1380, "y": 67.5 },
+	  "size": { "x": 506, "y": 290 },
+	  "scale": {"x": 0.5, "y": 0.5, "z": 0.5},
 	  "sourceImage": "Image/Game/Rocket_On.png"
 	}
   ],
@@ -132,42 +142,48 @@
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1930, "y": 1090 },
 	  "fileName": "Video/1_Hubble.mp4",
-	  "volume": 0.8
+	  "volume": 0.8,
+	  "subtitle": "Video/SRT/1. 제임스웹, 허블망원경_v04.srt"
 	},
 	{
 	  "name": "Moon Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1930, "y": 1090 },
 	  "fileName": "Video/2_Moon.mp4",
-	  "volume": 0.8
+	  "volume": 0.8,
+	  "subtitle": "Video/SRT/2. 달v04.srt"
 	},
 	{
 	  "name": "Satellite Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1930, "y": 1090 },
 	  "fileName": "Video/3_Satellite.mp4",
-	  "volume": 0.8
+	  "volume": 0.8,
+	  "subtitle": "Video/SRT/3. 인공위성v04.srt"
 	},
 	{
 	  "name": "Mars Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1930, "y": 1090 },
 	  "fileName": "Video/4_Mars.mp4",
-	  "volume": 0.8
+	  "volume": 0.8,
+	  "subtitle": "Video/SRT/4. 화성v03.srt"
 	},
 	{
 	  "name": "Rocket Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1930, "y": 1090 },
 	  "fileName": "Video/5_Rocket.mp4",
-	  "volume": 0.8
+	  "volume": 0.8,
+	  "subtitle": "Video/SRT/5. 우주발사체v04.srt"
 	},
 	{
 	  "name": "Final Video",
 	  "position": { "x": 960, "y": 540 },
 	  "size": { "x": 1920, "y": 1080 },
 	  "fileName": "Video/6_End.mp4",
-	  "volume": 0.8
+	  "volume": 0.8,
+	  "subtitle": "Video/SRT/6. 끝맺음v04.srt"
 	}
   ],
   "objects": [

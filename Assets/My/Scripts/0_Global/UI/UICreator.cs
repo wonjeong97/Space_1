@@ -275,7 +275,8 @@ public class UICreator : MonoBehaviour
                 rt,
                 size: setting.size,
                 anchoredPos: new Vector2(setting.position.x, -setting.position.y),
-                rotation: setting.rotation
+                rotation: setting.rotation,
+                scale: setting.scale
             );
         }
 

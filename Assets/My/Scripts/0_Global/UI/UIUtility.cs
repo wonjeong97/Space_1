@@ -55,13 +55,26 @@ public static class UIUtility
         return go.AddComponent<T>();
     }
 
-    /// <summary>RectTransform 기본 속성 적용(size, anchoredPos, rotation)</summary>
-    public static void ApplyRect(RectTransform rt, Vector2? size = null, Vector2? anchoredPos = null,
-        Vector3? rotation = null)
+    /// <summary>RectTransform 기본 속성 적용(size, anchoredPos, rotation, scale)</summary>
+    public static void ApplyRect(
+        RectTransform rt,
+        Vector2? size = null,
+        Vector2? anchoredPos = null,
+        Vector3? rotation = null,
+        Vector3? scale = null)
     {
         if (!rt) return;
-        if (size.HasValue) rt.sizeDelta = size.Value;
-        if (anchoredPos.HasValue) rt.anchoredPosition = anchoredPos.Value;
-        if (rotation.HasValue) rt.localRotation = Quaternion.Euler(rotation.Value);
+
+        if (size.HasValue)
+            rt.sizeDelta = size.Value;
+
+        if (anchoredPos.HasValue)
+            rt.anchoredPosition = anchoredPos.Value;
+
+        if (rotation.HasValue)
+            rt.localRotation = Quaternion.Euler(rotation.Value);
+
+        if (scale.HasValue)
+            rt.localScale = scale.Value;
     }
 }

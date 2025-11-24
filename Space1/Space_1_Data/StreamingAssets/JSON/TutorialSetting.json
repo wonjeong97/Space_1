@@ -27,21 +27,21 @@
   },
   "subBackground": {
 	"name": "Sub Background",
-	"position": { "x": 960, "y": 270 },
-	"size": { "x": 1920, "y": 540 },
+	"position": { "x": 1280, "y": 360 },
+	"size": { "x": 2560, "y": 720 },
 	"fileName": "Video/SpaceBackground.mp4",
 	"volume": 0
   },
   "assistance2": {
 	"name": "Image_우주로 가는 이유를 알아볼까요",
-	"position": { "x": 960, "y": 270 },
-	"size": { "x": 1920, "y": 540 },
+	"position": { "x": 1280, "y": 360 },
+	"size": { "x": 2560, "y": 720 },
 	"sourceImage": "Image/Tutorial/2_Assistance.png"
   },
   "assistance3": {
 	"name": "Image_우주 관측 방법을 알아봅시다",
-	"position": { "x": 960, "y": 270 },
-	"size": { "x": 1920, "y": 540 },
+	"position": { "x": 1280, "y": 360 },
+	"size": { "x": 2560, "y": 720 },
 	"sourceImage": "Image/Tutorial/3_Assistance.png"
   },
   "star1": {
