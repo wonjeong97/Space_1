@@ -73,7 +73,8 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     protected virtual void OnEnable()
     {
         cancelToken = new CancellationTokenSource();
-
+        
+        Cursor.lockState = CursorLockMode.Locked;
         lastMousePos = Input.mousePosition;
         mouseInit = true;
         smoothedDelta = Vector2.zero;
@@ -180,16 +181,17 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
         // 카메라 회전
         if (shouldTurnCamera)
         {
-            Vector2 now = Input.mousePosition;
-            Vector2 rawDelta = mouseInit ? Vector2.zero : (now - lastMousePos);
-            lastMousePos = now;
-            mouseInit = false;
+            // 마우스 이동량(delta)을 입력 축으로 획득
+            float rawX = Input.GetAxisRaw("Mouse X");
+            float rawY = Input.GetAxisRaw("Mouse Y");
 
-            // 예외 입력 보호
-            if (rawDelta.sqrMagnitude > (Screen.width * Screen.height))
-                rawDelta = Vector2.zero;
+            Vector2 rawDelta = new Vector2(rawX, rawY);
 
-            float lerpT = (mouseSmoothing <= 0f) ? 1f : Mathf.Clamp01(Time.unscaledDeltaTime * mouseSmoothing);
+            // 스무딩 적용
+            float lerpT = (mouseSmoothing <= 0f)
+                              ? 1f
+                              : Mathf.Clamp01(Time.unscaledDeltaTime * mouseSmoothing);
+
             smoothedDelta = Vector2.Lerp(smoothedDelta, rawDelta, lerpT);
 
             float dx = smoothedDelta.x * mouseSensitivity;
@@ -197,6 +199,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
 
             yaw += dx;
             pitch = Mathf.Clamp(pitch + dy, up, down);
+
             mainCamera.transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
         }
     }

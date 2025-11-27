@@ -206,8 +206,7 @@ public class GamePage : BasePage<GameSetting>
         {
             if (jsonSetting.subtitle1Set != null)
             {
-                GameObject go1 = await UICreator.Instance
-                                                .CreateSingleTextAsync(jsonSetting.subtitle1Set, mainCanvasObj, token);
+                GameObject go1 = await UICreator.Instance.CreateSingleTextAsync(jsonSetting.subtitle1Set, mainCanvasObj, token);
                 if (go1 != null && go1.TryGetComponent(out TextMeshProUGUI tmp1))
                 {
                     subtitleText1 = tmp1;                 // BasePage의 보호 필드 사용
@@ -830,7 +829,7 @@ public class GamePage : BasePage<GameSetting>
         Color color = Color.black;
 
         // 외곽선 두께/색 설정
-        tmp.fontMaterial.SetFloat(TMPro.ShaderUtilities.ID_OutlineWidth, width);
-        tmp.fontMaterial.SetColor(TMPro.ShaderUtilities.ID_OutlineColor, color);
+        tmp.fontMaterial.SetFloat(ShaderUtilities.ID_OutlineWidth, width);
+        tmp.fontMaterial.SetColor(ShaderUtilities.ID_OutlineColor, color);
     }
 }

@@ -1,9 +1,9 @@
 {
-  "servoHubble": "left 30",
-  "servoMoon": "Right 60",
-  "servoSatellite": "left 20",
-  "servoMars": "Right 50",
-  "servoRocket": "left 100",  
+  "servoHubble": "right 50 2.0",
+  "servoMoon": "left 40 2.0",
+  "servoSatellite": "left 30 1.0",
+  "servoMars": "left 60 2.0",
+  "servoRocket": "right 120 2.5",  
   "videoFadeTime": 1.0,
   "__backgroundImage": {
 	"name": "Game1_Background",
@@ -175,7 +175,7 @@
 	  "size": { "x": 1930, "y": 1090 },
 	  "fileName": "Video/5_Rocket.mp4",
 	  "volume": 0.8,
-	  "subtitle": "Video/SRT/5. 우주발사체v04.srt"
+	  "subtitle": "Video/SRT/5. 우주발사체v05.srt"
 	},
 	{
 	  "name": "Final Video",
@@ -183,7 +183,7 @@
 	  "size": { "x": 1920, "y": 1080 },
 	  "fileName": "Video/6_End.mp4",
 	  "volume": 0.8,
-	  "subtitle": "Video/SRT/6. 끝맺음v04.srt"
+	  "subtitle": "Video/SRT/6. 끝맺음v05.srt"
 	}
   ],
   "objects": [

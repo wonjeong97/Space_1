@@ -37,7 +37,6 @@ public class TitlePage : BasePage<TitleSetting>
         
         await UICreator.Instance.CreateSingleImageAsync(setting.assistance, subCanvasObj, token);
 
-        inputReady = true;
         isCreated = true;
         
         GameManager.Instance.TitlePage = gameObject;
@@ -48,6 +47,7 @@ public class TitlePage : BasePage<TitleSetting>
         base.OnEnable();
         ArduinoManager.Instance?.ExcuteCommand("home");
         SoundManager.Instance?.PauseBgm();
+        inputReady = true;
     }
 
     protected async void Update()
@@ -58,6 +58,7 @@ public class TitlePage : BasePage<TitleSetting>
 
             if (Input.GetMouseButtonDown(0))
             {
+                inputReady = false;
                 await FadeManager.Instance.FadeOutAsync(jsonSetting.fadeTime);
                 gameObject.SetActive(false);
                 if (tutorialPage)

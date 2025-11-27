@@ -4,10 +4,16 @@
   "inactivityTime": 300.0,
   "fadeTime": 0.5,
   "closeSetting": {
+	"position": { "x": 1, "y": 1 },
+	"numToClose": 10,
+	"resetClickTime": 3,
+	"imageAlpha": 0.0
+  },
+  "resetSetting": {
 	"position": { "x": 1, "y": 0 },
 	"numToClose": 10,
-	"resetClickTime": 60,
-	"imageAlpha": 1.0
+	"resetClickTime": 3,
+	"imageAlpha": 0.0
   },
   "fontMap": {
 	"font1": "Fonts/TMPro/Freesentation-4Regular SDF.asset",
@@ -19,8 +25,8 @@
 	{ "key": "zoomSound", "clipPath": "Sound/확대할 때.mp3", "volume": 1.0 },
 	{ "key": "BGM", "clipPath": "Sound/01-a-new-day.wav", "volume": 1.0 }
   ],
-  "mouseSensitivity": 0.3,
-  "mouseSmoothing": 5.0,
+  "mouseSensitivity": 0.1,
+  "mouseSmoothing": 10.0,
   "Up": 70.0, 
   "Down": -30.0, "__Comment": "카메라 회전 위/아래 최대 값",
   
@@ -38,11 +44,11 @@
   "subtitle1Set": {
 	"position": {"x": 960, "y": 900},
 	"fontName": "font1",
-	"fontSize": 77
+	"fontSize": 55
   },
   "subtitle2Set": {
 	"position": {"x": 960, "y": 900},
 	"fontName": "font1",
-	"fontSize": 60
+	"fontSize": 55
   }
 }

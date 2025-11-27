@@ -100,6 +100,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Task ShowTitlePageOnly(bool isFadeOut = true)
+    {
+        // 기존 inactivityCts와 동일하게 취소 관리
+        inactivityCts?.Cancel();
+        inactivityCts?.Dispose();
+
+        inactivityCts = CancellationTokenSource.CreateLinkedTokenSource(this.GetCancellationTokenOnDestroy());
+        CancellationToken token = inactivityCts.Token;
+
+        return ShowTitlePageOnly(token, isFadeOut);
+    }
+    
     public async Task ShowTitlePageOnly(CancellationToken token, bool isFadeOut = true)
     {
         try

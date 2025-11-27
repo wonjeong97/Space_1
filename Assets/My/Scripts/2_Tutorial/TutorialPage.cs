@@ -70,13 +70,13 @@ public class TutorialPage : BasePage<TutorialSetting>
             
             SoundManager.Instance?.ResumeBgm();
             
-            ArduinoManager.Instance?.ExcuteCommand("left 90 2.5");
+            ArduinoManager.Instance?.ExcuteCommand("left 90 1");
+            await UniTask.Delay(1500);
+            
+            ArduinoManager.Instance?.ExcuteCommand("right 180 2");
             await UniTask.Delay(2500);
             
-            ArduinoManager.Instance?.ExcuteCommand("right 180 5");
-            await UniTask.Delay(5000);
-            
-            ArduinoManager.Instance?.ExcuteCommand("left 90 2.5");
+            ArduinoManager.Instance?.ExcuteCommand("left 90 1");
         }
         catch (Exception e)
         {
