@@ -74,7 +74,7 @@ public abstract class BasePage<T> : MonoBehaviour where T : class
     {
         cancelToken = new CancellationTokenSource();
         
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         lastMousePos = Input.mousePosition;
         mouseInit = true;
         smoothedDelta = Vector2.zero;

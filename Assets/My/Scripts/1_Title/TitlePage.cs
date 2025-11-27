@@ -4,6 +4,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Serializable]
 public class TitleSetting
@@ -15,6 +16,7 @@ public class TitleSetting
 
     public VideoSetting subBackground;
     public ImageSetting assistance;
+    public ButtonSetting confirmButton;
 }
 
 public class TitlePage : BasePage<TitleSetting>
@@ -27,6 +29,7 @@ public class TitlePage : BasePage<TitleSetting>
     private GameObject titleBG;
     private GameObject titleImage;
     private GameObject titleGuideImage;
+    private GameObject confirmButton;
 
     protected override async UniTask BuildContentAsync(CancellationToken token)
     {   
@@ -37,8 +40,14 @@ public class TitlePage : BasePage<TitleSetting>
         
         await UICreator.Instance.CreateSingleImageAsync(setting.assistance, subCanvasObj, token);
 
+        (confirmButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.confirmButton, subCanvasObj, token);
+        if (confirmButton.TryGetComponent(out Button button))
+        {   
+            Debug.Log("Confirm Clicked");
+            button.onClick.AddListener(() => OnClickConfirmButtonAsync().Forget());
+        }
+
         isCreated = true;
-        
         GameManager.Instance.TitlePage = gameObject;
     }
 
@@ -50,33 +59,32 @@ public class TitlePage : BasePage<TitleSetting>
         inputReady = true;
     }
 
-    protected async void Update()
+    /// <summary>컨펌 버튼 클릭 시 튜토리얼 페이지로 전환</summary>
+    private async UniTask OnClickConfirmButtonAsync()
     {
+        if (!inputReady) return;
+        inputReady = false;
+
         try
         {
-            if (!inputReady) return;
+            await FadeManager.Instance.FadeOutAsync(jsonSetting.fadeTime);
+            gameObject.SetActive(false);
 
-            if (Input.GetMouseButtonDown(0))
+            if (tutorialPage)
             {
-                inputReady = false;
-                await FadeManager.Instance.FadeOutAsync(jsonSetting.fadeTime);
-                gameObject.SetActive(false);
-                if (tutorialPage)
-                {
-                    tutorialPage.SetActive(true);
-                    await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
-                }
-                else
-                {
-                    tutorialPage = new GameObject("TutorialPage");
-                    tutorialPage.AddComponent<TutorialPage>();
-                    UIManager.Instance.pages.Add(tutorialPage);
-                }
+                tutorialPage.SetActive(true);
+                await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime);
+            }
+            else
+            {
+                tutorialPage = new GameObject("TutorialPage");
+                tutorialPage.AddComponent<TutorialPage>();
+                UIManager.Instance.pages.Add(tutorialPage);
             }
         }
         catch (Exception e)
         {
-            Debug.LogError($"[{GetType().Name}] Update failed: {e}");
+            Debug.LogError($"[{GetType().Name}] OnClickConfirmButtonAsync failed: {e}");
         }
     }
 }

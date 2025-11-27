@@ -25,7 +25,7 @@
 	{ "key": "zoomSound", "clipPath": "Sound/확대할 때.mp3", "volume": 1.0 },
 	{ "key": "BGM", "clipPath": "Sound/01-a-new-day.wav", "volume": 1.0 }
   ],
-  "mouseSensitivity": 0.1,
+  "mouseSensitivity": 0.5,
   "mouseSmoothing": 10.0,
   "Up": 70.0, 
   "Down": -30.0, "__Comment": "카메라 회전 위/아래 최대 값",
