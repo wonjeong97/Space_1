@@ -547,7 +547,7 @@ public class UICreator : MonoBehaviour
         if (go.TryGetComponent(out Transform trans))
         {
             trans.parent = parent.transform;
-            trans.position = setting.position;
+            trans.localPosition = setting.position;
             trans.localScale = setting.size;
             trans.rotation = Quaternion.Euler(setting.rotation);
         }

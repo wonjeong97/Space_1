@@ -57,6 +57,11 @@ public class TitlePage : BasePage<TitleSetting>
         ArduinoManager.Instance?.ExcuteCommand("home");
         SoundManager.Instance?.PauseBgm();
         inputReady = true;
+        
+        if (Camera.main != null && Camera.main.TryGetComponent(out CameraController cc))
+        {
+            cc.ResetRotation(); // 카메라 회전 0,0,0 으로 초기화
+        }
     }
 
     /// <summary>컨펌 버튼 클릭 시 튜토리얼 페이지로 전환</summary>

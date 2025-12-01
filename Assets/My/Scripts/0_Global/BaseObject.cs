@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class BaseObject : MonoBehaviour
 {
-    protected string servoAngle;
-    
     public virtual void OnRayEnter()
     {
         if (Crosshair.Instance)
@@ -24,7 +22,6 @@ public class BaseObject : MonoBehaviour
     
     private void Awake()
     {
-        
         if (Camera.main != null)
         {
             mainCameraTransform = Camera.main.transform;

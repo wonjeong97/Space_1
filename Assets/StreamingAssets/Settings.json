@@ -1,5 +1,5 @@
 {
-  "comPort": "COM3",
+  "comPort": "COM4",
   "baudRate": 9600,  
   "inactivityTime": 300.0,
   "fadeTime": 0.5,
@@ -27,10 +27,10 @@
   ],
   "mouseSensitivity": 0.5,
   "mouseSmoothing": 10.0,
-  "Up": 70.0, 
+  "Up": 90.0, 
   "Down": -30.0, "__Comment": "카메라 회전 위/아래 최대 값",
   
-  "dwellThreshold": 1,
+  "dwellThreshold": 0.3,
   "zoomInDuration": 1,
   "zoomOutDuration": 1.5,
   "waitBeforePlayVideo": 1,

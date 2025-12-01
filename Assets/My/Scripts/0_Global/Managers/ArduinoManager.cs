@@ -48,22 +48,25 @@ public class ArduinoManager : MonoBehaviour
 
         port = null;
     }
-
-    private void Update()
+    
+    /// <summary>
+    /// 어플리케이션 종료(에디터 Stop, 빌드 Quit, Alt+F4 등) 시 호출.
+    /// 포트가 닫히기 전에 Home 명령을 전송.
+    /// </summary>
+    private void OnApplicationQuit()
     {
-        // 1번 키 -> 좌로 30도, 2초 동안 이동 예시
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (port != null && port.IsOpen)
         {
-            ExcuteCommand("left 30 2");
-        }
-        // 2번 키 -> 우로 30도, 2초 동안 이동 예시
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ExcuteCommand("right 30 2");
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
+            Debug.Log("[ArduinoManager] Application Quitting -> Moving to HOME");
+            
             ExcuteCommand("home");
+
+            // 데이터가 시리얼 버퍼에서 전송될 수 있도록 아주 짧게 대기 (안전장치)
+            try 
+            { 
+                Thread.Sleep(50); 
+            } 
+            catch { }
         }
     }
 

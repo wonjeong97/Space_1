@@ -3,9 +3,9 @@
 // ===== 서보 파라미터 =====
 static const int SERVO_PIN     = 9;
 static const int SERVO_MIN_DEG = 0;
-static const int SERVO_MAX_DEG = 180;
-static const int SERVO_MIN_US  = 1000;
-static const int SERVO_MAX_US  = 2000;
+static const int SERVO_MAX_DEG = 270; // [수정] 최대 각도를 270도로 변경
+static const int SERVO_MIN_US  = 500; // 270도 서보의 0도 펄스폭 (보통 500)
+static const int SERVO_MAX_US  = 2500; // 270도 서보의 270도 펄스폭 (보통 2500)
 
 // ===== 모션 파라미터 =====
 static const unsigned long STEP_INTERVAL_MS = 10;      // 서보 업데이트 주기
@@ -14,16 +14,24 @@ static const unsigned long DEFAULT_MOVE_MS  = 2000UL;  // ADD에서 시간 생�
 Servo g_servo;
 
 // 현재/목표 각도 및 보간 정보
-int g_currentDeg      = 90;   // 실제로 write 되는 각도
-int g_targetDeg       = 90;   // 최종 목표 각도
-int g_startDeg        = 90;   // 이동 시작 시점의 각도
+int g_currentDeg      = 135;   
+int g_targetDeg       = 135;   
+int g_startDeg        = 135;   
 
-unsigned long g_lastStepMs    = 0;    // stepServoToTarget 주기 제어용
-unsigned long g_moveStartMs   = 0;    // 이동 시작 시간
-unsigned long g_moveDurationMs = 0;   // 이동에 걸릴 총 시간(ms). 0이면 이동 없음.
+unsigned long g_lastStepMs    = 0;
+unsigned long g_moveStartMs   = 0;
+unsigned long g_moveDurationMs = 0;
 
 // 직렬 수신 버퍼
 String g_line;
+
+// 각도를 펄스폭으로 변환하여 모터를 움직이는 헬퍼 함수
+void writeServoAngle(int deg)
+{
+  // 각도(0~270)를 펄스폭(500~2500)으로 변환
+  int us = map(deg, SERVO_MIN_DEG, SERVO_MAX_DEG, SERVO_MIN_US, SERVO_MAX_US);
+  g_servo.writeMicroseconds(us);
+}
 
 // 함수: 목표 각도까지 지정 시간(ms) 동안 선형 보간 이동 시작
 void startMoveTo(int targetDeg, unsigned long durationMs)
@@ -74,7 +82,7 @@ void stepServoToTarget()
   if (g_currentDeg < SERVO_MIN_DEG) g_currentDeg = SERVO_MIN_DEG;
   if (g_currentDeg > SERVO_MAX_DEG) g_currentDeg = SERVO_MAX_DEG;
 
-  g_servo.write(g_currentDeg);
+    writeServoAngle(g_currentDeg);
 }
 
 // 함수: "A B" 형태 문자열을 앞/뒤로 분리
@@ -90,21 +98,15 @@ bool split2(const String& s, String& a, String& b)
 }
 
 // 함수: 명령 처리
-// 지원 명령:
-//   HOME
-//   GET
-//   SET <deg>
-//   ADD <deltaDeg> [durationMs]
-//   uS <us>
 void handleCommand(const String& line)
 {
-  // HOME -> 90도로 즉시 이동
+  // HOME -> 135도(중앙)로 즉시 이동 (필요에 따라 0 또는 90으로 변경 가능)
   if (line.equalsIgnoreCase("HOME"))
   {
-    g_targetDeg      = 90;
-    g_currentDeg     = 90;
+    g_targetDeg      = 135;
+    g_currentDeg     = 135;
     g_moveDurationMs = 0; // 이동 중지
-    g_servo.write(g_currentDeg);
+    writeServoAngle(g_currentDeg); // [수정]
     return;
   }
 
@@ -131,19 +133,17 @@ void handleCommand(const String& line)
     g_targetDeg      = (int)deg;
     g_currentDeg     = g_targetDeg;
     g_moveDurationMs = 0; // 보간 중지
-    g_servo.write(g_currentDeg);
+    writeServoAngle(g_currentDeg); // [수정]
     return;
   }
 
   // ADD <deltaDeg> [durationMs]
-  // 예: ADD -30 2300  -> 현재 목표각에서 -30도, 2.3초 동안 이동
   if (cmd.equalsIgnoreCase("ADD"))
   {
     String sDelta, sDur;
     long delta;
     unsigned long durMs = DEFAULT_MOVE_MS;
 
-    // "delta duration" 두 개 인자가 있는 경우
     if (split2(arg, sDelta, sDur))
     {
       delta = sDelta.toInt();
@@ -155,9 +155,7 @@ void handleCommand(const String& line)
     }
     else
     {
-      // "delta" 하나만 있는 경우
       delta = arg.toInt();
-      // duration 생략 시 DEFAULT_MOVE_MS 사용
     }
 
     long next = (long)g_targetDeg + delta;
@@ -210,12 +208,12 @@ void setup()
   Serial.begin(9600);
   g_servo.attach(SERVO_PIN, SERVO_MIN_US, SERVO_MAX_US);
 
-  g_currentDeg      = 90;
-  g_targetDeg       = 90;
-  g_startDeg        = 90;
+  g_currentDeg      = 135;
+  g_targetDeg       = 135;
+  g_startDeg        = 135;
   g_moveDurationMs  = 0;
 
-  g_servo.write(g_currentDeg);
+  writeServoAngle(g_currentDeg);
   g_lastStepMs = millis();
 }
 

@@ -88,6 +88,9 @@ public class GamePage : BasePage<GameSetting>
 
     // 자막 디스플레이(싱글톤)
     private SubtitleDisplayer subtitleDisplayer;
+    
+    // 처음으로 버튼 딜레이 타임
+    private float titleButtonDelayTime = 1.0f;
 
     #region Unity Life-cycle
 
@@ -100,6 +103,9 @@ public class GamePage : BasePage<GameSetting>
     protected override void OnEnable()
     {
         base.OnEnable();
+        
+        if (camController) camController.IsControlEnabled = true;
+        if (interactController) interactController.IsRayEnabled = true;
 
         shouldTurnCamera = true;
         shouldRay = true;
@@ -109,10 +115,24 @@ public class GamePage : BasePage<GameSetting>
         UpdateStageUI(currentStage);
         UpdateVideoUIVisible(false); // 비디오 미재생 시 버튼 숨김
     }
+    
+    protected override void OnDisable()
+    {
+        if (camController) camController.IsControlEnabled = false;
+        if (interactController) interactController.IsRayEnabled = false;
+        
+        // 홈으로 이동 명령 전송
+        ArduinoManager.Instance?.ExcuteCommand("home");
+
+        base.OnDisable();
+    }
 
     protected override void Start()
     {
         base.Start();
+        
+        if (camController) camController.IsControlEnabled = true;
+        if (interactController) interactController.IsRayEnabled = true;
 
         if (setting != null)
         {
@@ -241,6 +261,30 @@ public class GamePage : BasePage<GameSetting>
         
         isCreated = true;
     }
+    
+    private async UniTaskVoid ShowTitleButtonDelayed(float duration)
+    {
+        if (!titleButton) return;
+
+        // 일단 즉시 숨김
+        titleButton.SetActive(false);
+
+        try
+        {
+            // 지정된 시간(2초) 대기
+            await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: this.GetCancellationTokenOnDestroy());
+
+            // 2초 후에도 여전히 비디오가 없고, 마지막 스테이지가 아니라면 버튼 표시
+            if (!isPlayingVideo && currentStage != StageEntry.Final && gameObject.activeInHierarchy)
+            {
+                titleButton.SetActive(true);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // 페이지가 꺼지거나 파괴되면 무시
+        }
+    }
 
     #region Sub-Display Button Click Event
 
@@ -303,6 +347,8 @@ public class GamePage : BasePage<GameSetting>
 
             videoPlayer = null;
             isPlayingVideo = false;
+            shouldTurnCamera = true;
+            shouldRay = true;
 
             // 마지막 영상 스킵 시에도 BGM 재개
             SoundManager.Instance?.ResumeBgm();
@@ -326,6 +372,8 @@ public class GamePage : BasePage<GameSetting>
 
         videoPlayer = null;
         isPlayingVideo = false;
+        shouldTurnCamera = true;
+        shouldRay = true;
 
         // 아이콘 컬러 복원(스킵도 완료로 간주)
         GameObject fromGo = UIManager.Instance.contentsImagesOff[videoIndex];
@@ -347,6 +395,12 @@ public class GamePage : BasePage<GameSetting>
         NextStage();
         ApplyStageActivation(currentStage);
         UpdateStageUI(currentStage);
+        
+        if (currentStage != StageEntry.Final)
+        {
+            ShowTitleButtonDelayed(titleButtonDelayTime).Forget();
+        }
+        
         CrossFadeIcon(fromGo, toGo, 1).Forget();
     }
 
@@ -460,9 +514,11 @@ public class GamePage : BasePage<GameSetting>
 
         vp.Play();
         isPlayingVideo = true;
+        shouldTurnCamera = false;
+        shouldRay = false;
 
         // 자막 처리 (Settings.subtitleOn 반영)
-        if (subtitleDisplayer != null)
+        if (subtitleDisplayer)
         {
             if (jsonSetting != null && jsonSetting.subtitleOn)
             {
@@ -490,6 +546,8 @@ public class GamePage : BasePage<GameSetting>
         try
         {
             isPlayingVideo = false;
+            shouldTurnCamera = true;
+            shouldRay = true;
 
             // 자막 정지
             if (subtitleDisplayer != null)
@@ -531,6 +589,11 @@ public class GamePage : BasePage<GameSetting>
             ApplyStageActivation(currentStage);
             UpdateStageUI(currentStage);
             UpdateVideoUIVisible(false);
+            
+            if (currentStage != StageEntry.Final)
+            {
+                ShowTitleButtonDelayed(titleButtonDelayTime).Forget();
+            }
             CrossFadeIcon(fromGo, toGo, 1).Forget();
         }
         catch (Exception e)

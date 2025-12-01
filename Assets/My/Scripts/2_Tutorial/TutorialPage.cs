@@ -55,7 +55,7 @@ public class TutorialPage : BasePage<TutorialSetting>
     private GameObject sample;
     private GameObject frame;
 
-    protected override async void OnEnable()
+    protected override void OnEnable()
     {
         try
         {
@@ -69,14 +69,6 @@ public class TutorialPage : BasePage<TutorialSetting>
             }
             
             SoundManager.Instance?.ResumeBgm();
-            
-            ArduinoManager.Instance?.ExcuteCommand("left 90 1");
-            await UniTask.Delay(1500);
-            
-            ArduinoManager.Instance?.ExcuteCommand("right 180 2");
-            await UniTask.Delay(2500);
-            
-            ArduinoManager.Instance?.ExcuteCommand("left 90 1");
         }
         catch (Exception e)
         {
@@ -115,8 +107,6 @@ public class TutorialPage : BasePage<TutorialSetting>
         crosshair1.TryGetComponent(out crosshairRT);
         star2.TryGetComponent(out star2RT);
         
-        // 튜토리얼 1번 이미지 일체화 되면서 잠시 주석처리
-        //body = await UICreator.Instance.CreateSingleImageAsync(setting.body, imageTutorial1, token);
         sample = await UICreator.Instance.CreateSingleImageAsync(setting.sample, imageTutorial3, token);
         frame = await UICreator.Instance.CreateSingleImageAsync(setting.frame, sample, token);
         sample.transform.localScale = new Vector3(1, 0, 1);
@@ -169,8 +159,6 @@ public class TutorialPage : BasePage<TutorialSetting>
             if (hubblePage)
             {
                 hubblePage.SetActive(true);
-                
-                //await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime, external: token);
             }
             else
             {

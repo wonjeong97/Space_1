@@ -12,11 +12,11 @@
 	"sourceImage": "Image/Title/1_Title.png"
   },
   "titleGuideImage": {
-	"name": "Image_트랙볼 마우스를 누르면 시작합니다",
+	"name": "Image_시작하려면 버튼 터치 어쩌구",
 	"position": { "x": 960, "y": 945 },
-	"size": { "x": 1562, "y": 280 },
-	"scale": { "x": 0.5, "y": 0.5, "z": 0.5 },
-	"sourceImage": "Image/Title/1_Guide.png"
+	"size": { "x": 880, "y": 151 },
+	"scale": { "x": 0.75, "y": 0.75, "z": 0.75 },
+	"sourceImage": "Image/Title/aill_title-touch-txt.png"
   },
   "subBackground": {
 	"name": "Sub Background",
