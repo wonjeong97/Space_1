@@ -184,28 +184,28 @@
   "objects": [
 	{
 	  "name": "Hubble Object",
-	  "position": { "x": -917, "y": -27, "z": 75 },
-	  "size": { "x": 75, "y": 75, "z": 75 }
+	  "position": { "x": -783, "y": -165, "z": 306 },
+	  "size": { "x": 70, "y": 70, "z": 70 }
 	},
 	{
 	  "name": "Moon Object",
 	  "position": { "x": -1152, "y": -86, "z": 161 },
-	  "size": { "x": 75, "y": 75, "z": 75 }
+	  "size": { "x": 70, "y": 70, "z": 70 }
 	},
 	{
 	  "name": "Satellite Object",
-	  "position": { "x": -881, "y": -26, "z": -36 },
-	  "size": { "x": 75, "y": 75, "z": 75 }
+	  "position": { "x": -627, "y": -165, "z": -120 },
+	  "size": { "x": 70, "y": 70, "z": 70 }
 	},
 	{
 	  "name": "Mars Object",
 	  "position": { "x": -1276, "y": -135, "z": 55 },
-	  "size": { "x": 75, "y": 75, "z": 75 }
+	  "size": { "x": 70, "y": 70, "z": 70 }
 	},
 	{
 	  "name": "Rocket Object",
 	  "position": { "x": -725, "y": -85, "z": 85 },
-	  "size": { "x": 75, "y": 75, "z": 75 }
+	  "size": { "x": 70, "y": 70, "z": 70 }
 	}
   ],
   "missionImages": [

@@ -84,13 +84,15 @@ public class GamePage : BasePage<GameSetting>
     private const int Sub7Index = 6;
     private const float FinalMainFadeDuration = 2.5f; // 메인 디스플레이 페이드아웃 시간
     private float videoFadeTime;
-    public GameObject MainCanvasObj => mainCanvasObj;
 
     // 자막 디스플레이(싱글톤)
     private SubtitleDisplayer subtitleDisplayer;
     
     // 처음으로 버튼 딜레이 타임
     private float titleButtonDelayTime = 1.0f;
+    
+    public GameObject MainCanvasObj => mainCanvasObj;
+    public bool IsPlayingVideo => isPlayingVideo;
 
     #region Unity Life-cycle
 

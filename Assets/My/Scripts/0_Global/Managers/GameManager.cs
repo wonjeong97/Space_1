@@ -17,14 +17,14 @@ public class GameManager : MonoBehaviour
     private float inactivityTimer;
     private float inactivityThreshold = 30f;
     private Vector3 lastMousePosition;
+    
+    private CancellationTokenSource inactivityCts;
     public event Action onReset;
-
-    public GameObject TitlePage { get; set; }
-
+    
     public RuntimeAnimatorController crosshairAnimator;
     public Material rocketMaterial;
 
-    private CancellationTokenSource inactivityCts;
+    public GameObject TitlePage { get; set; }
 
     private void Awake()
     {
@@ -77,7 +77,15 @@ public class GameManager : MonoBehaviour
 
         if (TitlePage && !TitlePage.activeInHierarchy)
         {
-            inactivityTimer += Time.deltaTime;
+            // 비디오 재생 중 타이머 0
+            if (GamePage.Instance && GamePage.Instance.IsPlayingVideo)
+            {
+                inactivityTimer = 0f;
+            }
+            else
+            {
+                inactivityTimer += Time.deltaTime;
+            }
             if (inactivityTimer >= inactivityThreshold)
             {
                 inactivityTimer = 0f;
