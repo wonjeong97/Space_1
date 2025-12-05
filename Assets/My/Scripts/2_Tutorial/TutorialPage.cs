@@ -4,11 +4,12 @@ using System.Threading;
 //using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Serializable]
 public class TutorialSetting
 {
-    public float tutorialDisplayTime;
+    //public float tutorialDisplayTime;
 
     public VideoSetting mainBackground;
     public ImageSetting tutorial1;
@@ -27,6 +28,9 @@ public class TutorialSetting
     public ImageSetting body;
     public ImageSetting sample;
     public ImageSetting frame;
+    
+    public ButtonSetting nextButton;    // '다음' 버튼
+    public ButtonSetting confirmButton; // '확인' 버튼
 }
 
 public class TutorialPage : BasePage<TutorialSetting>
@@ -54,6 +58,10 @@ public class TutorialPage : BasePage<TutorialSetting>
     private GameObject body;
     private GameObject sample;
     private GameObject frame;
+    
+    private GameObject nextButtonObj;
+    private GameObject confirmButtonObj;
+    private bool isButtonClicked = false;
 
     protected override void OnEnable()
     {
@@ -63,6 +71,10 @@ public class TutorialPage : BasePage<TutorialSetting>
             if (imageTutorial2 && imageTutorial3 && imageAssistance2 && imageAssistance3)
             {
                 crosshair1.transform.SetParent(imageTutorial2.transform);
+                
+                isButtonClicked = false;
+                if(nextButtonObj) nextButtonObj.SetActive(false);
+                if(confirmButtonObj) confirmButtonObj.SetActive(false);
             
                 TutorialSequenceAsync(imageTutorial1, imageTutorial2, imageTutorial3,
                                       imageAssistance2, imageAssistance3, cancelToken.Token).Forget();
@@ -110,6 +122,21 @@ public class TutorialPage : BasePage<TutorialSetting>
         sample = await UICreator.Instance.CreateSingleImageAsync(setting.sample, imageTutorial3, token);
         frame = await UICreator.Instance.CreateSingleImageAsync(setting.frame, sample, token);
         sample.transform.localScale = new Vector3(1, 0, 1);
+        
+        // 버튼 생성 및 이벤트 연결
+        (nextButtonObj, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.nextButton, subCanvasObj, token);
+        if (nextButtonObj.TryGetComponent(out Button nextBtn))
+        {
+            nextBtn.onClick.AddListener(() => isButtonClicked = true);
+        }
+        nextButtonObj.SetActive(false);
+
+        (confirmButtonObj, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.confirmButton, subCanvasObj, token);
+        if (confirmButtonObj.TryGetComponent(out Button confirmBtn))
+        {
+            confirmBtn.onClick.AddListener(() => isButtonClicked = true);
+        }
+        confirmButtonObj.SetActive(false);
 
         isCreated = true;
         SoundManager.Instance?.PlayBGM();
@@ -120,16 +147,38 @@ public class TutorialPage : BasePage<TutorialSetting>
     private async UniTask TutorialSequenceAsync(GameObject tutorial1, GameObject tutorial2, GameObject tutorial3,
                                                 GameObject assist1, GameObject assist2, CancellationToken token)
     {   
-        int waitMs = Mathf.RoundToInt(setting.tutorialDisplayTime * 1000f);
+        // 1단계: 이미지 표시 (tutorial 1) -> 다음 버튼 대기
         tutorial1.SetActive(true);
-        await UniTask.Delay(waitMs, DelayType.DeltaTime, PlayerLoopTiming.Update, token);
         
+        if (nextButtonObj)
+        {
+            nextButtonObj.SetActive(true);
+            await WaitForButtonClick(token);
+            nextButtonObj.SetActive(false);
+        }
+
+        // 2단계: 크로스헤어 자동 이동 (tutorial 2) -> 이동 완료 후 다음 버튼 대기
         tutorial1.SetActive(false);
         tutorial2.SetActive(true);
-        CrosshairMove(crosshairRT, crosshairRT.anchoredPosition, star2RT.anchoredPosition, 2).Forget();
         
-        await UniTask.Delay(waitMs, DelayType.DeltaTime, PlayerLoopTiming.Update, token);
-        
+        // 반복 애니메이션 제어용 토큰 생성
+        using (var loopCts = CancellationTokenSource.CreateLinkedTokenSource(token))
+        {
+            // 반복 애니메이션 시작 (loopCts.Token 사용)
+            LoopCrosshairMove(crosshairRT, crosshairRT.anchoredPosition, star2RT.anchoredPosition, 2f, loopCts.Token).Forget();
+            
+            // 버튼 클릭 대기
+            if (nextButtonObj)
+            {
+                nextButtonObj.SetActive(true);
+                await WaitForButtonClick(loopCts.Token);
+                nextButtonObj.SetActive(false);
+            }
+            
+            // 버튼을 누르면 루프 애니메이션 취소
+            loopCts.Cancel();
+        }
+        // 3단계: 상호작용 예시 (tutorial 3) -> 확인 버튼 대기
         crosshair1.transform.SetParent(tutorial3.transform);
         crosshair1.transform.position = star3.transform.position;
         
@@ -146,8 +195,44 @@ public class TutorialPage : BasePage<TutorialSetting>
 
         SampleVideoAnim(sample, 1f).Forget();
         
-        await UniTask.Delay(TimeSpan.FromSeconds(3), DelayType.DeltaTime, PlayerLoopTiming.Update, token);
+        if (confirmButtonObj)
+        {
+            confirmButtonObj.SetActive(true);
+            await WaitForButtonClick(token);
+            confirmButtonObj.SetActive(false);
+        }
+
+        // 게임 시작
         await LoadGamePageAsync(token);
+    }
+    
+    private async UniTask LoopCrosshairMove(RectTransform rt, Vector2 start, Vector2 end, float duration, CancellationToken token)
+    {
+        try
+        {
+            while (!token.IsCancellationRequested)
+            {
+                // 위치 초기화
+                rt.anchoredPosition = start;
+                // 애니메이션 (도중에 토큰 취소되면 멈춤)
+                await CrosshairMove(rt, start, end, duration, token);
+                // 잠시 대기 (선택 사항)
+                
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // 루프 취소 시 조용히 종료
+        }
+    }
+    
+    // 버튼 클릭 대기 헬퍼 함수
+    private async UniTask WaitForButtonClick(CancellationToken token)
+    {
+        isButtonClicked = false;
+        await UniTask.WaitUntil(() => isButtonClicked, cancellationToken: token);
+        SoundManager.Instance?.PlayConfirm();
+        isButtonClicked = false;
     }
 
     private async UniTask LoadGamePageAsync(CancellationToken token)
@@ -176,17 +261,20 @@ public class TutorialPage : BasePage<TutorialSetting>
         }
     }
 
-    private async UniTask CrosshairMove(RectTransform rt, Vector2 start, Vector2 end, float duration)
+    private async UniTask CrosshairMove(RectTransform rt, Vector2 start, Vector2 end, float duration, CancellationToken token = default)
     {
         rt.anchoredPosition = start;          
 
         float time = 0f;
         while (time < duration)
-        {
+        {   
+            token.ThrowIfCancellationRequested();
+            
             float p = time / duration;
             rt.anchoredPosition = Vector2.LerpUnclamped(start, end, p);
             time += Time.deltaTime;
-            await UniTask.Yield();
+            
+            await UniTask.Yield(PlayerLoopTiming.Update, token);
         }
         
         rt.anchoredPosition = end;
@@ -194,6 +282,9 @@ public class TutorialPage : BasePage<TutorialSetting>
         {   
             SoundManager.Instance?.PlayFound().Forget();
             crosshair.CrosshairTrigger("Trigger");
+            await UniTask.Delay(2000, cancellationToken: token); // 크로스헤어 애니메이션 만큼 대기
+            crosshair.CrosshairTrigger("Idle");
+            await UniTask.Delay(200, cancellationToken: token);
         }
     }
 

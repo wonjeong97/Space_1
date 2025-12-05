@@ -1,7 +1,7 @@
 {
   "comPort": "COM4",
   "baudRate": 9600,  
-  "inactivityTime": 300.0,
+  "inactivityTime": 45.0,
   "fadeTime": 0.5,
   "closeSetting": {
 	"position": { "x": 1, "y": 1 },
@@ -17,17 +17,18 @@
   },
   "fontMap": {
 	"font1": "Fonts/TMPro/Freesentation-4Regular SDF.asset",
-	"font2": "Fonts/TMPro/NanumGothic-Regular SDF.asset"
+	"font2": "Fonts/TMPro/Freesentation-7Bold SDF.asset"
   },
   "sounds":[
 	{ "key": "found", "clipPath": "Sound/발견할 때.mp3", "volume": 1.0 },
 	{ "key": "cancel", "clipPath": "Sound/취소할 때.mp3", "volume": 1.0 },
 	{ "key": "zoomSound", "clipPath": "Sound/확대할 때.mp3", "volume": 1.0 },
-	{ "key": "BGM", "clipPath": "Sound/01-a-new-day.wav", "volume": 1.0 }
+	{ "key": "BGM", "clipPath": "Sound/01-a-new-day.wav", "volume": 1.0 },
+	{ "key": "confirm", "clipPath": "Sound/메뉴 터치 확인.mp3", "volume": 1.0 }
   ],
   "mouseSensitivity": 0.5,
   "mouseSmoothing": 10.0,
-  "Up": 90.0, 
+  "Up": 60.0, 
   "Down": -30.0, "__Comment": "카메라 회전 위/아래 최대 값",
   
   "dwellThreshold": 0.3,
@@ -43,12 +44,12 @@
   "subtitleFadeTime": 0.25,
   "subtitle1Set": {
 	"position": {"x": 960, "y": 900},
-	"fontName": "font1",
+	"fontName": "font2",
 	"fontSize": 55
   },
   "subtitle2Set": {
 	"position": {"x": 960, "y": 900},
-	"fontName": "font1",
+	"fontName": "font2",
 	"fontSize": 55
   }
 }

@@ -28,6 +28,9 @@ public class CameraController : MonoBehaviour
     private float _servoSyncTimer = 0f;
     private float _accumulatedServoDelta = 0f;
     private const float SERVO_SYNC_INTERVAL = 0.1f;
+    
+    public bool IsAtLeftLimit => yaw <= leftLimit + 0.1f;
+    public bool IsAtRightLimit => yaw >= rightLimit - 0.1f;
 
     public bool IsControlEnabled { get; set; } = false; // 제어 활성화 여부
 

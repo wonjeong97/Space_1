@@ -302,6 +302,7 @@ MonoBehaviour:
   reporter: {fileID: 1938616613}
   crosshairAnimator: {fileID: 9100000, guid: 3bcd1eaa52f979f4aa47fd32f54d3065, type: 2}
   rocketMaterial: {fileID: 2100000, guid: 453d4fe6ef2451347bc80ace30503ea4, type: 2}
+  moonMaterial: {fileID: 2100000, guid: ca3dc702d5c65a94489959491adc4e6b, type: 2}
 --- !u!4 &285659931
 Transform:
   m_ObjectHideFlags: 0

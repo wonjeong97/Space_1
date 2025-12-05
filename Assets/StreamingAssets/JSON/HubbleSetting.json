@@ -1,11 +1,19 @@
 {
-  "videoFadeTime": 1.0,
-  "__backgroundImage": {
-	"name": "Game1_Background",
-	"position": { "x": 960, "y": 540 },
-	"size": { "x": 1920, "y": 1080 },
-	"sourceImage": "Image/GameImage/1_Image.jpg"
+  "arrowLeft":{
+	"name": "Image_arrowLeft",
+	"position": { "x": 115, "y": 450 },
+	"size": { "x": 676, "y": 446 },
+	"scale": {"x": 0.3, "y": 0.3, "z": 0.3},
+	"sourceImage": "Image/Game/1_arrow-2.png"
   },
+  "arrowRight":{
+	"name": "Image_arrowRight",
+	"position": { "x": 1810, "y": 450 },
+	"size": { "x": 675, "y": 446 },
+	"scale": {"x": 0.3, "y": 0.3, "z": 0.3},
+	"sourceImage": "Image/Game/1_arrow-1.png"
+  },
+  "videoFadeTime": 1.0,
   "titleButton": {
 	"name": "Button_처음으로",
 	"position": { "x": 1280, "y": 450 },
@@ -184,27 +192,27 @@
   "objects": [
 	{
 	  "name": "Hubble Object",
-	  "position": { "x": -783, "y": -165, "z": 306 },
+	  "position": { "x": -743, "y": -269, "z": 375 },
 	  "size": { "x": 70, "y": 70, "z": 70 }
 	},
 	{
 	  "name": "Moon Object",
-	  "position": { "x": -1152, "y": -86, "z": 161 },
+	  "position": { "x": -1230, "y": -165, "z": 227 },
 	  "size": { "x": 70, "y": 70, "z": 70 }
 	},
 	{
 	  "name": "Satellite Object",
-	  "position": { "x": -627, "y": -165, "z": -120 },
+	  "position": { "x": -553, "y": -269, "z": -148 },
 	  "size": { "x": 70, "y": 70, "z": 70 }
 	},
 	{
 	  "name": "Mars Object",
-	  "position": { "x": -1276, "y": -135, "z": 55 },
+	  "position": { "x": -1363, "y": -232, "z": 71 },
 	  "size": { "x": 70, "y": 70, "z": 70 }
 	},
 	{
 	  "name": "Rocket Object",
-	  "position": { "x": -725, "y": -85, "z": 85 },
+	  "position": { "x": -627, "y": -165, "z": 120 },
 	  "size": { "x": 70, "y": 70, "z": 70 }
 	}
   ],

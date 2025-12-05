@@ -4,240 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="">
+    <list default="true" id="7a3d6c93-cd24-4f93-80d7-c0c58b9fbf2e" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/dictionaries/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Env_Night.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Env_Night.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Prefabs/GameObjectPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Prefabs/GameObjectPrefab.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Managers/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/1_Title/TitlePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/1_Title/TitlePage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/2_Tutorial/TutorialPage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/2_Tutorial/TutorialPage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/3_Game/GamePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/3_Game/GamePage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/3_Game/MoonObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/3_Game/MoonObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Title/1_Assistance.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Title/1_Assistance.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Title/1_Assistance.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Title/1_button-okay.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Button/1_button-okay.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Title/1_button-okay.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Button/1_button-okay.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/2_Assistance.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/2_Assistance.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/3_Assistance.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Image/Tutorial/3_Assistance.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/1_Hubble.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/1_Hubble.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/2_Moon.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/2_Moon.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/3_Satellite.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/3_Satellite.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/4_Mars.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/4_Mars.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/5_Rocket.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/5_Rocket.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TitleSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TitleSetting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TutorialSetting.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/JSON/TutorialSetting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Arduino/DS3240Servo/DS3240Servo.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/2.0/machine.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/2.0/settings.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/2.0/web.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/4.0/machine.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/4.0/settings.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/4.0/web.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/4.5/machine.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/4.5/settings.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/4.5/web.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/browscap.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/MonoBleedingEdge/etc/mono/mconfig/config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_BurstDebugInformation_DoNotShip/Data/Plugins/x86_64/lib_burst_generated.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Assembly-CSharp-firstpass.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Assembly-CSharp.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/DOTween.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Mono.Security.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.ComponentModel.Composition.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Configuration.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Core.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Data.DataSetExtensions.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Data.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Drawing.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.EnterpriseServices.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.IO.Compression.FileSystem.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.IO.Compression.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Net.Http.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Numerics.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Runtime.Serialization.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Runtime.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Security.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.ServiceModel.Internals.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Transactions.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Xml.Linq.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.Xml.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/System.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UniTask.Addressables.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UniTask.DOTween.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UniTask.Linq.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UniTask.TextMeshPro.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UniTask.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.Addressables.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.Burst.Unsafe.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.Burst.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.Mathematics.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.RenderPipeline.Universal.ShaderLibrary.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.RenderPipelines.Core.Runtime.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.RenderPipelines.Core.ShaderLibrary.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.RenderPipelines.Universal.2D.Internal.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.RenderPipelines.Universal.Config.Runtime.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.RenderPipelines.Universal.Runtime.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.RenderPipelines.Universal.Shaders.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.ResourceManager.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.ScriptableBuildPipeline.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.TextMeshPro.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.Timeline.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.VisualScripting.Core.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.VisualScripting.Flow.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/Unity.VisualScripting.State.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.AIModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.ARModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.AccessibilityModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.AndroidJNIModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.AnimationModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.AssetBundleModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.AudioModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.ClothModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.ClusterInputModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.ClusterRendererModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.ContentLoadModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.CoreModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.CrashReportingModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.DSPGraphModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.DirectorModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.GIModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.GameCenterModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.GridModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.HotReloadModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.IMGUIModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.ImageConversionModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.InputLegacyModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.InputModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.JSONSerializeModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.LocalizationModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.NVIDIAModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.ParticleSystemModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.PerformanceReportingModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.Physics2DModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.PhysicsModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.ProfilerModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.PropertiesModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.ScreenCaptureModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.SharedInternalsModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.SpriteMaskModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.SpriteShapeModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.StreamingModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.SubstanceModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.SubsystemsModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.TLSModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.TerrainModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.TextRenderingModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.TilemapModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UI.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UIElementsModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UIModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UmbraModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UnityConnectModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UnityCurlModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UnityWebRequestModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.VFXModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.VRModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.VehiclesModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.VideoModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.VirtualTexturingModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.WindModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.XRModule.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/UnityEngine.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/mscorlib.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Managed/netstandard.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Plugins/x86_64/lib_burst_generated.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Resources/unity default resources" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/Resources/unity_builtin_extra" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/RuntimeInitializeOnLoads.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/ScriptingAssemblies.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Background/1_White.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Button/1_Home.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Button/1_Playing.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Button/Button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Button/home.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Crosshair/Crosshair_11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/10_Assistance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/11_Assistance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/1_Observe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/2_Observe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/3_Observe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/4_Assistance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/4_Observe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/5_Assistance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/5_Observe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/6_Assistance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/7_Assistance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/8_Assistance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/9_Assistance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/Hubble_Off.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/Hubble_On.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/Mars_Off.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/Mars_On.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/Moon_Off.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/Moon_On.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/Rocket_Off.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/Rocket_On.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/Satellite_Off.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Game/Satellite_On.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/GameImage/1_Image.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Inventory/Inventory.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Item/Camera.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Item/hubble.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Item/mars.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Item/moon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Item/rocket.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Item/satellite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Title/1_Assistance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Title/1_BG.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Title/1_Guide.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Title/1_Title.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Tutorial/1_Body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Tutorial/1_Frame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Tutorial/1_Sample.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Tutorial/1_Tutorial.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Tutorial/2_Assistance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Tutorial/2_Tutorial.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Tutorial/3_Assistance.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Image/Tutorial/3_Tutorial.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/JSON/HubbleSetting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/JSON/TitleSetting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/JSON/TutorialSetting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Sound/01-a-new-day.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Video/SRT/1. 제임스웹, 허블망원경_v04.srt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Video/SRT/2. 달v04.srt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Video/SRT/3. 인공위성v04.srt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Video/SRT/4. 화성v03.srt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Video/SRT/5. 우주발사체v04.srt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/Video/SRT/6. 끝맺음v04.srt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/aa/AddressablesLink/link.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/aa/StandaloneWindows64/70aa0b6a45f8743e3bfa0b51b2b447c5_unitybuiltinshaders_72711ed836c8b587c23adb72cc002281.bundle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/aa/StandaloneWindows64/assets_assets_all_12201f7dde52987f8b2d09a95897e60d.bundle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/aa/StandaloneWindows64/assets_assets_all_295ca43a0e1aa3991eba92f165814a23.bundle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/aa/catalog.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/aa/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/StreamingAssets/build_info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/app.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/boot.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/globalgamemanagers" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/globalgamemanagers.assets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/level0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/resources.assets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/Space_1_Data/sharedassets0.assets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/UnityCrashHandler64.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Space1/UnityPlayer.dll" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,71 +39,35 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/0e/0e8383d9/Cursor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/13/0a969786/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/c0/a3ac662f/Transform.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/dc/a1269a69/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/3_Game/VideoAnimation.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/My/Scripts/InteractionController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/StreamingAssets/JSON/HubbleSetting.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/StreamingAssets/JSON/TitleSetting.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@73a63b7f67/Runtime/UniTaskScheduler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.22.3/Runtime/Addressables.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.22.3/Runtime/AddressablesImpl.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@14.0.12/ShaderLibrary/Sampling/Fibonacci.hlsl" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.12/ShaderLibrary/Input.hlsl" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.7.7/Editor/DirectorStyles.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/CanvasUpdateRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Canvas/CanvasScalerWithChildTextObjectDoesNotCrash.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="32BLn8oOiERKWbpoYg4pbtEvwdM" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="36PeWrlo4ch4FKFlfBBStQB4VsV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.dp.ai.tool.code.settings.CodeAssistSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.62f2\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath D:\Github\Space_1 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Github\Space_1" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
-      <method v="2" />
-    </configuration>
-    <configuration name="독립실행형 플레이어" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Builds/Space-1\Space-1.exe" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="D:\Github\Space_1\Exe" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
@@ -366,62 +122,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="098bf501-1606-4997-99fb-fa0f31fe68a7" name="변경" comment="" />
-      <created>1756889183731</created>
+      <changelist id="7a3d6c93-cd24-4f93-80d7-c0c58b9fbf2e" name="변경" comment="" />
+      <created>1764912668366</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1756889183731</updated>
-      <workItem from="1756889185606" duration="1738000" />
-      <workItem from="1756944700231" duration="27422000" />
-      <workItem from="1757031160241" duration="8818000" />
-      <workItem from="1757294613745" duration="22610000" />
-      <workItem from="1757376417291" duration="29024000" />
-      <workItem from="1757463196413" duration="10647000" />
-      <workItem from="1757483019082" duration="8620000" />
-      <workItem from="1757643640641" duration="894000" />
-      <workItem from="1757644637227" duration="2349000" />
-      <workItem from="1757666625301" duration="341000" />
-      <workItem from="1757667924466" duration="558000" />
-      <workItem from="1758586065845" duration="1126000" />
-      <workItem from="1758587261436" duration="11000" />
-      <workItem from="1758587416919" duration="9886000" />
-      <workItem from="1758602282283" duration="7535000" />
-      <workItem from="1758672756186" duration="13228000" />
-      <workItem from="1758758879243" duration="149000" />
-      <workItem from="1758759073690" duration="21000" />
-      <workItem from="1758759177013" duration="13000" />
-      <workItem from="1758759208418" duration="3464000" />
-      <workItem from="1759114464661" duration="3753000" />
-      <workItem from="1759368580346" duration="9119000" />
-      <workItem from="1760410059074" duration="3163000" />
-      <workItem from="1760605228037" duration="778000" />
-      <workItem from="1761178248786" duration="2838000" />
-      <workItem from="1761532331453" duration="4091000" />
-      <workItem from="1761549465928" duration="1165000" />
-      <workItem from="1762215396856" duration="1454000" />
-      <workItem from="1762218816307" duration="613000" />
-      <workItem from="1762388862520" duration="2492000" />
-      <workItem from="1762391638980" duration="454000" />
-      <workItem from="1762503400045" duration="365000" />
-      <workItem from="1762737770332" duration="7452000" />
-      <workItem from="1762764823193" duration="954000" />
-      <workItem from="1762996916707" duration="1487000" />
-      <workItem from="1763022722199" duration="1592000" />
-      <workItem from="1763612479648" duration="199000" />
-      <workItem from="1763618432262" duration="1170000" />
-      <workItem from="1763709044186" duration="854000" />
-      <workItem from="1763951620234" duration="7448000" />
-      <workItem from="1763972035557" duration="2094000" />
-      <workItem from="1764043876438" duration="397000" />
-      <workItem from="1764116496680" duration="1396000" />
-      <workItem from="1764151274183" duration="1309000" />
-      <workItem from="1764202209982" duration="766000" />
-      <workItem from="1764203132021" duration="1815000" />
-      <workItem from="1764218799221" duration="768000" />
-      <workItem from="1764220416375" duration="1306000" />
-      <workItem from="1764551994577" duration="4317000" />
-      <workItem from="1764573715226" duration="5698000" />
-      <workItem from="1764635487584" duration="1317000" />
+      <updated>1764912668366</updated>
+      <workItem from="1764912669450" duration="4279000" />
     </task>
     <servers />
   </component>
@@ -435,17 +141,6 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
@@ -466,9 +161,5 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

@@ -12,16 +12,9 @@ using UnityEngine.Video;
 [Serializable]
 public class GameSetting
 {
-    public string servoHubble;
-    public string servoMoon;
-    public string servoSatellite;
-    public string servoMars;
-    public string servoRocket;
-
+    public ImageSetting arrowLeft;
+    public ImageSetting arrowRight;
     public float videoFadeTime;
-
-    public ImageSetting backgroundImage;
-
     public ButtonSetting titleButton;
 
     public ImageSetting playImage;
@@ -67,6 +60,9 @@ public class GamePage : BasePage<GameSetting>
     private GameObject playButton;
     private GameObject pauseButton;
     private GameObject skipButton;
+    
+    private GameObject arrowLeftObj;
+    private GameObject arrowRightObj;
 
     private readonly List<GameObject> missionGuides = new();
     private readonly List<GameObject> missionSubGuides = new();
@@ -87,10 +83,10 @@ public class GamePage : BasePage<GameSetting>
 
     // 자막 디스플레이(싱글톤)
     private SubtitleDisplayer subtitleDisplayer;
-    
+
     // 처음으로 버튼 딜레이 타임
-    private float titleButtonDelayTime = 1.0f;
-    
+    private float titleButtonDelayTime = 2.0f;
+
     public GameObject MainCanvasObj => mainCanvasObj;
     public bool IsPlayingVideo => isPlayingVideo;
 
@@ -105,7 +101,7 @@ public class GamePage : BasePage<GameSetting>
     protected override void OnEnable()
     {
         base.OnEnable();
-        
+
         if (camController) camController.IsControlEnabled = true;
         if (interactController) interactController.IsRayEnabled = true;
 
@@ -116,13 +112,18 @@ public class GamePage : BasePage<GameSetting>
         ApplyStageActivation(currentStage);
         UpdateStageUI(currentStage);
         UpdateVideoUIVisible(false); // 비디오 미재생 시 버튼 숨김
+        
+        if (isCreated && currentStage != StageEntry.Final)
+        {
+            ShowTitleButtonDelayed(titleButtonDelayTime).Forget();
+        }
     }
-    
+
     protected override void OnDisable()
     {
         if (camController) camController.IsControlEnabled = false;
         if (interactController) interactController.IsRayEnabled = false;
-        
+
         // 홈으로 이동 명령 전송
         ArduinoManager.Instance?.ExcuteCommand("home");
 
@@ -132,7 +133,7 @@ public class GamePage : BasePage<GameSetting>
     protected override void Start()
     {
         base.Start();
-        
+
         if (camController) camController.IsControlEnabled = true;
         if (interactController) interactController.IsRayEnabled = true;
 
@@ -140,6 +141,18 @@ public class GamePage : BasePage<GameSetting>
         {
             videoFadeTime = setting.videoFadeTime;
         }
+    }
+    
+    private void Update()
+    {
+        // 페이지가 생성되지 않았거나, 비디오 재생 중이거나, 마지막 단계면 화살표 끔
+        if (!isCreated || isPlayingVideo || currentStage == StageEntry.Final)
+        {
+            SetArrowsActive(false, false);
+            return;
+        }
+
+        UpdateDirectionIndicator();
     }
 
     #endregion
@@ -168,6 +181,15 @@ public class GamePage : BasePage<GameSetting>
         // === 크로스헤어 생성 ===
         GameObject crosshair = await UICreator.Instance.CreateSingleImageAsync(setting.crosshairImage, mainCanvasObj, token);
         crosshair.AddComponent<Crosshair>();
+        
+        // === 화살표 생성 ===
+        arrowLeftObj = await UICreator.Instance.CreateSingleImageAsync(setting.arrowLeft, mainCanvasObj, token);
+        arrowLeftObj.AddComponent<UIBlink>();
+        if (arrowLeftObj) arrowLeftObj.SetActive(false);
+
+        arrowRightObj = await UICreator.Instance.CreateSingleImageAsync(setting.arrowRight, mainCanvasObj, token);
+        arrowRightObj.AddComponent<UIBlink>();
+        if (arrowRightObj) arrowRightObj.SetActive(false);
 
         // === 허블, 달, 인공위성, 화성, 로켓 이미지 생성 ===
         foreach (ImageSetting image in setting.contentsImagesOff)
@@ -221,6 +243,12 @@ public class GamePage : BasePage<GameSetting>
         ApplyStageActivation(currentStage);
         UpdateStageUI(currentStage);
         UpdateVideoUIVisible(false);
+        
+        // 처음으로 버튼 지연 생성
+        if (currentStage != StageEntry.Final)
+        {
+            ShowTitleButtonDelayed(titleButtonDelayTime).Forget();
+        }
 
         // ===== 자막 Text 생성 및 SubtitleDisplayer 연결 =====
         subtitleDisplayer = SubtitleDisplayer.Instance;
@@ -231,28 +259,27 @@ public class GamePage : BasePage<GameSetting>
                 GameObject go1 = await UICreator.Instance.CreateSingleTextAsync(jsonSetting.subtitle1Set, mainCanvasObj, token);
                 if (go1 != null && go1.TryGetComponent(out TextMeshProUGUI tmp1))
                 {
-                    subtitleText1 = tmp1;                 // BasePage의 보호 필드 사용
+                    subtitleText1 = tmp1; // BasePage의 보호 필드 사용
                     subtitleText1.text = string.Empty;
                     subtitleText1.gameObject.SetActive(false);
                     subtitleText1.transform.SetAsLastSibling(); // 항상 맨 앞에 보이도록
 
                     subtitleDisplayer.FadeTime = jsonSetting.subtitleFadeTime;
-                    
+
                     ApplySubtitleOutline(subtitleText1);
                 }
             }
 
             if (jsonSetting.subtitle2Set != null)
             {
-                GameObject go2 = await UICreator.Instance
-                                                .CreateSingleTextAsync(jsonSetting.subtitle2Set, mainCanvasObj, token);
+                GameObject go2 = await UICreator.Instance.CreateSingleTextAsync(jsonSetting.subtitle2Set, mainCanvasObj, token);
                 if (go2 != null && go2.TryGetComponent(out TextMeshProUGUI tmp2))
                 {
                     subtitleText2 = tmp2;
                     subtitleText2.text = string.Empty;
                     subtitleText2.gameObject.SetActive(false);
                     subtitleText2.transform.SetAsLastSibling();
-                    
+
                     ApplySubtitleOutline(subtitleText2);
                 }
             }
@@ -260,10 +287,10 @@ public class GamePage : BasePage<GameSetting>
             subtitleDisplayer.Text = subtitleText1;
             subtitleDisplayer.Text2 = subtitleText2;
         }
-        
+
         isCreated = true;
     }
-    
+
     private async UniTaskVoid ShowTitleButtonDelayed(float duration)
     {
         if (!titleButton) return;
@@ -280,6 +307,25 @@ public class GamePage : BasePage<GameSetting>
             if (!isPlayingVideo && currentStage != StageEntry.Final && gameObject.activeInHierarchy)
             {
                 titleButton.SetActive(true);
+
+                CanvasGroup cg = titleButton.GetComponent<CanvasGroup>();
+                if (!cg) cg = titleButton.AddComponent<CanvasGroup>();
+
+                cg.alpha = 0f;
+                float fadeTime = 0.5f; // 페이드되는 시간
+                float elapsed = 0f;
+
+                while (elapsed < fadeTime)
+                {
+                    // 페이드 도중 버튼이 꺼지거나 페이지가 닫히면 중단
+                    if (!titleButton || !titleButton.activeInHierarchy) return;
+
+                    elapsed += Time.deltaTime;
+                    cg.alpha = Mathf.Clamp01(elapsed / fadeTime);
+                    await UniTask.Yield(PlayerLoopTiming.Update, this.GetCancellationTokenOnDestroy());
+                }
+
+                cg.alpha = 1f;
             }
         }
         catch (OperationCanceledException)
@@ -322,6 +368,8 @@ public class GamePage : BasePage<GameSetting>
         {
             subtitleDisplayer.StopSubtitle();
         }
+
+        SoundManager.Instance?.PlayConfirm();
         SoundManager.Instance?.ResumeBgm();
         await GameManager.Instance.ShowTitlePageOnly(token, true);
     }
@@ -330,7 +378,7 @@ public class GamePage : BasePage<GameSetting>
     {
         if (!isPlayingVideo) return;
 
-        SoundManager.Instance?.PlayCancel();
+        SoundManager.Instance?.PlayCancel().Forget();
 
         if (subtitleDisplayer != null)
         {
@@ -397,12 +445,12 @@ public class GamePage : BasePage<GameSetting>
         NextStage();
         ApplyStageActivation(currentStage);
         UpdateStageUI(currentStage);
-        
+
         if (currentStage != StageEntry.Final)
         {
             ShowTitleButtonDelayed(titleButtonDelayTime).Forget();
         }
-        
+
         CrossFadeIcon(fromGo, toGo, 1).Forget();
     }
 
@@ -437,11 +485,21 @@ public class GamePage : BasePage<GameSetting>
             GameObject objectGo = await UICreator.Instance.CreateGameObjectAsync(setting.objects[i], mainCanvasObj, token);
             switch (i) // 단계별 컴포넌트 부착
             {
-                case (int)StageEntry.Hubble: objectGo.AddComponent<HubbleObject>(); break;
-                case (int)StageEntry.Moon: objectGo.AddComponent<MoonObject>(); break;
-                case (int)StageEntry.Satellite: objectGo.AddComponent<SatelliteObject>(); break;
-                case (int)StageEntry.Mars: objectGo.AddComponent<MarsObject>(); break;
-                case (int)StageEntry.Rocket: objectGo.AddComponent<RocketObject>(); break;
+                case (int)StageEntry.Hubble:
+                    objectGo.AddComponent<HubbleObject>();
+                    break;
+                case (int)StageEntry.Moon:
+                    objectGo.AddComponent<MoonObject>();
+                    break;
+                case (int)StageEntry.Satellite:
+                    objectGo.AddComponent<SatelliteObject>();
+                    break;
+                case (int)StageEntry.Mars:
+                    objectGo.AddComponent<MarsObject>();
+                    break;
+                case (int)StageEntry.Rocket:
+                    objectGo.AddComponent<RocketObject>();
+                    break;
             }
 
             objectGo.SetActive(false);
@@ -492,10 +550,7 @@ public class GamePage : BasePage<GameSetting>
 
             // 인덱스에 해당하는 VideoSetting을 함께 전달
             VideoSetting vs = null;
-            if (setting != null &&
-                setting.videos != null &&
-                index >= 0 &&
-                index < setting.videos.Length)
+            if (setting != null && setting.videos != null && index >= 0 && index < setting.videos.Length)
             {
                 vs = setting.videos[index];
             }
@@ -570,6 +625,7 @@ public class GamePage : BasePage<GameSetting>
                 {
                     pageVideo.SetActive(false);
                 }
+
                 pageVideo = null;
                 videoPlayer = null;
             }
@@ -591,11 +647,12 @@ public class GamePage : BasePage<GameSetting>
             ApplyStageActivation(currentStage);
             UpdateStageUI(currentStage);
             UpdateVideoUIVisible(false);
-            
+
             if (currentStage != StageEntry.Final)
             {
                 ShowTitleButtonDelayed(titleButtonDelayTime).Forget();
             }
+
             CrossFadeIcon(fromGo, toGo, 1).Forget();
         }
         catch (Exception e)
@@ -877,7 +934,7 @@ public class GamePage : BasePage<GameSetting>
     }
 
     #endregion
-    
+
     private void ApplySubtitleOutline(TextMeshProUGUI tmp)
     {
         if (tmp == null) return;
@@ -896,5 +953,63 @@ public class GamePage : BasePage<GameSetting>
         // 외곽선 두께/색 설정
         tmp.fontMaterial.SetFloat(ShaderUtilities.ID_OutlineWidth, width);
         tmp.fontMaterial.SetColor(ShaderUtilities.ID_OutlineColor, color);
+    }
+    
+    private void UpdateDirectionIndicator()
+    {
+        if (targetObjectsList == null || targetObjectsList.Count <= (int)currentStage) return;
+        GameObject target = targetObjectsList[(int)currentStage];
+        
+        if (!target) return;
+
+        Camera cam = Camera.main;
+        if (!cam) return;
+
+        // 1. 화면 안에 있는지 판단 (상하 무시, 좌우만)
+        Vector3 viewPos = cam.WorldToViewportPoint(target.transform.position);
+        bool isHorizontallyOnScreen = viewPos.z > 0 && 
+                                      viewPos.x >= 0f && viewPos.x <= 1f;
+
+        if (isHorizontallyOnScreen)
+        {
+            SetArrowsActive(false, false);
+        }
+        else
+        {
+            // 2. [수정] 절대 각도 비교 방식으로 변경 (최단거리 로직 제거)
+            
+            // 타겟의 방향 벡터 계산
+            Vector3 dir = target.transform.position - cam.transform.position;
+            
+            // 타겟의 Yaw 각도 산출 (-180 ~ 180도)
+            // Atan2(x, z)는 Unity 좌표계에서 Yaw 각도와 일치합니다.
+            float targetYaw = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+
+            // 카메라의 현재 Yaw 각도 (-180 ~ 180도로 정규화)
+            float camYaw = cam.transform.eulerAngles.y;
+            if (camYaw > 180f) camYaw -= 360f;
+
+            // 단순 수치 비교 (회전 제한이 있으므로 선형적으로 판단)
+            if (targetYaw < camYaw) 
+            {
+                // 타겟 각도가 현재보다 작으므로 "왼쪽"으로 가야 함
+                // 단, 왼쪽 한계에 도달했다면 표시하지 않음
+                bool canTurnLeft = camController != null && !camController.IsAtLeftLimit;
+                SetArrowsActive(canTurnLeft, false);
+            }
+            else 
+            {
+                // 타겟 각도가 현재보다 크므로 "오른쪽"으로 가야 함
+                // 단, 오른쪽 한계에 도달했다면 표시하지 않음
+                bool canTurnRight = camController != null && !camController.IsAtRightLimit;
+                SetArrowsActive(false, canTurnRight);
+            }
+        }
+    }
+
+    private void SetArrowsActive(bool left, bool right)
+    {
+        if (arrowLeftObj && arrowLeftObj.activeSelf != left) arrowLeftObj.SetActive(left);
+        if (arrowRightObj && arrowRightObj.activeSelf != right) arrowRightObj.SetActive(right);
     }
 }

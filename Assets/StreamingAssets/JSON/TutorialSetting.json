@@ -1,5 +1,4 @@
 {
-  "tutorialDisplayTime": 5.0,
   "mainBackground": {
 	"name": "Main Background",
 	"position": { "x": 960, "y": 540 },
@@ -81,5 +80,15 @@
 	"position": { "x": 262.5, "y": 257.5 },
 	"size": { "x": 1200, "y": 600 },
 	"sourceImage": "Image/Tutorial/1_Frame.png"
+  },
+  "nextButton": {
+	"position": { "x": 1280, "y": 450 },
+	"size": { "x": 1048, "y": 212 },
+	"buttonBackgroundImage": { "sourceImage": "Image/Button/1_button-next.png" }
+  },
+  "confirmButton": {
+	"position": { "x": 1280, "y": 450 },
+	"size": { "x": 1048, "y": 212 },
+	"buttonBackgroundImage": { "sourceImage": "Image/Button/1_button-okay.png" }
   }
 }

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     
     public RuntimeAnimatorController crosshairAnimator;
     public Material rocketMaterial;
+    public Material moonMaterial;
 
     public GameObject TitlePage { get; set; }
 

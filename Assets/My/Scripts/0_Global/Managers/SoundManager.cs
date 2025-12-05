@@ -124,6 +124,7 @@ public sealed class SoundManager : MonoBehaviour
     public UniTaskVoid PlayCancel() => PlayByKey("cancel");
     public UniTaskVoid PlayZoom()   => PlayByKey("zoomSound");
     public UniTaskVoid PlayBGM()    => PlayBgmByKey("BGM");
+    public UniTaskVoid PlayConfirm() => PlayByKey("confirm");
 
     // ------------------------------------------------------------
     // 퍼블릭 API (BGM)

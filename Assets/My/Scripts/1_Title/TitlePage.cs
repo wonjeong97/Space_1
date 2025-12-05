@@ -43,7 +43,6 @@ public class TitlePage : BasePage<TitleSetting>
         (confirmButton, _) = await UICreator.Instance.CreateSingleButtonAsync(setting.confirmButton, subCanvasObj, token);
         if (confirmButton.TryGetComponent(out Button button))
         {   
-            Debug.Log("Confirm Clicked");
             button.onClick.AddListener(() => OnClickConfirmButtonAsync().Forget());
         }
 
@@ -72,6 +71,8 @@ public class TitlePage : BasePage<TitleSetting>
 
         try
         {
+            Debug.Log("[TitlePage] Confirm Clicked");
+            SoundManager.Instance?.PlayConfirm();
             await FadeManager.Instance.FadeOutAsync(jsonSetting.fadeTime);
             gameObject.SetActive(false);
 

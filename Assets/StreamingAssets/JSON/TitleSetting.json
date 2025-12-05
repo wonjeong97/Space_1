@@ -32,8 +32,8 @@
 	"sourceImage": "Image/Title/1_Assistance.png"
   },
   "confirmButton": {
-	"position": { "x": 1280, "y": 540 },
+	"position": { "x": 1280, "y": 450 },
 	"size": { "x": 1048, "y": 212 },
-	"buttonBackgroundImage": { "sourceImage": "Image/Title/1_button-okay.png" }
+	"buttonBackgroundImage": { "sourceImage": "Image/Button/1_button-start.png" }
   }
 }
