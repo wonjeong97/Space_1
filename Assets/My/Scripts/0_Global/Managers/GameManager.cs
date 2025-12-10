@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
     private float inactivityTimer;
     private float inactivityThreshold = 30f;
     private Vector3 lastMousePosition;
-    
+
     private CancellationTokenSource inactivityCts;
     public event Action onReset;
-    
+
     public RuntimeAnimatorController crosshairAnimator;
     public Material rocketMaterial;
     public Material moonMaterial;
@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
             {
                 inactivityTimer += Time.deltaTime;
             }
+
             if (inactivityTimer >= inactivityThreshold)
             {
                 inactivityTimer = 0f;
@@ -120,24 +121,24 @@ public class GameManager : MonoBehaviour
 
         return ShowTitlePageOnly(token, isFadeOut);
     }
-    
+
     public async Task ShowTitlePageOnly(CancellationToken token, bool isFadeOut = true)
     {
         try
         {
             if (isFadeOut) await FadeManager.Instance.FadeOutAsync(JsonLoader.Instance.settings.fadeTime, false, token);
             if (token.IsCancellationRequested) return;
-            
+
             if (GamePage.Instance)
             {
                 await GamePage.Instance.ZoomOutTarget(token);
                 if (token.IsCancellationRequested) return;
-                
+
                 GamePage.Instance.ResetToFirstStage();
             }
 
             foreach (GameObject page in UIManager.Instance.pages)
-            {   
+            {
                 if (token.IsCancellationRequested) return;
                 page.SetActive(false);
             }
@@ -146,7 +147,7 @@ public class GameManager : MonoBehaviour
             {
                 TitlePage.SetActive(true);
             }
-                
+
             //await FadeManager.Instance.FadeInAsync(JsonLoader.Instance.settings.fadeTime, false, token);
         }
         catch (OperationCanceledException)
@@ -170,5 +171,26 @@ public class GameManager : MonoBehaviour
     public void Reset()
     {
         onReset?.Invoke();
+    }
+
+    public void QuitGame()
+    {
+        if (GamePage.Instance)
+        {
+            GamePage.Instance.ForceStopAllVideos();
+        }
+
+        // 2. 종료 전 정리
+        // (ArduinoManager의 OnApplicationQuit이 돌겠지만 미리 호출해도 무방)
+        ArduinoManager.Instance?.ExcuteCommand("home");
+
+        Debug.Log("[GameManager] Quitting Application...");
+
+        // 3. 어플리케이션 종료
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }

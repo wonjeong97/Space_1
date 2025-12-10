@@ -1012,4 +1012,25 @@ public class GamePage : BasePage<GameSetting>
         if (arrowLeftObj && arrowLeftObj.activeSelf != left) arrowLeftObj.SetActive(left);
         if (arrowRightObj && arrowRightObj.activeSelf != right) arrowRightObj.SetActive(right);
     }
+    
+    public void ForceStopAllVideos()
+    {
+        // 1. 현재 재생 변수 해제
+        isPlayingVideo = false;
+        videoPlayer = null;
+        pageVideo = null;
+
+        // 2. 모든 비디오 플레이어 정지 및 비활성화
+        if (videoObjectList != null)
+        {
+            foreach (var go in videoObjectList)
+            {
+                if (go && go.TryGetComponent(out VideoPlayer vp))
+                {
+                    if (vp.isPlaying) vp.Stop();
+                    vp.enabled = false; // 컴포넌트를 꺼서 확실하게 중단
+                }
+            }
+        }
+    }
 }
