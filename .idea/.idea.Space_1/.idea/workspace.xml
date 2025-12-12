@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a3d6c93-cd24-4f93-80d7-c0c58b9fbf2e" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space_1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/GameCloser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/GameCloser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/0_Global/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My/Scripts/3_Game/GamePage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My/Scripts/3_Game/GamePage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/SRT/1. 제임스웹, 허블망원경_v04.srt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/SRT/1. 제임스웹, 허블망원경_v04.srt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/SRT/2. 달v04.srt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/SRT/2. 달v04.srt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Video/SRT/4. 화성v03.srt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Video/SRT/4. 화성v03.srt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,6 +121,7 @@
       <updated>1764912668366</updated>
       <workItem from="1764912669450" duration="4279000" />
       <workItem from="1765264672297" duration="175000" />
+      <workItem from="1765506228749" duration="9000" />
     </task>
     <servers />
   </component>
