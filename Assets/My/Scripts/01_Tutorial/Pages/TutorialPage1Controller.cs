@@ -28,7 +28,14 @@ namespace My.Scripts._01_Tutorial.Pages
             // UIManager를 이용해 JSON 설정값(내용, 폰트, 위치 등)을 UI에 적용
             if (descriptionText != null && data.descriptionText != null)
             {
-                UIManager.Instance.SetText(descriptionText.gameObject, data.descriptionText);
+                if (UIManager.Instance != null)
+                {
+                    UIManager.Instance.SetText(descriptionText.gameObject, data.descriptionText);
+                }
+                else
+                {
+                    Debug.LogWarning("[TutorialPage1Controller] UIManager.Instance가 null입니다.");
+                }
             }
         }
 

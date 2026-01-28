@@ -6,7 +6,7 @@ namespace My.Scripts.Global
         /// <summary> 씬 이름 상수 모음 </summary>
         public static class Scene
         { 
-            public const string Title = "00_Title"; // 튜토리얼 씬
+            public const string Title = "00_Title"; // 타이틀 씬
             public const string Tutorial = "01_Tutorial"; // 튜토리얼 씬
         }
 
