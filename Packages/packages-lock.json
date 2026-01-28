@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.addressables": {
       "version": "1.22.3",
       "depth": 0,
@@ -176,30 +182,11 @@
       "url": "https://packages.unity.com"
     },
     "com.wonjeong.template": {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "version": "file:D:/HULIAC/HULIAC_Project/Template",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
       "version": "https://github.com/wonjeong97/Template.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "ba289645203f1fbc5a24b174d9998eec57591b24"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
