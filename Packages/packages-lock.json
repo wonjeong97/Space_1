@@ -178,11 +178,14 @@
     "com.wonjeong.template": {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "version": "file:D:/HULIAC/HULIAC_Project/Template",
       "depth": 0,
       "source": "local",
       "dependencies": {}
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
       "version": "https://github.com/wonjeong97/Template.git",
@@ -191,6 +194,9 @@
       "dependencies": {},
       "hash": "ba289645203f1fbc5a24b174d9998eec57591b24"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
